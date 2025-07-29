@@ -1,8 +1,9 @@
 .movie-container{
   padding: 20px;
-  border: solid black;
+  /* border: solid black; */
   max-width: 1200px;
   margin: 0 auto;
+  color: white;
 }
 
 .movie-container .flex-container{

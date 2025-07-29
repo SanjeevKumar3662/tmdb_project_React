@@ -1,10 +1,20 @@
 .card {
-  border: solid black;
+  /* border: solid black; */
+  border-radius: 20px;
   overflow: hidden; /* hides any overflow*/
   width: 273px;
-  /* padding: 20px; */
+  padding: 10px;
+  background-color: rgba(82, 96, 172, 0.475);
+  color: white;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.678);
+
 }
 .card img {
   width: 250px;
+  border-radius: 20px;
   /* height: 200px; */
+}
+.card:hover {
+  box-shadow: 3px 3px 10px rgb(252, 251, 251);
+  transition: 0.1s ease;
 }
