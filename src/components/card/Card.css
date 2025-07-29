@@ -15,6 +15,7 @@
   /* height: 200px; */
 }
 .card:hover {
-  box-shadow: 3px 3px 10px rgb(252, 251, 251);
+  box-shadow: 0 0 10px 5px rgb(252, 251, 251);
+  
   transition: 0.1s ease;
 }
