@@ -8,16 +8,6 @@ const PopularMovies = () => {
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-        // const url =
-        //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-        // const options = {
-        //   method: "GET",
-        //   headers: {
-        //     accept: "application/json",
-        //     Authorization:
-        //       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ZTMzNTc5NTAzZDgyN2NlMjJjNjI3NTgwMTU5ZTZlNiIsIm5iZiI6MTcyNzc1NzQwMS44MjIsInN1YiI6IjY2ZmI3YzU5ZDgwNjQxNjViZGYxNmFjZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bQSwgX4n_teHX61idIJa9N0v5BLYh8tdL374pRU9HxY",
-        //   },
-        // };
 
         const res = await fetch("https://first-backend-eight.vercel.app/popular_movies");
         const data = await res.json();
