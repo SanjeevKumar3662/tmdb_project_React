@@ -8,8 +8,9 @@ const PopularMovies = () => {
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-
-        const res = await fetch("https://first-backend-eight.vercel.app/popular_movies");
+        const res = await fetch(
+          "https://first-backend-eight.vercel.app/popular_movies"
+        );
         const data = await res.json();
         console.log(data.results[0]);
 
@@ -26,7 +27,7 @@ const PopularMovies = () => {
       <h1>Popular Movies</h1>
       <div className="flex-container">
         {movies ? (
-          movies.map((movie) => <Card {...movie}></Card>)
+          movies.map((movie) => <Card key={movie.key} {...movie}></Card>)
         ) : (
           <h1>Loading...</h1>
         )}
