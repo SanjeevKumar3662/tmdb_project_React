@@ -4,10 +4,11 @@ export default function Header() {
   return (
     <div className="header-container">
       <div className="git-logo">
-        <i>GitHub: </i>
+        <button className="github-btn">
         <a href="https://github.com/SanjeevKumar3662" target="_blank">
-          SanjeevKumar3662
         </a>
+          <div className="git-logo"><img src="./GitHub-logo.png" alt="" /></div>SanjeevKumar3662
+        </button>
       </div>
 
       <div className="left-header">

@@ -19,3 +19,25 @@
 .header-container a{
   color: white;
 }
+
+.github-btn{
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: rgba(125, 12, 125, 0.546);
+  padding: 6px 10px;
+  box-shadow: 0 0 5px 1px black;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.github-btn:hover{
+  box-shadow: 0 0 5px 2px white;
+  transition: ease-in;
+}
+
+.git-logo img{
+  width: 20px;
+}
