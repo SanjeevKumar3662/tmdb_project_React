@@ -1,6 +1,6 @@
 import "./Card.css";
 
-const Card = ({ title, poster_path, release_date }) => {
+const Card = ({ title, name, poster_path, release_date, first_air_date }) => {
   return (
     <div className="card">
       <img
@@ -8,8 +8,8 @@ const Card = ({ title, poster_path, release_date }) => {
         src={`https://image.tmdb.org/t/p/original${poster_path}`}
         alt=""
       />
-      <div className="title">{title}</div>
-      <div className="release-date">{release_date}</div>
+      <div className="title">{title || name}</div>
+      <div className="release-date">{release_date || first_air_date}</div>
     </div>
   );
 };
