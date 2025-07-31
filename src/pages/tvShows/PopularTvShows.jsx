@@ -24,7 +24,7 @@ const PopularTvShows = () => {
   // console.log(TvShows[0]);
   return (
     <div className="movie-container">
-      <h1>Popular TvShows</h1>
+      <h1>Popular TV Shows</h1>
       <div className="flex-container">
         {TvShows ? (
           TvShows.map((tvShow) => <Card key={tvShow.id} {...tvShow}></Card>)
