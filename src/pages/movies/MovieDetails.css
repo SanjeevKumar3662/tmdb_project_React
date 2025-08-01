@@ -1,0 +1,35 @@
+
+.details-container {
+  display: flex;
+  /* flex-direction: row; */
+  justify-content: center;
+  align-items: center;
+  color: white;
+  /* border: solid black; */
+  min-height: 92vh;
+  width: 100vw;
+}
+.poster-details {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details-container img {
+  width: 350px;
+}
+
+/* .details-container section {
+  border: solid black;
+} */
+
+.more-info {
+  color: rgba(160, 28, 28, 0.788);
+  background-color: rgba(0, 0, 0, 0.507);
+  border: solid white;
+  border-radius: 20px;
+  margin: 0 20px;
+  height: 400px;
+  flex: 2;
+  font-size: 20px;
+}
