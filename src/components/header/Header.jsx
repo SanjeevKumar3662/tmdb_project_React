@@ -23,9 +23,9 @@ export default function Header() {
         <Link to={"/popular_tv_shows"}>
           <button className="btn">TV Shows</button>
         </Link>
-        {/* <a href="">TV Shows</a> */}
+        
       </div>
-      {/* <h2>Header</h2> */}
+      
       <div className="right-header">
         <a href="">link 1</a>
 
