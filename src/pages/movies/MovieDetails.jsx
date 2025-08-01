@@ -47,10 +47,23 @@ const MovieDetails = () => {
         </section>
         <section className="more-info">
           <h1>{movie.title ? movie.title : "movie Name"}</h1>
-          {movie.original_title&&<div>Original Title : {movie.original_title}</div>}
+          {movie.original_title && (
+            <div>Original Title : {movie.original_title}</div>
+          )}
           <div>Tagline : {movie.tagline}</div>
-          <div className="title">Discription :<span>{movie.overview}</span></div>
-          <div className="release-date">Release Date : {movie.release_date}</div>
+          <div className="title">
+            Discription :<span> {movie.overview}</span>
+          </div>
+          <div className="release-date">
+            Release Date : {movie.release_date}
+          </div>
+          <div>
+            Genres :{" "}
+            {movie.genres &&
+              movie.genres.map((ele) => (
+                <span key={ele.id}>{ele.name} , </span>
+              ))}
+          </div>
         </section>
       </div>
     </>
