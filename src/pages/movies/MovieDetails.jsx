@@ -21,10 +21,9 @@ const MovieDetails = () => {
       }
     };
     fetchDetails();
-  }, []);
+  }, [id]);
 
   console.log(movie);
-  console.log(movie.backdrop_path);
 
   return (
     <>
@@ -48,8 +47,10 @@ const MovieDetails = () => {
         </section>
         <section className="more-info">
           <h1>{movie.title ? movie.title : "movie Name"}</h1>
-          <div className="title">title </div>
-          <div className="release-date">Release Date {}</div>
+          {movie.original_title&&<div>Original Title : {movie.original_title}</div>}
+          <div>Tagline : {movie.tagline}</div>
+          <div className="title">Discription :<span>{movie.overview}</span></div>
+          <div className="release-date">Release Date : {movie.release_date}</div>
         </section>
       </div>
     </>
