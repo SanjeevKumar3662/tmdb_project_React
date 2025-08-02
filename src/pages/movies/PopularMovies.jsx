@@ -10,7 +10,7 @@ const PopularMovies = () => {
     try {
       const fetchMovies = async () => {
         const res = await fetch(
-          "https://first-backend-eight.vercel.app/popular_movies"
+          `https://first-backend-eight.vercel.app/popular_movies?page=${page}`
         );
         const data = await res.json();
         console.log(data.results[0]);
@@ -21,7 +21,8 @@ const PopularMovies = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [page]);
+
   // console.log(movies[0]);
   return (
     <div className="movie-container">
