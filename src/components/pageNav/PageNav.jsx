@@ -6,7 +6,7 @@ const PageNav = ({prevClick,nextClick, page}) => {
       <button onClick={prevClick}>
         Prev
       </button>
-      <span>Current on Page {page}</span>
+      <span>On Page: {page}</span>
       <button onClick={nextClick}>Next</button>
     </section>
   );
