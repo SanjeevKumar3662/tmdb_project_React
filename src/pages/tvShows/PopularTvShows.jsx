@@ -1,15 +1,17 @@
 import "./PopularTvShows.css";
 import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
+import PageNav from "../../components/PageNav";
 
 const PopularTvShows = () => {
   const [TvShows, setPopTvShows] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     try {
       const fetchTvShows = async () => {
         const res = await fetch(
-          "https://first-backend-eight.vercel.app/popular_tv"
+          `https://first-backend-eight.vercel.app/popular_tv?page=${page}`
         );
         const data = await res.json();
         console.log(data.results[0]);
@@ -20,7 +22,7 @@ const PopularTvShows = () => {
     } catch (error) {
       console.log(error);
     }
-  }, []);
+  }, [page]);
   // console.log(TvShows[0]);
   return (
     <div className="movie-container">
@@ -32,6 +34,11 @@ const PopularTvShows = () => {
           <h1>Loading...</h1>
         )}
       </div>
+      <PageNav
+        prevClick={() => setPage(page > 1 ? () => page - 1 : page)}
+        nextClick={() => setPage(() => page + 1)}
+        page={page}
+      ></PageNav>
     </div>
   );
 };
