@@ -35,7 +35,7 @@ const TvShowDetails = () => {
         className="details-container"
         style={{
           //can't use both shorthand and normal properties, this might cause a bug
-          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url(https://image.tmdb.org/t/p/original${tv.backdrop_path})`,
+          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://image.tmdb.org/t/p/original${tv.backdrop_path})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
