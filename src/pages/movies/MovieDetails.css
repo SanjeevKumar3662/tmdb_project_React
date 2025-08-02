@@ -1,3 +1,8 @@
+body {
+  overflow-y: scroll; /* always show scrollbar space */
+  overflow-x: hidden;
+}
+
 .details-container {
   display: flex;
   padding: 0 20px;
@@ -6,13 +11,6 @@
   align-items: center;
   color: white;
   min-height: 93vh;
-  /* width: 100%; */
-
-  /* overflow: hidden;  */
-}
-
-.details-container::-webkit-scrollbar {
-  /* display: none;  */
 }
 
 .poster-details {
@@ -37,17 +35,19 @@
   background-color: rgba(0, 0, 0, 0.507);
   border: solid white;
   border-radius: 20px;
-  /* margin: 0 20px; */
-  padding: 0 30px;
+  margin: 0 20px;
+  padding: 10px 30px;
   min-height: 400px;
   flex: 2;
   font-size: 18px;
-
+  
   h1 {
     font-size: 28px;
     color: brown;
-    /* margin: none; */
-    /* padding: none; */
+  }
+
+  span{
+    line-height: 25px;
   }
 }
 
