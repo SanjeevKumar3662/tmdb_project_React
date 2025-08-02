@@ -22,6 +22,8 @@ const PopularMovies = () => {
     } catch (error) {
       console.log(error);
     }
+
+    //this will scroll to top
     window.scrollTo({ top: 0 });
   }, [page]);
 

@@ -22,6 +22,9 @@ const PopularTvShows = () => {
     } catch (error) {
       console.log(error);
     }
+
+    //this will scroll to top
+    window.scrollTo({ top: 0 });
   }, [page]);
   // console.log(TvShows[0]);
   return (
