@@ -21,6 +21,7 @@ const PopularMovies = () => {
     } catch (error) {
       console.log(error);
     }
+     window.scrollTo({ top: 0});
   }, [page]);
 
   // console.log(movies[0]);
@@ -36,7 +37,7 @@ const PopularMovies = () => {
       </div>
       <section className="page-nav">
         <button onClick={()=>setPage(page>1?()=>page-1:page)}>Prev</button>
-        <span>Current Page {page}</span>
+        <span>Current on Page {page}</span>
         <button onClick={()=>setPage(()=>page+1)}>Next</button>
       </section>
     </div>
