@@ -4,6 +4,7 @@ import Card from "../../components/card/Card";
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState(null);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     try {
@@ -32,6 +33,11 @@ const PopularMovies = () => {
           <h1>Loading...</h1>
         )}
       </div>
+      <section className="page-nav">
+        <button onClick={()=>setPage(page>1?()=>page-1:page)}>Prev</button>
+        <span>Current Page {page}</span>
+        <button onClick={()=>setPage(()=>page+1)}>Next</button>
+      </section>
     </div>
   );
 };

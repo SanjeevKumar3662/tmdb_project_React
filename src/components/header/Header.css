@@ -37,8 +37,13 @@
   justify-content: center;
 }
 
+/* these applies to every button */
 button:hover {
   box-shadow: 0 0 5px 2px white;
+  transition: 0.1s ease-out;
+}
+button:active {
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.374);
   transition: 0.1s ease-out;
 }
 
