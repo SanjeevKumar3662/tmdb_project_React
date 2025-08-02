@@ -1,6 +1,7 @@
 import "./PopularMovies.css";
 import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
+import PageNav from "../../components/PageNav";
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState(null);
@@ -21,7 +22,7 @@ const PopularMovies = () => {
     } catch (error) {
       console.log(error);
     }
-     window.scrollTo({ top: 0});
+    window.scrollTo({ top: 0 });
   }, [page]);
 
   // console.log(movies[0]);
@@ -35,11 +36,11 @@ const PopularMovies = () => {
           <h1>Loading...</h1>
         )}
       </div>
-      <section className="page-nav">
-        <button onClick={()=>setPage(page>1?()=>page-1:page)}>Prev</button>
-        <span>Current on Page {page}</span>
-        <button onClick={()=>setPage(()=>page+1)}>Next</button>
-      </section>
+      <PageNav
+        prevClick={() => setPage(page > 1 ? () => page - 1 : page)}
+        nextClick={() => setPage(() => page + 1)}
+        page={page}
+      ></PageNav>
     </div>
   );
 };
