@@ -1,7 +1,7 @@
 import "./PopularTvShows.css";
 import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/pageNav/PageNav";
 
 const PopularTvShows = () => {
   const [TvShows, setPopTvShows] = useState(null);
@@ -14,7 +14,9 @@ const PopularTvShows = () => {
           `https://first-backend-eight.vercel.app/popular_tv?page=${page}`
         );
         const data = await res.json();
-        console.log(data.results[0]);
+
+        //use this for checking the obj's properties
+        // console.log(data.results[0]);
 
         setPopTvShows(data.results);
       };

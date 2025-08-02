@@ -1,3 +1,5 @@
+import "./PageNav.css"
+
 const PageNav = ({prevClick,nextClick, page}) => {
   return (
     <section className="page-nav">

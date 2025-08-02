@@ -1,7 +1,7 @@
 import "./PopularMovies.css";
 import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
-import PageNav from "../../components/PageNav";
+import PageNav from "../../components/pageNav/PageNav";
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState(null);
