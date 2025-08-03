@@ -1,3 +1,4 @@
+import noImage from "/src/assets/noImage.png"
 import "./TvShowDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -45,7 +46,7 @@ const TvShowDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={`https://image.tmdb.org/t/p/original${tv.poster_path}`}
+            src={tv.poster_path?`https://image.tmdb.org/t/p/original${tv.poster_path}`:noImage}
             alt=""
           />
         </section>

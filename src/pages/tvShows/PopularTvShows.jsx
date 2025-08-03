@@ -28,7 +28,7 @@ const PopularTvShows = () => {
     //this will scroll to top
     window.scrollTo({ top: 0 });
   }, [page]);
-  // console.log(TvShows[0]);
+  console.log(TvShows);
   return (
     <div className="movie-container">
       <h1>Popular TV Shows</h1>

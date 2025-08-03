@@ -1,3 +1,4 @@
+import noImage from "/src/assets/noImage.png"
 import "./MovieDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -41,7 +42,7 @@ const MovieDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+            src={movie.poster?`https://image.tmdb.org/t/p/original${movie.poster_path}`:noImage}
             alt=""
           />
         </section>
@@ -50,7 +51,7 @@ const MovieDetails = () => {
           {movie.original_title && (
             <div>Original Title : {movie.original_title}</div>
           )}
-          <div>Tagline : {movie.tagline}</div>
+          {movie.tagline&&<div>Tagline : {movie.tagline}</div>}
           <div className="title">
             Discription :<span> {movie.overview}</span>
           </div>

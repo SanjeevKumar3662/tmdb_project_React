@@ -14,7 +14,7 @@ const PopularMovies = () => {
           `https://first-backend-eight.vercel.app/popular_movies?page=${page}`
         );
         const data = await res.json();
-        console.log(data.results[0]);
+        // console.log(data.results[0]);
 
         setMovies(data.results);
       };

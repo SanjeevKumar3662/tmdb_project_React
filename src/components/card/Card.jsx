@@ -1,3 +1,4 @@
+import noImage from "/src/assets/noImage.png"
 import "./Card.css";
 import { Link } from "react-router-dom";
 
@@ -10,7 +11,7 @@ const Card = ({ title, name, poster_path, release_date, first_air_date, id}) => 
       {/* remember _blank will open a new window every time */}
         <img
           className="poster"
-          src={`https://image.tmdb.org/t/p/original${poster_path}`}
+          src={poster_path?`https://image.tmdb.org/t/p/original${poster_path}`:noImage}
           alt=""
         />
       </Link>
