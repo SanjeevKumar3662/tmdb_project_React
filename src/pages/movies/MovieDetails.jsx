@@ -42,7 +42,7 @@ const MovieDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={movie.poster?`https://image.tmdb.org/t/p/original${movie.poster_path}`:noImage}
+            src={movie.poster_path?`https://image.tmdb.org/t/p/original${movie.poster_path}`:noImage}
             alt=""
           />
         </section>
