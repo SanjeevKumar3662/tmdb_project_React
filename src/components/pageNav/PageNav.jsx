@@ -4,8 +4,9 @@ import "./PageNav.css";
 const PageNav = ({ prevClick, nextClick, page, setPage }) => {
   const [isEdit, setEdit] = useState(false);
   function onPageEditClick(e) {
-    const newPage = parseInt(e.target.value);//string to number
-    if (isFinite(newPage)) {//on valid number, no NaN or Infinity
+    const newPage = parseInt(e.target.value); //string to number
+    if (isFinite(newPage) && newPage >= 1) {
+      //on valid number, no NaN or Infinity
       setPage(newPage);
     }
 
@@ -21,7 +22,8 @@ const PageNav = ({ prevClick, nextClick, page, setPage }) => {
         <input
           onBlur={onPageEditClick}
           type="number"
-          placeholder="set page no."
+          min={1}
+          placeholder="Enter Page No."
         ></input>
       ) : (
         <button onClick={() => setEdit(() => !isEdit)}>On Page: {page}</button>
