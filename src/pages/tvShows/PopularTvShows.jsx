@@ -56,6 +56,7 @@ const PopularTvShows = () => {
         prevClick={() => setPage(page > 1 ? () => page - 1 : page)}
         nextClick={() => setPage(() => page + 1)}
         page={page}
+        setPage={setPage}
       ></PageNav>
     </div>
   );
