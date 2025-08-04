@@ -1,11 +1,22 @@
 import "./PopularMovies.css";
-import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const PopularMovies = () => {
   const [movies, setMovies] = useState(null);
-  const [page, setPage] = useState(1);
+
+  //for getting page from url
+  const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
+  //this returns a string so parse it
+  const pageFromURL = parseInt(searchParams.get("page") || 1);
+  const [page, setPage] = useState(pageFromURL);
+
+  useEffect(() => {
+    setSearchParams({ page }); //updates the page sting in url
+  }, [page, setSearchParams]);
+  //end
 
   useEffect(() => {
     try {
@@ -33,7 +44,7 @@ const PopularMovies = () => {
       <h1>Popular Movies</h1>
       <div className="flex-container">
         {movies ? (
-          movies.map((movie) => <Card key={movie.id} {...movie}></Card>)
+          movies.map((movie) => <Card key={movie.id} page={page} {...movie}></Card>)
         ) : (
           <h1>Loading...</h1>
         )}

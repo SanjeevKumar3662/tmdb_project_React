@@ -1,11 +1,22 @@
 import "./PopularTvShows.css";
-import { useEffect, useState } from "react";
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const PopularTvShows = () => {
   const [TvShows, setPopTvShows] = useState(null);
-  const [page, setPage] = useState(1);
+
+  //for getting page from url
+  const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
+  //this returns a string so parse it
+  const pageFromURL = parseInt(searchParams.get("page") || 1);
+  const [page, setPage] = useState(pageFromURL);
+
+  useEffect(() => {
+    setSearchParams({ page }); //updates the page sting in url
+  }, [page, setSearchParams]);
+  //end
 
   useEffect(() => {
     try {
@@ -16,7 +27,7 @@ const PopularTvShows = () => {
         const data = await res.json();
 
         //use this for checking the obj's properties
-        // console.log(data.results[0]);
+        console.log("pop-tv", data.results[0]);
 
         setPopTvShows(data.results);
       };
@@ -28,13 +39,15 @@ const PopularTvShows = () => {
     //this will scroll to top
     window.scrollTo({ top: 0 });
   }, [page]);
-  console.log(TvShows);
+
+  // console.log(TvShows);
+
   return (
     <div className="movie-container">
       <h1>Popular TV Shows</h1>
       <div className="flex-container">
         {TvShows ? (
-          TvShows.map((tvShow) => <Card key={tvShow.id} {...tvShow}></Card>)
+          TvShows.map((tvShow) => <Card key={tvShow.id} page={page} {...tvShow}></Card>)
         ) : (
           <h1>Loading...</h1>
         )}
