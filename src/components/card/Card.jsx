@@ -12,7 +12,7 @@ const Card = ({
   page,
 }) => {
   return (
-    <div className="card">
+    <div className="card" >
       {/* only movies have release date, so is this is true that means it movie else a tv show */}
       <Link
         target="blank"
@@ -35,7 +35,8 @@ const Card = ({
           https://image.tmdb.org/t/p/w500${poster_path} 2x`
               : noImage
           }
-          alt={`${name}`}
+          alt={`poster for ${name}`}
+          title={name||title}
         />
       </Link>
       <div>
