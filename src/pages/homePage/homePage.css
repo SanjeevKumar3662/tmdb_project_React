@@ -1,4 +1,24 @@
 main .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
   border: solid black;
-  height: 35vh;
+  height: 45vh;
+  background-image: url(src/assets/hero.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main .hero input{
+ /* display: block; */
+  /* color: green */
+  font-size: 16px;
+  background-color: rgba(245, 245, 245, 0.781);
+  height: 40px;
+  width: 450px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
 }
