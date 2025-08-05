@@ -17,7 +17,7 @@ export default function Header() {
 
       <div className="left-header">
         {/* <a href="">Movies</a> */}
-        <Link to={"/"}>
+        <Link to={"/popular_moives"}>
           <button className="btn">Movies</button>
         </Link>
         <Link to={"/popular_tv_shows"}>
