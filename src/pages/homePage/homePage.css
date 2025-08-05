@@ -5,7 +5,7 @@ main .hero {
   justify-content: space-around;
   border: solid black;
   height: 45vh;
-  background-image: url(src/assets/hero.png);
+  background-image: url(/hero.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
