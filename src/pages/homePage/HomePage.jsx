@@ -4,7 +4,10 @@ const homePage = () => {
   return (
     <main>
       <section className="hero">
-        <h1>Home Page in Progress</h1>
+        <div className="heroText">
+        <span>Wellcome !</span>
+        <span>This is a Movie Database Website by SanjeevKumar3662</span>
+        </div>
         <input type="text" placeholder="Search for a movie or a person"/>
       </section>
     </main>
