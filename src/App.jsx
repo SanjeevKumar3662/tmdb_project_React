@@ -13,9 +13,9 @@ function App() {
     location.pathname.startsWith("/tv_shows_details");
 
   return (
-    <div className="main-container">
+    <>
       {/* if details then no header */}
-      {!isDetails&&<Header></Header>}
+      {!isDetails && <Header></Header>}
 
       <Routes>
         <Route path="/" element={<PopularMovies />} />
@@ -23,7 +23,7 @@ function App() {
         <Route path="/movie_details/:page/:id" element={<MovieDetails />} />
         <Route path="/tv_shows_details/:page/:id" element={<TvShowDetails />} />
       </Routes>
-    </div>
+    </>
   );
 }
 
