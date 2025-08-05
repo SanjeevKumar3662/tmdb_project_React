@@ -37,6 +37,7 @@ const Card = ({
           }
           alt={`poster for ${name}`}
           title={name||title}
+          loading="lazy"
         />
       </Link>
       <div>
