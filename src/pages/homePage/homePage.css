@@ -11,8 +11,8 @@ main .hero {
   background-size: cover;
 }
 
-main .hero input{
- /* display: block; */
+main .hero input {
+  /* display: block; */
   /* color: green */
   font-size: 16px;
   background-color: rgba(245, 245, 245, 0.781);
@@ -23,11 +23,17 @@ main .hero input{
   border-radius: 20px;
 }
 
-main .hero .heroText{
+main .hero .heroText {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
   font-size: 30px;
   color: white;
+}
+
+@media (max-width: 600px) {
+  main .hero input {
+    width: 300px;
+  }
 }
