@@ -20,18 +20,25 @@ const Card = ({
           release_date ? "movie_details" : "tv_shows_details"
         }/${page}/${id}`}
       >
-        {/* remember _blank will open a new window every time */}
+        {/* -remember _blank will open a new window every time 
+            -using w500 for poster lower resolution for low latency */}
         <img
           className="poster"
           src={
             poster_path
-              ? `https://image.tmdb.org/t/p/original${poster_path}`
+              ? `https://image.tmdb.org/t/p/w185${poster_path}`
               : noImage
           }
-          alt=""
+          srcSet={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w185${poster_path} 1x,
+          https://image.tmdb.org/t/p/w500${poster_path} 2x`
+              : noImage
+          }
+          alt={`${name}`}
         />
       </Link>
-      <div> 
+      <div>
         <div className="title">{title || name}</div>
         <div className="release-date">{release_date || first_air_date}</div>
       </div>
