@@ -1,4 +1,4 @@
-import noImage from "/src/assets/noImage.png"
+import noImage from "/src/assets/noImage.png";
 import "./MovieDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -32,7 +32,7 @@ const MovieDetails = () => {
         className="details-container"
         style={{
           //can't use both shorthand and normal properties, this might cause a bug
-          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -42,8 +42,14 @@ const MovieDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={movie.poster_path?`https://image.tmdb.org/t/p/original${movie.poster_path}`:noImage}
-            alt=""
+            src={
+              movie.poster_path
+                ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                : noImage
+            }
+            srcSet={movie.poster_path?`https://image.tmdb.org/t/p/w500${movie.poster_path} 1x,
+            https://image.tmdb.org/t/p/w780${movie.poster_path} 2x`:noImage}
+            alt="poster"
           />
         </section>
         <section className="more-info">
@@ -51,7 +57,7 @@ const MovieDetails = () => {
           {movie.original_title && (
             <div>Original Title : {movie.original_title}</div>
           )}
-          {movie.tagline&&<div>Tagline : {movie.tagline}</div>}
+          {movie.tagline && <div>Tagline : {movie.tagline}</div>}
           <div className="title">
             Discription :<span> {movie.overview}</span>
           </div>

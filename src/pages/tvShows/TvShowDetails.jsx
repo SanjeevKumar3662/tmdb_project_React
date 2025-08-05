@@ -36,7 +36,7 @@ const TvShowDetails = () => {
         className="details-container"
         style={{
           //can't use both shorthand and normal properties, this might cause a bug
-          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://image.tmdb.org/t/p/original${tv.backdrop_path})`,
+          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url(https://image.tmdb.org/t/p/w1280${tv.backdrop_path})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
@@ -46,7 +46,9 @@ const TvShowDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={tv.poster_path?`https://image.tmdb.org/t/p/original${tv.poster_path}`:noImage}
+            src={tv.poster_path?`https://image.tmdb.org/t/p/w500${tv.poster_path}`:noImage}
+            srcSet={tv.poster_path?`https://image.tmdb.org/t/p/w500${tv.poster_path} 1x,
+            https://image.tmdb.org/t/p/w780${tv.poster_path} 2x`:noImage}
             alt=""
           />
         </section>
