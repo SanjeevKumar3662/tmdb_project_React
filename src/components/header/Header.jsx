@@ -3,14 +3,14 @@ import "./Header.css";
 
 export default function Header() {
   return (
-    <div className="header-container">
+    <header className="header-container">
       <div className="git-logo">
         <button className="btn github-btn">
           <a href="https://github.com/SanjeevKumar3662" target="_blank">
             <div className="git-logo">
               <img src="./GitHub-logo.png" alt="" />
             </div>
-            <span >SanjeevKumar3662</span>
+            <span>SanjeevKumar3662</span>
           </a>
         </button>
       </div>
@@ -23,14 +23,13 @@ export default function Header() {
         <Link to={"/popular_tv_shows"}>
           <button className="btn">TV Shows</button>
         </Link>
-        
       </div>
-      
+
       <div className="right-header">
         <a href="">link 1</a>
 
         <a href="">link2</a>
       </div>
-    </div>
+    </header>
   );
 }
