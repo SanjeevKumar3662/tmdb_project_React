@@ -37,6 +37,17 @@ main .hero .heroText span:nth-child(1){
   font-size: 40px;
 }
 
+.flex-sildes{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: solid white; */
+}
+
+h2{
+  color: white;
+}
+
 @media (max-width: 600px) {
   main .hero input {
     width: 300px;

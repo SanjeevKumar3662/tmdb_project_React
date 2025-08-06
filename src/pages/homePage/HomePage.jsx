@@ -12,19 +12,19 @@ const homePage = () => {
         <input type="text" placeholder="Search for a movie or a person" />
       </section>
 
-      <section className="slide-container">
+      <div className="flex-sildes">
+        <section className="slide-container">
+        <h2>Popular TV Shows</h2>
+          <SlidingCards content={"popular_tv"}></SlidingCards>
+        </section>
+      </div>
+      <div className="flex-sildes">
+        <section className="slide-container">
         <h2>Popular Movies</h2>
-        <SlidingCards></SlidingCards>
-      </section>
-      <section className="slide-container">
-        <h2>Trending Movies</h2>
-        <SlidingCards></SlidingCards>
-      </section>
-      <section className="slide-container">
-        <h2>Popular Movies</h2>
-
-        <SlidingCards></SlidingCards>
-      </section>
+          <SlidingCards content={"popular_movies"}></SlidingCards>
+        </section>
+      </div>
+      
     </main>
   );
 };
