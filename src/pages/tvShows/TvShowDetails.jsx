@@ -46,9 +46,9 @@ const TvShowDetails = () => {
         <section className="poster-details">
           <img
             className="poster"
-            src={tv.poster_path?`https://image.tmdb.org/t/p/w500${tv.poster_path}`:noImage}
-            srcSet={tv.poster_path?`https://image.tmdb.org/t/p/w500${tv.poster_path} 1x,
-            https://image.tmdb.org/t/p/w780${tv.poster_path} 2x`:noImage}
+            src={tv.poster_path?`https://image.tmdb.org/t/p/w342${tv.poster_path}`:noImage}
+            srcSet={tv.poster_path?`https://image.tmdb.org/t/p/w342${tv.poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${tv.poster_path} 2x`:noImage}
             alt=""
           />
         </section>
