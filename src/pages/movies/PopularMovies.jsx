@@ -44,7 +44,7 @@ const PopularMovies = () => {
       <h1>Popular Movies</h1>
       <div className="flex-container">
         {movies ? (
-          movies.map((movie) => <Card key={movie.id} page={page} {...movie}></Card>)
+          movies.map((movie) => <Card key={movie.id} page={page} cssClass={"card"} {...movie}></Card>)
         ) : (
           <h1>Loading...</h1>
         )}

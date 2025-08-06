@@ -47,7 +47,7 @@ const PopularTvShows = () => {
       <h1>Popular TV Shows</h1>
       <div className="flex-container">
         {TvShows ? (
-          TvShows.map((tvShow) => <Card key={tvShow.id} page={page} {...tvShow}></Card>)
+          TvShows.map((tvShow) => <Card key={tvShow.id} page={page} cssClass={"card"} {...tvShow}></Card>)
         ) : (
           <h1>Loading...</h1>
         )}
