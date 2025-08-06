@@ -23,3 +23,7 @@
   
   transition: 0.1s ease;
 }
+
+.title,.release-date{
+  margin-top: 5px;
+}
