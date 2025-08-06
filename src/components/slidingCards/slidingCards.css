@@ -1,45 +1,45 @@
+/* Prevent Slick from stacking slides vertically */
+.slick-slide > div {
+  display: flex !important;
+  justify-content: center;
+}
+
+
+
 .slide-container {
-  padding: 7px 0;
-  /* border: solid white; */
-  margin: 10px;
-  padding-left: 100px;
   border-radius: 20px;
-  background-color: rgba(16, 107, 152, 0.557);
+  width: 85vw;
+  min-height: 352px;
+  /* border: solid white; */
+  /* background-color: rgba(16, 107, 152, 0.557); */
 }
 
 /* card.css styles */
 .sliding-cards {
   /* border: solid black; */
   border-radius: 20px;
-
-  /* overflow: hidden; hides any overflow */
-  min-height: 350px;
-  width: 200px;
-  padding: 10px;
-  margin: 10px;
-
-  background-color: rgba(28, 111, 142, 0.586);
+  min-height: 250px;
+  width: 150px;
+  padding-top: 5px;
+  /* background-color: rgba(28, 111, 142, 0.586); */
   color: white;
-  /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.678 */
-
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 3px;
+
 }
 .sliding-cards img {
-  width: 180px;
-  border-radius: 20px;
-  /* height: 200px; */
+  width: 140px;
+  border-radius: 8px;
 }
-.sliding-cards:hover {
-  box-shadow: 0 0 10px 5px rgb(252, 251, 251);
+.sliding-cards img:hover {
+  box-shadow: 0 0 5px 5px rgb(252, 251, 251);
 
   transition: 0.1s ease;
 }
 
-
-.slide-container h2{
+.slide-container h2 {
   color: white;
 }

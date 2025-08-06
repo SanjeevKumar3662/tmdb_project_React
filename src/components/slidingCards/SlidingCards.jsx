@@ -9,16 +9,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //slider end
 
-const SlidingCards = () => {
+const SlidingCards = ({ content }) => {
   const [movies, setMovies] = useState(null);
-
+  // const [content, setContent] = useState(null);
   const page = 1;
 
   useEffect(() => {
     try {
       const fetchMovies = async () => {
         const res = await fetch(
-          `https://first-backend-eight.vercel.app/popular_movies?page=${page}`
+          `https://first-backend-eight.vercel.app/${content}?page=${page}`
         );
         const data = await res.json();
         // console.log(data.results[0]);
@@ -29,32 +29,73 @@ const SlidingCards = () => {
     } catch (error) {
       console.log(error);
     }
-
-
-  }, [page]);
+  }, [content]);
 
   // console.log(movies[0]);
+
+  // const settings = {
+  //   dots: false,
+  //   infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 7,
+  //   slidesToScroll: 5,
+  // };
 
   const settings = {
     dots: false,
     infinite: true,
+    lazyLoad: true,
     speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 3,
+    slidesToShow: 8,
+    slidesToScroll: 5,
+    responsive: [
+      {
+        breakpoint: 1350, // tablets
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1024, // tablets
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768, // small tablets / large phones
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 550, // tablets
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 480, // mobile phones
+        settings: {
+          slidesToShow: 2.05,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   return (
     <>
       <Slider {...settings}>
-        {movies ? (
+        {movies &&
           movies.map((movie) => (
             <div key={movie.id}>
               <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
             </div>
-          ))
-        ) : (
-          <h1>Loading...</h1>
-        )}
+          ))}
       </Slider>
     </>
   );
