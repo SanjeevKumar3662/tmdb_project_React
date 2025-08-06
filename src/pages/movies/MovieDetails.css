@@ -57,4 +57,14 @@ body {
     padding: 20px;
     gap: 20px;
   }
+
+  .poster-details{
+    border: solid;
+    min-height: 530px;
+  }
+
+  .more-info{
+    min-width: 350px;
+    min-height: 300px;
+  }
 }
