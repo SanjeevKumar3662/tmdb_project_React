@@ -9,9 +9,10 @@ const Card = ({
   first_air_date,
   id,
   page,
+  cssClass,
 }) => {
   return (
-    <div className="card">
+    <div className={cssClass}>
       {/* only movies have release date, so is this is true that means it movie else a tv show */}
       <Link
         target="blank"
