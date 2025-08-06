@@ -1,4 +1,3 @@
-import noImage from "/src/assets/noImage.png"
 import "./TvShowDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -44,13 +43,19 @@ const TvShowDetails = () => {
         }}
       >
         <section className="poster-details">
-          <img
-            className="poster"
-            src={tv.poster_path?`https://image.tmdb.org/t/p/w342${tv.poster_path}`:noImage}
-            srcSet={tv.poster_path?`https://image.tmdb.org/t/p/w342${tv.poster_path} 1x,
-            https://image.tmdb.org/t/p/w500${tv.poster_path} 2x`:noImage}
-            alt=""
-          />
+          {tv.poster_path ? (
+            <img
+              className="poster"
+              src={`https://image.tmdb.org/t/p/w342${tv.poster_path}`}
+              srcSet={`https://image.tmdb.org/t/p/w342${tv.poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${tv.poster_path} 2x`}
+              alt=""
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <img src="/noImage.png" loading="lazy" decoding="async" />
+          )}
         </section>
         <section className="more-info">
           <h1>{tv.name ? tv.name : "tv Name"}</h1>

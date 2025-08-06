@@ -1,4 +1,3 @@
-import noImage from "/src/assets/noImage.png";
 import "./Card.css";
 import { Link } from "react-router-dom";
 
@@ -12,7 +11,7 @@ const Card = ({
   page,
 }) => {
   return (
-    <div className="card" >
+    <div className="card">
       {/* only movies have release date, so is this is true that means it movie else a tv show */}
       <Link
         target="blank"
@@ -22,23 +21,20 @@ const Card = ({
       >
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
-        <img
-          className="poster"
-          src={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w185${poster_path}`
-              : noImage
-          }
-          srcSet={
-            poster_path
-              ? `https://image.tmdb.org/t/p/w185${poster_path} 1x,
-          https://image.tmdb.org/t/p/w342${poster_path} 2x`
-              : noImage
-          }
-          alt={`poster for ${name}`}
-          title={name||title}
-          loading="lazy"
-        />
+        {poster_path ? (
+          <img
+            className="poster"
+            src={`https://image.tmdb.org/t/p/w185${poster_path}`}
+            srcSet={`https://image.tmdb.org/t/p/w185${poster_path} 1x,
+          https://image.tmdb.org/t/p/w342${poster_path} 2x`}
+            alt={`poster for ${name}`}
+            title={name || title}
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <img src="/noImage.png" loading="lazy" decoding="async" />
+        )}
       </Link>
       <div>
         <div className="title">{title || name}</div>

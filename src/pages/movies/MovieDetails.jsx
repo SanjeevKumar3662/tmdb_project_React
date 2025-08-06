@@ -1,4 +1,3 @@
-import noImage from "/src/assets/noImage.png";
 import "./MovieDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
@@ -40,17 +39,19 @@ const MovieDetails = () => {
         }}
       >
         <section className="poster-details">
-          <img
-            className="poster"
-            src={
-              movie.poster_path
-                ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
-                : noImage
-            }
-            srcSet={movie.poster_path?`https://image.tmdb.org/t/p/w342${movie.poster_path} 1x,
-            https://image.tmdb.org/t/p/w500${movie.poster_path} 2x`:noImage}
-            alt="poster"
-          />
+          {movie.poster_path ? (
+            <img
+              className="poster"
+              src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+              srcSet={`https://image.tmdb.org/t/p/w342${movie.poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${movie.poster_path} 2x`}
+              alt="poster"
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            <img src="/noImage.png" loading="lazy" decoding="async" />
+          )}
         </section>
         <section className="more-info">
           <h1>{movie.title ? movie.title : "movie Name"}</h1>
