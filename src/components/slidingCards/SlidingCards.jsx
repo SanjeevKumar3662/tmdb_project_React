@@ -44,7 +44,6 @@ const SlidingCards = ({ content }) => {
   const settings = {
     dots: false,
     infinite: true,
-    lazyLoad: true,
     speed: 500,
     slidesToShow: 8,
     slidesToScroll: 5,
