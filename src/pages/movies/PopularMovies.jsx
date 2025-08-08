@@ -36,7 +36,7 @@ const PopularMovies = ({media_type, list_type}) => {
 
     //this will scroll to top
     window.scrollTo({ top: 0 });
-  }, [page]);
+  }, [page,media_type,list_type]);
 
   // console.log(movies[0]);
   return (

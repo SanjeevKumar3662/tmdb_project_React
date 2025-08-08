@@ -40,7 +40,7 @@ const PopularTvShows = ({media_type, list_type}) => {
 
     //this will scroll to top
     window.scrollTo({ top: 0 });
-  }, [page]);
+  }, [page,list_type, media_type]);
 
   // console.log(TvShows);
 
