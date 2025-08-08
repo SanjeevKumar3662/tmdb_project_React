@@ -15,13 +15,13 @@ const homePage = () => {
       <div className="flex-sildes">
         <section className="slide-container">
         <h2>Popular TV Shows</h2>
-          <SlidingCards content={"popular_tv"}></SlidingCards>
+          <SlidingCards media_type={"tv"} list_type={"popular"} ></SlidingCards>
         </section>
       </div>
       <div className="flex-sildes">
         <section className="slide-container">
         <h2>Popular Movies</h2>
-          <SlidingCards content={"popular_movies"}></SlidingCards>
+          <SlidingCards media_type={"movie"} list_type={"popular"} ></SlidingCards>
         </section>
       </div>
       

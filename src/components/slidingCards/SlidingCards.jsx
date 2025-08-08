@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //slider end
 
-const SlidingCards = ({ content }) => {
+const SlidingCards = ({ media_type, list_type }) => {
   const [movies, setMovies] = useState(null);
   // const [content, setContent] = useState(null);
   const page = 1;
@@ -18,7 +18,7 @@ const SlidingCards = ({ content }) => {
     try {
       const fetchMovies = async () => {
         const res = await fetch(
-          `https://first-backend-eight.vercel.app/${content}?page=${page}`
+          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
         // console.log(data.results[0]);
@@ -29,7 +29,7 @@ const SlidingCards = ({ content }) => {
     } catch (error) {
       console.log(error);
     }
-  }, [content]);
+  }, [media_type,list_type]);
 
   // console.log(movies[0]);
 
