@@ -9,17 +9,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //slider end
 
-const SlidingCards = ({ media_type, list_type }) => {
+const SlidingCards = ({ media_type, list_type, credits }) => {
   const [movies, setMovies] = useState(null);
   // const [content, setContent] = useState(null);
   const page = 1;
 
+  const endpoint = [
+    `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`,
+  ];
+
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-        const res = await fetch(
-          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
-        );
+        const res = await fetch(media_type !== "credits" && endpoint[0]);
         const data = await res.json();
         // console.log(data.results[0]);
 
@@ -29,7 +31,7 @@ const SlidingCards = ({ media_type, list_type }) => {
     } catch (error) {
       console.log(error);
     }
-  }, [media_type,list_type]);
+  });
 
   // console.log(movies[0]);
 
@@ -90,11 +92,20 @@ const SlidingCards = ({ media_type, list_type }) => {
     <>
       <Slider {...settings}>
         {movies &&
+          media_type !== "credits" &&
           movies.map((movie) => (
             <div key={movie.id}>
               <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
             </div>
           ))}
+
+        {media_type === "credits" && credits ? (
+          credits.map((person) => (
+            <Card key={person.id} cssClass={"sliding-cards"} {...person}></Card>
+          ))
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </Slider>
     </>
   );
