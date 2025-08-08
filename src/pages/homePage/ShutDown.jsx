@@ -3,7 +3,7 @@ import "./shutDown.css"
 export const ShutDown = () => {
   return (
     <div className='shutdown-container'>
-      <h1>Under Maintainence, will be up soon.</h1>
+      <h1>Under Maintenance, will be up soon.</h1>
       <h2>Working on:</h2>
       <ol>
         <li>Re-routing old routes</li>
