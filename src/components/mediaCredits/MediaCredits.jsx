@@ -32,7 +32,7 @@ function MediaCredits({media_type,id}) {
     <>
       {/* <SlidingCards media_type={"movie"} id={id}/> */}
       <div className="credits-slider">
-        <h1>MediaCredits</h1>
+        <h1>Credits</h1>
         {
          media && <SlidingCards media_type={"credits"} credits={media.cast} />
         }
