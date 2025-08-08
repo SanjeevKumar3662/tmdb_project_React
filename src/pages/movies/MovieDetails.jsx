@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 
-const MovieDetails = () => {
+const MovieDetails = ({media_type}) => {
   const { id } = useParams();
   const [movie, setMovieDetails] = useState("");
 
@@ -11,7 +11,7 @@ const MovieDetails = () => {
     const fetchDetails = async () => {
       try {
         const response = await fetch(
-          `https://first-backend-eight.vercel.app/movie_details/${id}`
+          `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
         );
         let data = await response.json();
 
@@ -21,7 +21,7 @@ const MovieDetails = () => {
       }
     };
     fetchDetails();
-  }, [id]);
+  }, [id,media_type]);
 
   console.log(movie);
 
