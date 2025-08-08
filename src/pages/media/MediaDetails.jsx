@@ -2,8 +2,9 @@ import "./mediaDetails.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import MediaCredits from "../../components/mediaCredits/MediaCredits";
 
-const MovieDetails = ({media_type}) => {
+const MovieDetails = ({ media_type }) => {
   const { id } = useParams();
   const [movie, setMovieDetails] = useState("");
 
@@ -21,7 +22,7 @@ const MovieDetails = ({media_type}) => {
       }
     };
     fetchDetails();
-  }, [id,media_type]);
+  }, [id, media_type]);
 
   console.log(movie);
 
@@ -74,6 +75,9 @@ const MovieDetails = ({media_type}) => {
           </div>
         </section>
       </div>
+      <section className="credits-container">
+        <MediaCredits media_type={media_type} id={id}  />
+      </section>
     </>
   );
 };

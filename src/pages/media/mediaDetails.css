@@ -10,7 +10,9 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  min-height: 100vh;
+  min-height: 95vh;
+  border-radius: 20px;
+  margin: 2px;
 }
 
 .poster-details {
