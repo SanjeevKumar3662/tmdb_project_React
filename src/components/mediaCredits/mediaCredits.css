@@ -3,7 +3,7 @@
   /* display: flex; */
   /* flex-wrap: wrap; */
   /* border: solid; */
-  height: 50vh;
+  height: 45vh;
   padding: 0 20px;
   background-color: rgba(18, 114, 144, 0.551);
   margin: 2px;
@@ -30,5 +30,16 @@
   }
   .character{
     font-size: 14px;
+  }
+}
+
+@media(min-width:800px) and (max-width:1500px){
+  .credits-container{
+    height: 40vh;
+  }
+}
+@media(max-width:800px){
+  .credits-container{
+    height: 38vh;
   }
 }
