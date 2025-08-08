@@ -4,7 +4,8 @@ import PageNav from "../../components/pageNav/PageNav";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const PopularTvShows = () => {
+const PopularTvShows = ({media_type, list_type}) => {
+  console.log(media_type,list_type);
   const [TvShows, setPopTvShows] = useState(null);
 
   //for getting page from url
@@ -22,7 +23,8 @@ const PopularTvShows = () => {
     try {
       const fetchTvShows = async () => {
         const res = await fetch(
-          `https://first-backend-eight.vercel.app/popular_tv?page=${page}`
+          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
+
         );
         const data = await res.json();
 

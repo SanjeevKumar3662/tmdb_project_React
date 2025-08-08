@@ -16,7 +16,7 @@ function App() {
     location.pathname.startsWith("/tv_shows_details");
 
 
-    const isSiteDown = true;
+    const isSiteDown = false;
 
   return (
     <>
@@ -25,8 +25,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={isSiteDown?<ShutDown/>:<HomePage/>} />
-        <Route path="/popular_moives" element={<PopularMovies />} />
-        <Route path="/popular_tv_shows/" element={<PopularTvShows />} />
+        <Route path="/popular_moives" element={<PopularMovies media_type={"movie"} list_type={"popular"}/>} />
+        <Route path="/popular_tv_shows/" element={<PopularTvShows media_type={"tv"} list_type={"popular"} />} />
         <Route path="/movie_details/:page/:id" element={<MovieDetails />} />
         <Route path="/tv_shows_details/:page/:id" element={<TvShowDetails />} />
       </Routes>

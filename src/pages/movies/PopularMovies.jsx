@@ -4,7 +4,7 @@ import PageNav from "../../components/pageNav/PageNav";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const PopularMovies = () => {
+const PopularMovies = ({media_type, list_type}) => {
   const [movies, setMovies] = useState(null);
 
   //for getting page from url
@@ -22,10 +22,10 @@ const PopularMovies = () => {
     try {
       const fetchMovies = async () => {
         const res = await fetch(
-          `https://first-backend-eight.vercel.app/popular_movies?page=${page}`
+          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
-        // console.log(data.results[0]);
+        console.log("pop-movie",data.results[0]);
 
         setMovies(data.results);
       };
