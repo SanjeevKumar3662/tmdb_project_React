@@ -24,6 +24,10 @@
   transition: 0.1s ease;
 }
 
-.title,.release-date{
+.card-info{
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  /* text-align: center; */
   margin-top: 5px;
 }

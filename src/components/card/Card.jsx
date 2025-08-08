@@ -4,13 +4,17 @@ import { Link } from "react-router-dom";
 const Card = ({
   title,
   name,
+  character,
   poster_path,
+  profile_path,
   release_date,
   first_air_date,
   id,
   page,
   cssClass,
 }) => {
+
+  // console.log(profile_path);
   return (
     <div className={cssClass}>
       {/* only movies have release date, so is this is true that means it movie else a tv show */}
@@ -22,12 +26,12 @@ const Card = ({
       >
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
-        {poster_path ? (
+        {poster_path || profile_path? (
           <img
             className="poster"
-            src={`https://image.tmdb.org/t/p/w185${poster_path}`}
-            srcSet={`https://image.tmdb.org/t/p/w185${poster_path} 1x,
-          https://image.tmdb.org/t/p/w342${poster_path} 2x`}
+            src={`https://image.tmdb.org/t/p/w185${poster_path || profile_path}`}
+            srcSet={`https://image.tmdb.org/t/p/w185${poster_path || profile_path} 1x,
+          https://image.tmdb.org/t/p/w342${poster_path || profile_path} 2x`}
             alt={`poster for ${name}`}
             title={name || title}
             loading="lazy"
@@ -37,8 +41,9 @@ const Card = ({
           <img src="/noImage.png" loading="lazy" decoding="async" />
         )}
       </Link>
-      <div>
+      <div className="card-info">
         <div className="title">{title || name}</div>
+        {character && <div className="character">{character}</div>}
         <div className="release-date">{release_date || first_air_date}</div>
       </div>
     </div>
