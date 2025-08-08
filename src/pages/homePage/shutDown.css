@@ -1,0 +1,22 @@
+
+
+.shutdown-container{
+  border: solid white;
+  height: 92vh;
+  width: 99vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+
+  /* overflow-y: none; */
+  font-size: 20px;
+  li {
+    list-style: decimal;
+    text-align: start;
+  }
+
+  
+  
+}

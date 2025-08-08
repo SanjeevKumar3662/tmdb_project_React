@@ -7,6 +7,7 @@ import PopularTvShows from "./pages/tvShows/PopularTvShows";
 import MovieDetails from "./pages/movies/MovieDetails";
 import TvShowDetails from "./pages/tvShows/TvShowDetails";
 import HomePage from "./pages/homePage/HomePage";
+import { ShutDown } from "./pages/homePage/ShutDown";
 
 function App() {
   const location = useLocation();
@@ -14,13 +15,16 @@ function App() {
     location.pathname.startsWith("/movie_details") ||
     location.pathname.startsWith("/tv_shows_details");
 
+
+    const isSiteDown = true;
+
   return (
     <>
       {/* if details then no header */}
       {!isDetails && <Header></Header>}
 
       <Routes>
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={isSiteDown?<ShutDown/>:<HomePage/>} />
         <Route path="/popular_moives" element={<PopularMovies />} />
         <Route path="/popular_tv_shows/" element={<PopularTvShows />} />
         <Route path="/movie_details/:page/:id" element={<MovieDetails />} />
