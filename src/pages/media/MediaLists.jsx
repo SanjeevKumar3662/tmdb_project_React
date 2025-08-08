@@ -1,10 +1,10 @@
-import "./PopularMovies.css";
+import "./mediaLists.css"
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const PopularMovies = ({media_type, list_type}) => {
+const MediaLists = ({media_type, list_type}) => {
   const [movies, setMovies] = useState(null);
 
   //for getting page from url
@@ -58,4 +58,4 @@ const PopularMovies = ({media_type, list_type}) => {
     </div>
   );
 };
-export default PopularMovies;
+export default MediaLists;

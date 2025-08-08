@@ -2,11 +2,12 @@ import { useLocation, Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/header/Header";
-import PopularMovies from "./pages/movies/PopularMovies";
-import PopularTvShows from "./pages/tvShows/PopularTvShows";
-import MovieDetails from "./pages/movies/MovieDetails";
-import TvShowDetails from "./pages/tvShows/TvShowDetails";
+import MediaLists from "./pages/media/MediaLists";
+// import PopularTvShows from "./pages/tvShows/PopularTvShows";
+import MovieDetails from "./pages/media/MediaDetails";
+// import TvShowDetails from "./pages/tvShows/TvShowDetails";
 import HomePage from "./pages/homePage/HomePage";
+
 import { ShutDown } from "./pages/homePage/ShutDown";
 
 function App() {
@@ -25,8 +26,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={isSiteDown?<ShutDown/>:<HomePage/>} />
-        <Route path="/popular_moives" element={<PopularMovies media_type={"movie"} list_type={"popular"}/>} />
-        <Route path="/popular_tv_shows/" element={<PopularTvShows media_type={"tv"} list_type={"popular"} />} />
+
+        <Route path="/popular_moives" element={<MediaLists media_type={"movie"} list_type={"popular"}/>} />
+        <Route path="/popular_tv_shows/" element={<MediaLists media_type={"tv"} list_type={"popular"} />} />
+
         <Route path="/movie_details/:page/:id" element={<MovieDetails media_type={"movie"} />} />
         <Route path="/tv_shows_details/:page/:id" element={<MovieDetails media_type={"tv"} />} />
       </Routes>
