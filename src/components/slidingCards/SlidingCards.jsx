@@ -14,20 +14,20 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
   // const [content, setContent] = useState(null);
   const page = 1;
 
-  const endpoint = [
-    `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`,
-  ];
-
   useEffect(() => {
     try {
       const fetchMovies = async () => {
-        const res = await fetch(media_type !== "credits" && endpoint[0]);
+        const res = await fetch(
+          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
+        );
         const data = await res.json();
         // console.log(data.results[0]);
 
         setMovies(data.results);
       };
-      fetchMovies();
+
+      !credits && fetchMovies();// won't call this, if we want cast info
+      
     } catch (error) {
       console.log(error);
     }
