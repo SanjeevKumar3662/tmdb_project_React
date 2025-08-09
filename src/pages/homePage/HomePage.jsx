@@ -5,6 +5,7 @@ const homePage = () => {
   return (
     <main>
       <section className="hero">
+        <img src="/hero.webp" alt="" loading="eager" />
         <div className="heroText">
           <span>Welcome.</span>
           <span>This is a Movie Database Website by SanjeevKumar3662</span>
@@ -14,17 +15,19 @@ const homePage = () => {
 
       <div className="flex-sildes">
         <section className="slide-container">
-        <h2>Popular TV Shows</h2>
-          <SlidingCards media_type={"tv"} list_type={"popular"} ></SlidingCards>
+          <h2>Popular TV Shows</h2>
+          <SlidingCards media_type={"tv"} list_type={"popular"}></SlidingCards>
         </section>
       </div>
       <div className="flex-sildes">
         <section className="slide-container">
-        <h2>Popular Movies</h2>
-          <SlidingCards media_type={"movie"} list_type={"popular"} ></SlidingCards>
+          <h2>Popular Movies</h2>
+          <SlidingCards
+            media_type={"movie"}
+            list_type={"popular"}
+          ></SlidingCards>
         </section>
       </div>
-      
     </main>
   );
 };

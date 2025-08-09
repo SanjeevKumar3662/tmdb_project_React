@@ -5,11 +5,20 @@ main .hero {
   justify-content: space-around;
   border: solid black;
   height: 45vh;
-  background-image: url(/hero.webp);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
+
+main .hero img{
+  position: absolute;
+  height: 45vh;
+  width: 100vw;
+  z-index: -1;
+  /* background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;  */
+  object-fit: cover;
+  object-position: center;
+}
+
 
 main .hero input {
   /* display: block; */
