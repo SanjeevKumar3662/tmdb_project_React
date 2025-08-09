@@ -4,8 +4,8 @@
   flex-direction: column;
   justify-content: center;
 
-  /* flex-wrap: wrap; */
-  border: solid;
+  /* flex-wrap: wrap; */ 
+  border: 1px solid white;
   /* height: 45vh; */
   padding: 0 20px;
   background-color: rgba(18, 114, 144, 0.551);
