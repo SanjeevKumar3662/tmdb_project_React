@@ -55,7 +55,7 @@ const MovieDetails = ({ media_type }) => {
           )}
         </section>
         <section className="more-info">
-          <h1>{movie.title ? movie.title : "movie Name"}</h1>
+          <h1>{movie.title ? movie.title : movie.name}</h1>
           {movie.original_title && (
             <div>Original Title : {movie.original_title}</div>
           )}
