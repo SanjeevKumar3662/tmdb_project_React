@@ -21,7 +21,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
           `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
-        console.log(data.results);
+        console.log(media_type,data.results);
 
         setMovies(data.results);
       };
@@ -99,12 +99,10 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
             </div>
           ))}
 
-        {media_type === "credits" && credits ? (
+        {media_type === "credits" && credits && (
           credits.map((person) => (
             <Card key={person.id} cssClass={"sliding-cards"} {...person}></Card>
           ))
-        ) : (
-          <h1>Loading...</h1>
         )}
       </Slider>
     </>
