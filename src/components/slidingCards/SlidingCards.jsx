@@ -21,7 +21,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
           `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
-        // console.log(data.results[0]);
+        console.log(data.results);
 
         setMovies(data.results);
       };
@@ -31,7 +31,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
     } catch (error) {
       console.log(error);
     }
-  });
+  },[media_type,list_type,page,credits]);
 
   // console.log(movies[0]);
 
