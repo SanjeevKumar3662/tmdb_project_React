@@ -18,6 +18,11 @@
   gap: 10px;
   font-size: 16px;
 }
+
+.mid-header .btn{
+  width: 20px;
+}
+
 .header-container a,
 .btn {
   color: white;
@@ -55,6 +60,10 @@ button:active {
 }
 
 /* media lists menu*/
+.media-list-menu{
+  padding: 0;
+}
+
 .media-list-menu .btn {
   width: 100px;
 }
@@ -86,6 +95,10 @@ button:active {
   display: none;
 }
 .media-list-menu:hover .is-menu-active {
+  display: block;
+}
+/* this most likely won't work */
+.btn:hover .is-menu-active {
   display: block;
 }
 

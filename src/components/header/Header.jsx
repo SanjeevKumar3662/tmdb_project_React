@@ -21,7 +21,8 @@ export default function Header() {
 
       <div className="mid-header">
         <ul className="media-list-menu ">
-          <button className="btn">Movies</button>
+          <button className="btn">
+            Movies</button>
           <div className="is-menu-active">
             <div className="media-list-items">
               <Link to={"/movie/now_playing"}>
@@ -39,7 +40,7 @@ export default function Header() {
             </div>
           </div>
         </ul>
-        <ul className="media-list-menu">
+        <ul className="media-list-menu ">
           <button className="btn">TV Shows</button>
           <div className="is-menu-active">
             <div className="media-list-items">
