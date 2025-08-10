@@ -31,12 +31,15 @@ function App() {
       <Routes>
         <Route path="/" element={isSiteDown?<ShutDown/>:<HomePage/>} />
 
-        <Route path="/now_playing_movies" element={<MediaLists media_type={"movie"} list_type={"now_playing"} headerText={"Now Playing Movies"}/>} />
-        <Route path="/popular_movies" element={<MediaLists media_type={"movie"} list_type={"popular"} headerText={"Popular Movies"} />} />
-        <Route path="/top_rated_movies" element={<MediaLists media_type={"movie"} list_type={"top_rated"} headerText={"Top Rated Movies"}/>} />
-        <Route path="/upcoming_movies" element={<MediaLists media_type={"movie"} list_type={"upcoming"} headerText={"Upcomming Movies"}/>} />
+        <Route path="/movie/now_playing" element={<MediaLists media_type={"movie"} list_type={"now_playing"} headerText={"Now Playing Movies"}/>} />
+        <Route path="/movie/popular" element={<MediaLists media_type={"movie"} list_type={"popular"} headerText={"Popular Movies"} />} />
+        <Route path="/movie/top_rated" element={<MediaLists media_type={"movie"} list_type={"top_rated"} headerText={"Top Rated Movies"}/>} />
+        <Route path="/movie/upcoming" element={<MediaLists media_type={"movie"} list_type={"upcoming"} headerText={"Upcomming Movies"}/>} />
 
-        <Route path="/popular_tv_shows/" element={<MediaLists media_type={"tv"} list_type={"popular"} />} />
+        <Route path="/tv/airing_today" element={<MediaLists media_type={"tv"} list_type={"airing_today"} headerText={"Airing Today - TV"}/>} />
+        <Route path="/tv/on_the_air" element={<MediaLists media_type={"tv"} list_type={"on_the_air"} headerText={"On The Air - TV"}/>} />
+        <Route path="/tv/popular" element={<MediaLists media_type={"tv"} list_type={"popular"} headerText={"Popular - TV"} />} />
+        <Route path="/tv/top_rated" element={<MediaLists media_type={"tv"} list_type={"top_rated"} headerText={"Top Rated - TV"}/>} />
 
         <Route path="/movie_details/:page/:id" element={<MovieDetails media_type={"movie"} />} />
         <Route path="/tv_shows_details/:page/:id" element={<MovieDetails media_type={"tv"} />} />

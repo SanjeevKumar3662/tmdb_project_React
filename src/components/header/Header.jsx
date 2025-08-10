@@ -24,16 +24,16 @@ export default function Header() {
           <button className="btn">Movies</button>
           <div className="is-menu-active">
             <div className="media-list-items">
-              <Link to={"/now_playing_movies"}>
+              <Link to={"/movie/now_playing"}>
                 <li>Now Playing</li>
               </Link>
-              <Link to={"/popular_movies"}>
+              <Link to={"/movie/popular"}>
                 <li>Popular</li>
               </Link>
-              <Link to={"/top_rated_movies"}>
+              <Link to={"/movie/top_rated"}>
                 <li>Top Rated</li>
               </Link>
-              <Link to={"/upcoming_movies"}>
+              <Link to={"/movie/upcoming"}>
                 <li>Upcoming</li>
               </Link>
             </div>
@@ -43,12 +43,18 @@ export default function Header() {
           <button className="btn">TV Shows</button>
           <div className="is-menu-active">
             <div className="media-list-items">
-              <Link to={"/popular_tv_shows"}>
+              <Link to={"/tv/popular"}>
                 <li>Popular</li>
               </Link>
-              <li>Airing Today</li>
-              <li>On TV</li>
-              <li>Top Rated</li>
+              <Link to={"/tv/airing_today"}>
+                <li>Airing Today</li>
+              </Link>
+              <Link to={"/tv/top_rated"}>
+                <li>Top Rated</li>
+              </Link>
+              <Link to={"/tv/on_the_air"}>
+                <li>On TV</li>
+              </Link>
             </div>
           </div>
         </ul>
