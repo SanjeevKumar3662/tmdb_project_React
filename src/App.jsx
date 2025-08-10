@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react" //vercel analytics
+import { SpeedInsights } from "@vercel/speed-insights/react" //vercel SpeedInsights
 
 
 import { useLocation, Route, Routes } from "react-router-dom";
@@ -36,6 +37,8 @@ function App() {
         <Route path="/movie_details/:page/:id" element={<MovieDetails media_type={"movie"} />} />
         <Route path="/tv_shows_details/:page/:id" element={<MovieDetails media_type={"tv"} />} />
       </Routes>
+
+      <SpeedInsights/>
       <Analytics/>
     </>
   );
