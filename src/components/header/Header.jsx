@@ -9,31 +9,56 @@ export default function Header() {
           <button className="btn">Home</button>
         </Link>
 
-        <button className="btn github-btn">
-          <a href="https://github.com/SanjeevKumar3662" target="_blank">
-            <div className="git-logo">
-              <img src="./GitHub-logo.png" alt="" />
-            </div>
+        <a href="https://github.com/SanjeevKumar3662" target="_blank">
+          <button className="btn github-btn">
+           
+              <img className="git-logo" src="./GitHub-logo.png" alt="" />
+            
             <span>SanjeevKumar3662</span>
-          </a>
-        </button>
+          </button>
+        </a>
       </div>
 
       <div className="mid-header">
-        {/* <a href="">Movies</a> */}
-        <Link to={"/popular_moives"}>
+        <ul className="media-list-menu ">
           <button className="btn">Movies</button>
-        </Link>
-        <Link to={"/popular_tv_shows"}>
+          <div className="is-menu-active">
+            <div className="media-list-items">
+              <Link>
+                <li>Now Playing</li>
+              </Link>
+              <Link to={"/popular_movies"}>
+                <li>Popular</li>
+              </Link>
+              <Link>
+                <li>Top Rated</li>
+              </Link>
+              <Link>
+                <li>Upcoming</li>
+              </Link>
+            </div>
+          </div>
+        </ul>
+        <ul className="media-list-menu">
           <button className="btn">TV Shows</button>
-        </Link>
+          <div className="is-menu-active">
+            <div className="media-list-items">
+              <Link to={"/popular_tv_shows"}>
+                <li>Popular</li>
+              </Link>
+              <li>Airing Today</li>
+              <li>On TV</li>
+              <li>Top Rated</li>
+            </div>
+          </div>
+        </ul>
       </div>
 
-      <div className="right-header">
+      {/* <div className="right-header">
         <a href="">link 1</a>
 
         <a href="">link2</a>
-      </div>
+      </div> */}
     </header>
   );
 }

@@ -15,13 +15,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: solid black; */
-  display: flex;
   gap: 10px;
-  /* padding: 10px; */
   font-size: 16px;
 }
-.header-container a, .btn {
+.header-container a,
+.btn {
   color: white;
 }
 
@@ -34,7 +32,7 @@
   box-shadow: 0 0 5px 1px black;
 }
 
-.github-btn a {
+.github-btn {
   display: flex;
   gap: 10px;
   justify-content: center;
@@ -50,25 +48,61 @@ button:active {
   transition: 0.1s ease-out;
 }
 
-.git-logo img {
+.git-logo  {
+  border: none;
   width: 20px;
+  border-radius: 10px;
 }
 
+/* media lists menu*/
+.media-list-menu .btn {
+  width: 100px;
+}
 
-@media (max-width:500px) {
+.media-list-items {
+  border-radius: 10px;
+  margin-top: 10px;
+  padding: 10px 0;
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  /* background-color: rgb(43, 116, 226); */
+  background-color: rgb(97, 10, 97);
+
+  li {
+    width: 140px;
+    padding: 5px;
+  }
+  li:hover {
+    /* background-color: blue; */
+    background-color: rgba(29, 9, 125, 0.813);
+  }
+}
+
+.is-menu-active {
+  position: absolute;
+  display: none;
+}
+.media-list-menu:hover .is-menu-active {
+  display: block;
+}
+
+@media (max-width: 500px) {
   /* .header-container .mid-header,header .left-header{
     
     justify-content: center;
     align-items: center;
   } */
 
-  .github-btn span{
+  .github-btn span {
     display: none;
   }
 
   /* currently right header only holdes
   dummy links, so hide on mobile */
-  .right-header{
+  .right-header {
     display: none;
   }
 }
