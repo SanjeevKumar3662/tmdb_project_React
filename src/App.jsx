@@ -31,7 +31,11 @@ function App() {
       <Routes>
         <Route path="/" element={isSiteDown?<ShutDown/>:<HomePage/>} />
 
+        <Route path="/now_playing_movies" element={<MediaLists media_type={"movie"} list_type={"now_playing"}/>} />
         <Route path="/popular_movies" element={<MediaLists media_type={"movie"} list_type={"popular"}/>} />
+        <Route path="/top_rated_movies" element={<MediaLists media_type={"movie"} list_type={"top_rated"}/>} />
+        <Route path="/upcoming_movies" element={<MediaLists media_type={"movie"} list_type={"upcoming"}/>} />
+
         <Route path="/popular_tv_shows/" element={<MediaLists media_type={"tv"} list_type={"popular"} />} />
 
         <Route path="/movie_details/:page/:id" element={<MovieDetails media_type={"movie"} />} />

@@ -24,16 +24,16 @@ export default function Header() {
           <button className="btn">Movies</button>
           <div className="is-menu-active">
             <div className="media-list-items">
-              <Link>
+              <Link to={"/now_playing_movies"}>
                 <li>Now Playing</li>
               </Link>
               <Link to={"/popular_movies"}>
                 <li>Popular</li>
               </Link>
-              <Link>
+              <Link to={"/top_rated_movies"}>
                 <li>Top Rated</li>
               </Link>
-              <Link>
+              <Link to={"/upcoming_movies"}>
                 <li>Upcoming</li>
               </Link>
             </div>
