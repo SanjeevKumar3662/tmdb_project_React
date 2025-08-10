@@ -56,16 +56,18 @@ const MovieDetails = ({ media_type }) => {
         </section>
         <section className="more-info">
           <h1>{movie.title ? movie.title : movie.name}</h1>
-          {movie.original_title && (
+          {(movie.original_title || movie.original_name) && (
             <div>Original Title : {movie.original_title}</div>
           )}
           {movie.tagline && <div>Tagline : {movie.tagline}</div>}
           <div className="title">
             Discription :<span> {movie.overview}</span>
           </div>
-          <div className="release-date">
-            Release Date : {movie.release_date}
-          </div>
+          {movie.release_date ?
+            <div className="release-date">
+              Release Date : {movie.release_date}
+            </div>: <div className="release-date"> {movie.first_air_date}</div>
+          }
           <div>
             Genres :{" "}
             {movie.genres &&
@@ -76,7 +78,7 @@ const MovieDetails = ({ media_type }) => {
         </section>
       </div>
       <section className="credits-container">
-        <MediaCredits media_type={media_type} id={id}  />
+        <MediaCredits media_type={media_type} id={id} />
       </section>
     </>
   );
