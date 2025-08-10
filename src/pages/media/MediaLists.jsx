@@ -18,6 +18,11 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
   }, [page, setSearchParams]);
   //end
 
+  //this will reset the page to 1, when we choose a dif list
+  useEffect(() => {
+    setPage(1);
+  }, [list_type]);
+
   useEffect(() => {
     try {
       const fetchMovies = async () => {
