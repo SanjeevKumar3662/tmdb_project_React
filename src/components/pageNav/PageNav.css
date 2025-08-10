@@ -1,11 +1,11 @@
 /* pagination */
 .page-nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px 10px;
   margin-top: 10px;
   border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.386);
+  /* background-color: rgba(0, 0, 0, 0.386); */
 }
 
 .page-nav button,.page-nav input{
