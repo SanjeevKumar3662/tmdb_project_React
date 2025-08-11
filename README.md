@@ -5,12 +5,12 @@ Link : [https://tmdb-project-react.vercel.app/]
 - Uses TMDB's API for movie/ tv data through a private node proxy server
 
 ## Home Page:
-![Home page](image.png)
+![Home page](/readmeFiles/homePage.png)
 ## Popular Movie Page:
-![Popular moives](image-1.png)
+![Popular moives](/readmeFiles/popularMovies.png)
 ## Movie Page:
-![alt text](image-4.png)
+![movie details page](/readmeFiles/detailsPageMovie.png)
 ## Popular TV Shows Page:
-![alt text](image-2.png)
+![Popular TV Shows](/readmeFiles/PopularTvs.png)
 ## TV Show Page:
-![alt text](image-3.png)
+![TV details page](/readmeFiles/detailsPage.png)
