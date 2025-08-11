@@ -19,7 +19,7 @@
   font-size: 16px;
 }
 
-.mid-header .btn{
+.mid-header .btn {
   width: 20px;
 }
 
@@ -53,14 +53,14 @@ button:active {
   transition: 0.1s ease-out;
 }
 
-.git-logo  {
+.git-logo {
   border: none;
   width: 20px;
   border-radius: 10px;
 }
 
 /* media lists menu*/
-.media-list-menu{
+.media-list-menu {
   padding: 0;
 }
 

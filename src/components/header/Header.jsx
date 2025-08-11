@@ -11,9 +11,8 @@ export default function Header() {
 
         <a href="https://github.com/SanjeevKumar3662" target="_blank">
           <button className="btn github-btn">
-           
-              <img className="git-logo" src="./GitHub-logo.png" alt="" />
-            
+            <img className="git-logo" src="./GitHub-logo.png" alt="" />
+
             <span>SanjeevKumar3662</span>
           </button>
         </a>
@@ -21,8 +20,7 @@ export default function Header() {
 
       <div className="mid-header">
         <ul className="media-list-menu ">
-          <button className="btn">
-            Movies</button>
+          <button className="btn">Movies</button>
           <div className="is-menu-active">
             <div className="media-list-items">
               <Link to={"/movie/now_playing"}>

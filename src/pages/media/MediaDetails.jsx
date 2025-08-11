@@ -24,7 +24,7 @@ const MovieDetails = ({ media_type }) => {
     fetchDetails();
   }, [id, media_type]);
 
-  console.log(movie);
+  // console.log(media_type,"example:",movie);
 
   return (
     <>
@@ -57,17 +57,21 @@ const MovieDetails = ({ media_type }) => {
         <section className="more-info">
           <h1>{movie.title ? movie.title : movie.name}</h1>
           {(movie.original_title || movie.original_name) && (
-            <div>Original Title : {movie.original_title || movie.original_name}</div>
+            <div>
+              Original Title : {movie.original_title || movie.original_name}
+            </div>
           )}
           {movie.tagline && <div>Tagline : {movie.tagline}</div>}
           <div className="title">
             Discription :<span> {movie.overview}</span>
           </div>
-          {movie.release_date ?
+          {movie.release_date ? (
             <div className="release-date">
               Release Date : {movie.release_date}
-            </div>: <div className="release-date"> {movie.first_air_date}</div>
-          }
+            </div>
+          ) : (
+            <div className="release-date"> {movie.first_air_date}</div>
+          )}
           <div>
             Genres :{" "}
             {movie.genres &&

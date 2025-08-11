@@ -13,7 +13,6 @@ const Card = ({
   page,
   cssClass,
 }) => {
-
   // console.log(profile_path);
   return (
     <div className={cssClass}>
@@ -21,17 +20,25 @@ const Card = ({
       <Link
         target="blank"
         // if it is a crew/cast card then don't link to another pages
-        to={!character ?`/${
-          (release_date ? "movie_details" : "tv_shows_details")
-        }/${page}/${id}`:null}
+        to={
+          !character
+            ? `/${
+                release_date ? "movie_details" : "tv_shows_details"
+              }/${page}/${id}`
+            : null
+        }
       >
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
-        {poster_path || profile_path? (
+        {poster_path || profile_path ? (
           <img
             className="poster"
-            src={`https://image.tmdb.org/t/p/w185${poster_path || profile_path}`}
-            srcSet={`https://image.tmdb.org/t/p/w185${poster_path || profile_path} 1x,
+            src={`https://image.tmdb.org/t/p/w185${
+              poster_path || profile_path
+            }`}
+            srcSet={`https://image.tmdb.org/t/p/w185${
+              poster_path || profile_path
+            } 1x,
           https://image.tmdb.org/t/p/w342${poster_path || profile_path} 2x`}
             alt={`poster for ${name}`}
             title={name || title}

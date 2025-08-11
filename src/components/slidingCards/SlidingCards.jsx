@@ -45,7 +45,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
 
   const settings = {
     dots: false,
-    infinite: credits&&credits.length <= 8?false:true,
+    infinite: credits && credits.length <= 8 ? false : true,
     speed: 300,
     slidesToShow: 8,
     slidesToScroll: 5,
