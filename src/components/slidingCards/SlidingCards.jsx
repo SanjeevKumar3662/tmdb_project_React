@@ -11,7 +11,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 const SlidingCards = ({ media_type, list_type, credits }) => {
   const [movies, setMovies] = useState(null);
-  // const [content, setContent] = useState(null);
+  const [infiniteScroll, setInfiniteScroll] = useState(true);
+  infiniteScroll && credits.length <= 8 && setInfiniteScroll(false);
   const page = 1;
 
   useEffect(() => {
@@ -21,17 +22,16 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
           `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
-        console.log(media_type,data.results);
+        // console.log(media_type,data.results);
 
         setMovies(data.results);
       };
 
-      !credits && fetchMovies();// won't call this, if we want cast info
-      
+      !credits && fetchMovies(); // won't call this, if we want cast info
     } catch (error) {
       console.log(error);
     }
-  },[media_type,list_type,page,credits]);
+  }, [media_type, list_type, page, credits]);
 
   // console.log(movies[0]);
 
@@ -45,8 +45,8 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
 
   const settings = {
     dots: false,
-    infinite: true,
-    speed: 500,
+    infinite: infiniteScroll,
+    speed: 300,
     slidesToShow: 8,
     slidesToScroll: 5,
     responsive: [
@@ -88,6 +88,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
     ],
   };
 
+  // credits && console.log("this", credits.length);
   return (
     <>
       <Slider {...settings}>
@@ -99,11 +100,13 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
             </div>
           ))}
 
-        {media_type === "credits" && credits && (
+        {media_type === "credits" &&
+          credits &&
           credits.map((person) => (
-            <Card key={person.id} cssClass={"sliding-cards"} {...person}></Card>
-          ))
-        )}
+            <div key={person.id}>
+              <Card cssClass={"sliding-cards"} {...person}></Card>
+            </div>
+          ))}
       </Slider>
     </>
   );
