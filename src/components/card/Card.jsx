@@ -17,12 +17,13 @@ const Card = ({
   // console.log(profile_path);
   return (
     <div className={cssClass}>
-      {/* only movies have release date, so is this is true that means it movie else a tv show */}
+      {/* only movies have release date, so if this is true that means it is a movie else a tv show */}
       <Link
         target="blank"
-        to={`/${
-          release_date ? "movie_details" : "tv_shows_details"
-        }/${page}/${id}`}
+        // if it is a crew/cast card then don't link to another pages
+        to={!character ?`/${
+          (release_date ? "movie_details" : "tv_shows_details")
+        }/${page}/${id}`:null}
       >
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
