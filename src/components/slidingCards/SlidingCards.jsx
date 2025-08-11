@@ -11,8 +11,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 const SlidingCards = ({ media_type, list_type, credits }) => {
   const [movies, setMovies] = useState(null);
-  const [infiniteScroll, setInfiniteScroll] = useState(true);
-  infiniteScroll && credits.length <= 8 && setInfiniteScroll(false);
+  // const [infiniteScroll, setInfiniteScroll] = useState(true);
+  // infiniteScroll && credits.length <= 8 && setInfiniteScroll(false);
   const page = 1;
 
   useEffect(() => {
@@ -45,7 +45,7 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
 
   const settings = {
     dots: false,
-    infinite: infiniteScroll,
+    infinite: credits&&credits.length <= 8?false:true,
     speed: 300,
     slidesToShow: 8,
     slidesToScroll: 5,
