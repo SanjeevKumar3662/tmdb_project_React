@@ -54,7 +54,7 @@ export default function Header() {
                 <li>Top Rated</li>
               </Link>
               <Link to={"/tv/on_the_air"}>
-                <li>On TV</li>
+                <li>On The Air</li>
               </Link>
             </div>
           </div>
