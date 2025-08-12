@@ -1,5 +1,5 @@
 # Sanjeev's MDB
-Link : [https://tmdb-project-react.vercel.app/]
+Link : [https://sanjeevsmdb.vercel.app/]
 ### Notes :
 - This is a Movie Database Website 
 - Uses TMDB's API for movie/ tv data through a private node proxy server
