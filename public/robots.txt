@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://sanjeevsmdb.vercel.app/sitemap.xml
