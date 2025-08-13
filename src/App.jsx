@@ -12,6 +12,7 @@ import MovieDetails from "./pages/media/MediaDetails";
 import HomePage from "./pages/homePage/HomePage";
 
 import { ShutDown } from "./pages/homePage/ShutDown";
+import Search from "./pages/search/Search";
 
 function App() {
   const location = useLocation();
@@ -119,6 +120,7 @@ function App() {
           path="/tv_shows_details/:page/:id"
           element={<MovieDetails media_type={"tv"} />}
         />
+        <Route path="/search" element={<Search/>} />
       </Routes>
 
       <SpeedInsights />
