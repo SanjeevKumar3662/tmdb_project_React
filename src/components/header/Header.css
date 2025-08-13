@@ -119,3 +119,16 @@ button:active {
     display: none;
   }
 }
+
+
+@media (max-width: 350px) {
+  .header-container .btn{
+    font-size: 16px;
+    border-radius: 8px;
+    /* color: black; */
+    padding: 4px;
+  }
+  .header-container{
+    gap:5px
+  }
+}
