@@ -4,6 +4,9 @@
   justify-content: center;
 }
 
+.sliding-cards .card-info{
+  padding-top: 8px;
+}
 
 
 .slide-container {
@@ -20,6 +23,7 @@
   border-radius: 20px;
   min-height: 250px;
   width: 150px;
+  /* this padding is for hover effect, don't remove it*/
   padding-top: 5px;
   /* background-color: rgba(28, 111, 142, 0.586); */
   color: white;
@@ -35,7 +39,7 @@
   border-radius: 8px;
 }
 .sliding-cards img:hover {
-  box-shadow: 0 0 5px 5px rgb(252, 251, 251);
+  box-shadow: 0 0 5px 2px rgb(252, 251, 251);
 
   transition: 0.1s ease;
 }
