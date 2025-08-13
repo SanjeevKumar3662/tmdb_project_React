@@ -120,7 +120,7 @@ function App() {
           path="/tv_shows_details/:page/:id"
           element={<MovieDetails media_type={"tv"} />}
         />
-        <Route path="/search" element={<SearchPage/>} />
+        <Route path="/search/:query" element={<SearchPage />} />
       </Routes>
 
       <SpeedInsights />
