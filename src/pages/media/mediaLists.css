@@ -13,5 +13,28 @@
   gap: 20px;
 }
 
+@media (max-width: 600px) {
+  .movie-container .card {
+    /* border: solid black; */
+    /* border-radius: 20px; */
+    width: 173px;
+    min-height: 310px;
+    padding: 4px;
+  }
+  .movie-container .card img {
+    width: 155px;
+  }
+}
 
-
+@media (max-width: 406px) {
+  .movie-container .card {
+    border-radius: 15px;
+    width: 130px;
+    min-height: 250px;
+    padding: 5px;
+  }
+  .movie-container .card img {
+    border-radius: 12px;
+    width: 118px;
+  }
+}
