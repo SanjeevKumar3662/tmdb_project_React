@@ -1,3 +1,4 @@
+import heroImage from "/hero.webp"
 import "./homePage.css";
 import SlidingCards from "../../components/slidingCards/SlidingCards";
 
@@ -5,7 +6,7 @@ const homePage = () => {
   return (
     <main>
       <section className="hero">
-        <img src="/hero.webp" alt="" loading="eager" />
+        <img src={heroImage} alt="" loading="eager" />
         <div className="heroText">
           <span>Welcome.</span>
           <span>This is a Movie Database Website by SanjeevKumar3662</span>
