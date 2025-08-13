@@ -1,5 +1,5 @@
 .movie-container {
-  padding: 20px;
+  padding: 10px;
   /* border: solid black; */
   max-width: 1200px;
   margin: 0 auto;
@@ -29,12 +29,25 @@
 @media (max-width: 406px) {
   .movie-container .card {
     border-radius: 15px;
-    width: 130px;
+    width: 160px;
+    min-height: 280px;
+    padding: 5px;
+  }
+  .movie-container .card img {
+    border-radius: 12px;
+    width: 138px;
+  }
+}
+
+@media (max-width: 350px) {
+  .movie-container .card {
+    border-radius: 15px;
+    width: 140px;
     min-height: 250px;
     padding: 5px;
   }
   .movie-container .card img {
     border-radius: 12px;
-    width: 118px;
+    width: 128px;
   }
 }
