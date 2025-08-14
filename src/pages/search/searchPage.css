@@ -4,9 +4,7 @@ span{
   padding: 5px;
 }
 .search-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+
   margin: 0px auto;
   padding: 5px;
   gap: 20px;
@@ -14,17 +12,7 @@ span{
   /* border: solid white; */
 }
 
-.search-container .cards {
-  border: solid white;
-}
 /* ----------------------------------------------------- */
-/* .search-container {
-  padding: 10px;
-  
-  max-width: 1200px;
-  margin: 0 auto;
-  color: white;
-} */
 
 .search-container .flex-search-container {
   display: flex;
