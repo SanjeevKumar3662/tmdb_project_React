@@ -3,7 +3,7 @@ main .hero {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: solid black;
+  /* border: solid black; */
   height: 45vh;
 }
 
