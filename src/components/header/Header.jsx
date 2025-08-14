@@ -1,3 +1,4 @@
+import gitLogo from "/GitHub-logo.png";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
@@ -11,7 +12,7 @@ export default function Header() {
 
         <a href="https://github.com/SanjeevKumar3662" target="_blank">
           <button className="btn github-btn">
-            <img className="git-logo" src="./GitHub-logo.png" alt="" />
+            <img className="git-logo" src={gitLogo} alt="" />
 
             <span>SanjeevKumar3662</span>
           </button>
