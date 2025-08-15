@@ -1,0 +1,10 @@
+.search-input input {
+  font-size: 16px;
+  background-color: rgba(245, 245, 245, 0.781);
+  height: 40px;
+  width: 450px;
+  text-align: center;
+  border: none;
+  border-radius: 20px;
+  border-collapse: collapse;
+}
