@@ -19,7 +19,7 @@ span {
   justify-content: center;
   gap: 20px;
 }
-.search-container .card{
+.search-container .card {
   font-size: 15px;
 }
 .search-meta-info {
@@ -36,7 +36,7 @@ span {
 }
 .query-slider .btn {
   padding: 5px;
-  margin: 10px; 
+  margin: 10px;
   background-color: rgba(20, 20, 213, 0.643);
 }
 
@@ -54,9 +54,9 @@ span {
   .search-meta-info .btn {
     font-size: 14px;
   }
-  .search-container .card{
-  font-size: 13px;
-}
+  .search-container .card {
+    font-size: 13px;
+  }
 }
 
 @media (max-width: 406px) {
@@ -76,9 +76,6 @@ span {
   .query-slider .btn {
     font-size: 13px;
   }
-  .search-container .card{
-  /* font-size: 15px; */
-}
 }
 
 @media (max-width: 350px) {
@@ -93,7 +90,7 @@ span {
     width: 128px;
   }
 
-  .search-container .card{
-  font-size: 12px;
-}
+  .search-container .card {
+    font-size: 12px;
+  }
 }
