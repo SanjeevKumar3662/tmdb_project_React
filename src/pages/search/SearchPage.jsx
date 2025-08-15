@@ -16,7 +16,7 @@ const SearchPage = () => {
     { query: "person", text: "Person", info: "Shows persons" },
     { query: "collection", text: "Collection", info: "Shows Collections" },
     { query: "company", text: "Company", info: "Shows Companies" },
-    { query: "keywords", text: "Keywords", info: "Lists related keywords" },
+    { query: "keyword", text: "Keywords", info: "Lists related keywords" },
   ];
   
   //for getting page from url
