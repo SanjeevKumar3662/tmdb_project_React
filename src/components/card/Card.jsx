@@ -7,6 +7,7 @@ const Card = ({
   character,
   poster_path,
   profile_path,
+  logo_path,
   release_date,
   first_air_date,
   id,
@@ -30,16 +31,16 @@ const Card = ({
       >
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
-        {poster_path || profile_path ? (
+        {poster_path || profile_path || logo_path ? (
           <img
             className="poster"
             src={`https://image.tmdb.org/t/p/w185${
-              poster_path || profile_path
+              poster_path || profile_path || logo_path 
             }`}
             srcSet={`https://image.tmdb.org/t/p/w185${
-              poster_path || profile_path
+              poster_path || profile_path || logo_path 
             } 1x,
-          https://image.tmdb.org/t/p/w342${poster_path || profile_path} 2x`}
+          https://image.tmdb.org/t/p/w342${poster_path || profile_path || logo_path } 2x`}
             alt={`poster for ${name}`}
             title={name || title}
             loading="lazy"
