@@ -10,15 +10,15 @@ const SearchPage = () => {
   const [query_type, setQuery_type] = useState("movie");
 
   const queryArr = [
-    "multi",
-    "movie",
-    "tv",
-    "person",
-    "collection",
-    "company",
-    "keyword",
+    { query: "multi", text: "All", info: "Shows Combination of Movie, TV and People" },
+    { query: "movie", text: "Movie", info: "Shows movie results" },
+    { query: "tv", text: "TV", info: "Shows tv results" },
+    { query: "person", text: "Person", info: "Shows persons" },
+    { query: "collection", text: "Collection", info: "Shows Collections" },
+    { query: "company", text: "Company", info: "Shows Companies" },
+    { query: "keywords", text: "Keywords", info: "Lists related keywords" },
   ];
-
+  
   //for getting page from url
   const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
   //this returns a string so parse it
@@ -103,9 +103,9 @@ const SearchPage = () => {
       <div className="query-slider">
         <Slider {...settings}>
           {queryArr &&
-            queryArr.map((type) => (
-              <button className="btn" onClick={() => setQuery_type(type)}>
-                {type}
+            queryArr.map((obj) => (
+              <button className="btn" onClick={() => setQuery_type(obj.query)} title={obj.info}>
+                {obj.text}
               </button>
             ))}
         </Slider>
@@ -118,7 +118,7 @@ const SearchPage = () => {
           Total Results : {searchRes && searchRes.total_results}
         </span>
       </div>
-     
+
       <div className="flex-search-container">
         {searchRes &&
           searchRes.results.map((ele) => {
