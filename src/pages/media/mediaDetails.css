@@ -23,10 +23,10 @@ body {
 }
 .details-container img {
   width: 350px;
+  border: 1px solid whitesmoke;
 }
 
 /* .details-container section {
-  border: solid black;
 } */
 
 .more-info {
@@ -35,20 +35,20 @@ body {
   gap: 15px;
   color: whitesmoke;
   background-color: rgba(0, 0, 0, 0.507);
-  border: solid white;
+  border: 1px solid white;
   border-radius: 20px;
   margin: 0 20px;
   padding: 10px 30px;
   min-height: 400px;
   flex: 2;
   font-size: 16px;
-  
+
   h1 {
     font-size: 28px;
     color: brown;
   }
 
-  span{
+  span {
     line-height: 20px;
   }
 }
@@ -60,13 +60,38 @@ body {
     gap: 20px;
   }
 
-  .poster-details{
-    border: solid;
+  .poster-details {
     min-height: 530px;
   }
 
-  .more-info{
+  .more-info {
     min-width: 350px;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 390px) {
+  .poster-details {
+    min-height: 480px;
+  }
+  .poster-details img {
+    width: 320px;
+  }
+  .more-info {
+    min-width: 330px;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 350px) {
+  .poster-details {
+    min-height: 480px;
+  }
+  .poster-details img {
+    width: 310px;
+  }
+  .more-info {
+    min-width: 310px;
     min-height: 300px;
   }
 }
