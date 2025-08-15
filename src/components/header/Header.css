@@ -16,7 +16,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 
 .mid-header .btn {
@@ -31,7 +31,7 @@
 .btn {
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 15px;
   background-color: rgba(125, 12, 125, 0.546);
   padding: 6px 10px;
   box-shadow: 0 0 5px 1px black;
@@ -103,11 +103,9 @@ button:active {
 }
 
 @media (max-width: 500px) {
-  /* .header-container .mid-header,header .left-header{
-    
-    justify-content: center;
-    align-items: center;
-  } */
+  .header-container .btn{
+    font-size: 13px;
+  }
 
   .github-btn span {
     display: none;
@@ -123,7 +121,7 @@ button:active {
 
 @media (max-width: 350px) {
   .header-container .btn{
-    font-size: 16px;
+    font-size: 12px;
     border-radius: 8px;
     /* color: black; */
     padding: 4px;
