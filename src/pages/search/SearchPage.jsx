@@ -10,6 +10,7 @@ const SearchPage = () => {
   const [query_type, setQuery_type] = useState("movie");
 
   const queryArr = [
+    "multi",
     "movie",
     "tv",
     "person",
@@ -89,7 +90,7 @@ const SearchPage = () => {
       {
         breakpoint: 480, // mobile phones
         settings: {
-          slidesToShow: 2.05,
+          slidesToShow: 4,
           slidesToScroll: 2,
         },
       },
@@ -103,20 +104,21 @@ const SearchPage = () => {
         <Slider {...settings}>
           {queryArr &&
             queryArr.map((type) => (
-              <button onClick={() => setQuery_type(type)}>{type}</button>
+              <button className="btn" onClick={() => setQuery_type(type)}>
+                {type}
+              </button>
             ))}
         </Slider>
       </div>
-      <div>
-        <span>Total pages {searchRes && searchRes.total_pages}</span>
-        <span>Total Results : {searchRes && searchRes.total_results}</span>
+      <div className="search-meta-info">
+        <span className="btn">
+          Total pages {searchRes && searchRes.total_pages}
+        </span>
+        <span className="btn">
+          Total Results : {searchRes && searchRes.total_results}
+        </span>
       </div>
-      <PageNav
-        prevClick={() => setPage(page > 1 ? () => page - 1 : page)}
-        nextClick={() => setPage(() => page + 1)}
-        page={page}
-        setPage={setPage}
-      ></PageNav>
+     
       <div className="flex-search-container">
         {searchRes &&
           searchRes.results.map((ele) => {
