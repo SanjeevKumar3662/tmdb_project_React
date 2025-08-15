@@ -35,13 +35,6 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
 
   // console.log(movies[0]);
 
-  // const settings = {
-  //   dots: false,
-  //   infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 7,
-  //   slidesToScroll: 5,
-  // };
 
   const settings = {
     dots: false,
@@ -75,13 +68,13 @@ const SlidingCards = ({ media_type, list_type, credits }) => {
         breakpoint: 550, // tablets
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 3,
+          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 480, // mobile phones
+        breakpoint: 420, // mobile phones
         settings: {
-          slidesToShow: 2.05,
+          slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
