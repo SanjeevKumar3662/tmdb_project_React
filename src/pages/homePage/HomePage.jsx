@@ -1,12 +1,9 @@
 import heroImage from "/hero.webp";
 import "./homePage.css";
 import SlidingCards from "../../components/slidingCards/SlidingCards";
-import { useNavigate } from "react-router-dom";//for triggering a route programmatically
+import SearchInput from "../../components/searchInput/SearchInput";
 
 const HomePage = () => {
-  // function onSearchSubmit(){}
-  const navigate = useNavigate();
-
   return (
     <main>
       <section className="hero">
@@ -15,13 +12,7 @@ const HomePage = () => {
           <span>Welcome.</span>
           <span>This is a Movie Database Website by SanjeevKumar3662</span>
         </div>
-        <input
-          onKeyDown={(e) => {
-            e.key === "Enter" && navigate(`/search/${e.target.value}`);
-          }}
-          type="text"
-          placeholder="Search for a movie or a person"
-        />
+        <SearchInput />
       </section>
 
       <div className="flex-sildes">

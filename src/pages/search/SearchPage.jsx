@@ -4,13 +4,18 @@ import "./searchPage.css";
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
 import Slider from "react-slick";
+import SearchInput from "../../components/searchInput/SearchInput";
 
 const SearchPage = () => {
   const [searchRes, setSearchRes] = useState(null);
   const [query_type, setQuery_type] = useState("movie");
 
   const queryArr = [
-    { query: "multi", text: "All", info: "Shows Combination of Movie, TV and People" },
+    {
+      query: "multi",
+      text: "All",
+      info: "Shows Combination of Movie, TV and People",
+    },
     { query: "movie", text: "Movie", info: "Shows movie results" },
     { query: "tv", text: "TV", info: "Shows tv results" },
     { query: "person", text: "Person", info: "Shows persons" },
@@ -18,7 +23,7 @@ const SearchPage = () => {
     { query: "company", text: "Company", info: "Shows Companies" },
     { query: "keyword", text: "Keywords", info: "Lists related keywords" },
   ];
-  
+
   //for getting page from url
   const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
   //this returns a string so parse it
@@ -100,11 +105,16 @@ const SearchPage = () => {
   return (
     <div className="search-container">
       {/* <h1>Base Search Fuction ...</h1> */}
+      <SearchInput/>
       <div className="query-slider">
         <Slider {...settings}>
           {queryArr &&
             queryArr.map((obj) => (
-              <button className="btn" onClick={() => setQuery_type(obj.query)} title={obj.info}>
+              <button
+                className="btn"
+                onClick={() => setQuery_type(obj.query)}
+                title={obj.info}
+              >
                 {obj.text}
               </button>
             ))}
