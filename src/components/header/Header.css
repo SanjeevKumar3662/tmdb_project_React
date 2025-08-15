@@ -61,6 +61,7 @@ button:active {
 
 /* media lists menu*/
 .media-list-menu {
+  z-index: 999;
   padding: 0;
 }
 
