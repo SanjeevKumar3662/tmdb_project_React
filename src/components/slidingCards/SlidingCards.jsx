@@ -81,6 +81,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos }) => {
     ],
   };
 
+  videos && videos.results.length <= 1 && (settings.infinite = false);
   // credits && console.log("this", credits.length);
   return (
     <>
