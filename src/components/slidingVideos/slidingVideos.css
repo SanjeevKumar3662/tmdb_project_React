@@ -1,0 +1,11 @@
+.video-container{
+  border: solid white;
+}
+.video-player{
+  aspect-ratio: 16 / 9;
+  width: 50%;
+}
+
+h1{
+  color: blue;
+}
