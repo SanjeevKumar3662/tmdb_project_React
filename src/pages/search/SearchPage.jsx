@@ -36,7 +36,7 @@ const SearchPage = () => {
           `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
         );
         const data = await res.json();
-        console.log(data);
+        // console.log(data.results[0]);
         setSearchRes(data);
       };
       fetchSearchResults();
