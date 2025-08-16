@@ -24,7 +24,7 @@ const MovieDetails = ({ media_type }) => {
       }
     };
     fetchDetails();
-  }, []);
+  }, [media_type,id]);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -41,7 +41,7 @@ const MovieDetails = ({ media_type }) => {
       }
     };
     fetchVideos();
-  }, []);
+  }, [media_type,id]);
 
   // console.log("example:", videos.results[0]);
 
