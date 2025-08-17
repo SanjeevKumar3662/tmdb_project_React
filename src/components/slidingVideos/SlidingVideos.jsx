@@ -57,7 +57,7 @@ const SlidingVideos = ({ media_type, id }) => {
       <Slider {...settings}>
         {videos &&
           videos.results.map((video) => (
-            <VideoCards title={video.name} key={video.id} videoId={video.key} />
+            <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
           ))}
       </Slider>
     </>
