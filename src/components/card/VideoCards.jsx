@@ -1,11 +1,12 @@
 import "./videoCards.css";
 import { useState } from "react";
 
-const VideoCards = ({ videoId, title }) => {
+const VideoCards = ({ videoId, title,type }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Thumbnail URL from YouTube
   const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  console.log(title);
 
   return (
     <>
@@ -22,8 +23,10 @@ const VideoCards = ({ videoId, title }) => {
               // decoding="async"
             />
 
+
             {/* Fake Play Button */}
-            <div className="play-button">▶</div>
+            <div className="play-button">▶</div>  
+            <p className="video-title">{`${type} : ${title}`}</p>
           </div>
         ) : (
           // Real iframe only when clicked
