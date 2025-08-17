@@ -2,7 +2,7 @@ import "./slidingCards.css";
 import Card from "../../components/card/Card";
 import { useEffect, useState } from "react";
 // import { useSearchParams } from "react-router-dom";
-import SlidingVideos from "../../components/slidingVideos/SlidingVideos";
+// import SlidingVideos from "../../components/slidingVideos/SlidingVideos";
 
 //for slider
 import Slider from "react-slick";
@@ -40,48 +40,49 @@ const SlidingCards = ({ media_type, list_type, credits, videos }) => {
     dots: false,
     infinite: credits && credits.length <= 8 ? false : true,
     speed: 200,
-    slidesToShow: videos ? 2 : 8,
-    slidesToScroll: videos ? 1 : 5,
+    slidesToShow: 8,
+    slidesToScroll: 5,
+    lazyLoad: videos ? false : true,
+    lazyLoadBuffer: 3,
     responsive: [
       {
         breakpoint: 1350, // tablets
         settings: {
-          slidesToShow: videos ? 2 : 6,
-          slidesToScroll: videos ? 2 : 3,
+          slidesToShow: 6,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 1024, // tablets
         settings: {
-          slidesToShow: videos ? 2 : 5,
-          slidesToScroll: videos ? 2 : 3,
+          slidesToShow: 5,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 768, // small tablets / large phones
         settings: {
-          slidesToShow: videos ?1 : 4,
-          slidesToScroll: videos ? 1 : 3,
+          slidesToShow: 4,
+          slidesToScroll: 3,
         },
       },
       {
         breakpoint: 550, // tablets
         settings: {
-          slidesToShow: videos ? 1 : 3,
-          slidesToScroll: videos ? 1 : 2,
+          slidesToShow: 3,
+          slidesToScroll: 2,
         },
       },
       {
         breakpoint: 420, // mobile phones
         settings: {
-          slidesToShow: videos ? 1 : 2,
-          slidesToScroll: videos ? 1 : 2,
+          slidesToShow: 2,
+          slidesToScroll: 2,
         },
       },
     ],
   };
 
-  videos && videos.results.length <= 1 && (settings.infinite = false);
   // credits && console.log("this", credits.length);
   return (
     <>
@@ -100,11 +101,6 @@ const SlidingCards = ({ media_type, list_type, credits, videos }) => {
             <div key={person.id}>
               <Card cssClass={"sliding-cards"} {...person}></Card>
             </div>
-          ))}
-
-        {videos &&
-          videos.results.map((video) => (
-            <SlidingVideos title={video.name} key={video.id} videoId={video.key} /> 
           ))}
       </Slider>
     </>
