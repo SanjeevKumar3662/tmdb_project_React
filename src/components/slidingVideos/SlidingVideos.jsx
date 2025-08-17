@@ -49,7 +49,7 @@ const SlidingVideos = ({ media_type, id }) => {
     ],
   };
 
-  // videos && videos.results.length <= 1 && (settings.infinite = false);
+  videos && videos.results.length <= 1 && (settings.infinite = false);
 
   return (
     <>
