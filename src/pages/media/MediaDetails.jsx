@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import SlidingCards from "../../components/slidingCards/SlidingCards";
+import SlidingVideos from "../../components/slidingVideos/SlidingVideos";
 
 const MovieDetails = ({ media_type }) => {
   const { id } = useParams();
   const [movie, setMovieDetails] = useState("");
-  const [videos, setVideos] = useState("");
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -26,22 +26,7 @@ const MovieDetails = ({ media_type }) => {
     fetchDetails();
   }, [media_type,id]);
 
-  useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/videos`
-        );
-        const data = await response.json();
-        console.log(data.results[0]);
-
-        setVideos(data);
-      } catch (e) {
-        console.log("error while fetching media content", e);
-      }
-    };
-    fetchVideos();
-  }, [media_type,id]);
+  
 
   // console.log("example:", videos.results[0]);
 
@@ -101,7 +86,7 @@ const MovieDetails = ({ media_type }) => {
         </section>
       </div>
       <div className="video-container">
-        <SlidingCards videos={videos} />
+        <SlidingVideos media_type={media_type} id={id} />
       </div>
       <section className="credits-container">
         <MediaCredits media_type={media_type} id={id} />
