@@ -1,43 +1,65 @@
-import "./slidingVideos.css";
-import { useState } from "react";
+// import "./slidingVideos.css";
+import { useState, useEffect } from "react";
+import VideoCards from "../card/VideoCards";
+import Slider from "react-slick";
 
-const SlidingVideos = ({ videoId, title }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+const SlidingVideos = ({ media_type, id }) => {
+  const [videos, setVideos] = useState("");
 
-  // Thumbnail URL from YouTube
-  const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(
+          `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/videos`
+        );
+        const data = await response.json();
+        console.log(data.results[0]);
+
+        setVideos(data);
+      } catch (e) {
+        console.log("error while fetching media content", e);
+      }
+    };
+    fetchVideos();
+  }, [media_type, id]);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 200,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    lazyLoad: true,
+    lazyLoadBuffer: 3,
+    responsive: [
+      {
+        breakpoint: 900, // tablets
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 420, // mobile phones
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  // videos && videos.results.length <= 1 && (settings.infinite = false);
 
   return (
     <>
       {/* <h1>nonono</h1> */}
-      <div className="lite-video-wrapper">
-        {!isPlaying ? (
-          <div className="video-thumbnail" onClick={() => setIsPlaying(true)}>
-            {/* Thumbnail Image */}
-            <img
-              src={thumbnail}
-              alt={title}
-              className="thumbnail-img"
-              loading="lazy"
-              // decoding="async"
-            />
-
-            {/* Fake Play Button */}
-            <div className="play-button">▶</div>
-          </div>
-        ) : (
-          // Real iframe only when clicked
-          <iframe
-            className="video-player"
-            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-            referrerPolicy="strict-origin-when-cross-origin"
-            allowFullScreen
-            loading="lazy"
-            title={title}
-          ></iframe>
-        )}
-      </div>
+      <Slider {...settings}>
+        {videos &&
+          videos.results.map((video) => (
+            <VideoCards title={video.name} key={video.id} videoId={video.key} />
+          ))}
+      </Slider>
     </>
   );
 };
