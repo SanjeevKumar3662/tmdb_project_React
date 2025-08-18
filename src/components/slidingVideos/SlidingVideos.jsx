@@ -3,17 +3,18 @@ import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
 
-const SlidingVideos = ({ media_type, id }) => {
+const SlidingVideos = ({ media_type, id,content_type }) => {
   const [videos, setVideos] = useState("");
+  // console.log(media_type,id);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/videos`
+          `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
         );
         const data = await response.json();
-        console.log(data.results[0]);
+        content_type === "images" && (console.log(data.backdrops[0]));
 
         setVideos(data);
       } catch (e) {
@@ -21,7 +22,7 @@ const SlidingVideos = ({ media_type, id }) => {
       }
     };
     fetchVideos();
-  }, [media_type, id]);
+  }, [media_type, id,content_type]);
 
   const settings = {
     dots: false,
@@ -49,15 +50,19 @@ const SlidingVideos = ({ media_type, id }) => {
     ],
   };
 
-  videos && videos.results.length <= 1 && (settings.infinite = false);
+  content_type === "videos" && videos && videos.results.length <= 1 && (settings.infinite = false);
 
   return (
     <>
       {/* <h1>nonono</h1> */}
       <Slider {...settings}>
-        {videos &&
+        {content_type ==="videos"? videos &&
           videos.results.map((video) => (
             <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
+          )):videos &&
+          videos.backdrops.map((imgs) => (
+            // <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
+            <h2>{imgs.file_path}</h2>
           ))}
       </Slider>
     </>
