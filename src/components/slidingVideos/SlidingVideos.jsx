@@ -34,14 +34,14 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
     lazyLoadBuffer: 3,
     responsive: [
       {
-        breakpoint: 900, // tablets
+        breakpoint: 1200, 
         settings: {
           slidesToShow: content_type === "videos" ? 1 : 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 520, // mobile phones
+        breakpoint: 520, 
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
