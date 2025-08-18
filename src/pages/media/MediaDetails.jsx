@@ -24,9 +24,7 @@ const MovieDetails = ({ media_type }) => {
       }
     };
     fetchDetails();
-  }, [media_type,id]);
-
-  
+  }, [media_type, id]);
 
   // console.log("example:", videos.results[0]);
 
@@ -86,7 +84,18 @@ const MovieDetails = ({ media_type }) => {
         </section>
       </div>
       <div className="video-container">
-        <SlidingVideos media_type={media_type} id={id} />
+        <SlidingVideos
+          media_type={media_type}
+          content_type={"videos"}
+          id={id}
+        />
+      </div>
+      <div className="video-container">
+        <SlidingVideos
+          media_type={media_type}
+          content_type={"images"}
+          id={id}
+        />
       </div>
       <section className="credits-container">
         <MediaCredits media_type={media_type} id={id} />
