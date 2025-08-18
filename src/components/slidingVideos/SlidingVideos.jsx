@@ -14,7 +14,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
           `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
         );
         const data = await response.json();
-        content_type === "images" && console.log(data.backdrops[0]);
+        // content_type === "images" && console.log(data.backdrops[0]);
 
         setVideos(data);
       } catch (e) {
