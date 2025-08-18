@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
 
-const SlidingVideos = ({ media_type, id,content_type }) => {
+const SlidingVideos = ({ media_type, id, content_type }) => {
   const [videos, setVideos] = useState("");
   // console.log(media_type,id);
 
@@ -14,7 +14,7 @@ const SlidingVideos = ({ media_type, id,content_type }) => {
           `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
         );
         const data = await response.json();
-        content_type === "images" && (console.log(data.backdrops[0]));
+        content_type === "images" && console.log(data.backdrops[0]);
 
         setVideos(data);
       } catch (e) {
@@ -22,13 +22,13 @@ const SlidingVideos = ({ media_type, id,content_type }) => {
       }
     };
     fetchVideos();
-  }, [media_type, id,content_type]);
+  }, [media_type, id, content_type]);
 
   const settings = {
     dots: false,
     infinite: true,
     speed: 200,
-    slidesToShow: 2,
+    slidesToShow: content_type === "videos" ?2:3,
     slidesToScroll: 1,
     lazyLoad: true,
     lazyLoadBuffer: 3,
@@ -36,12 +36,12 @@ const SlidingVideos = ({ media_type, id,content_type }) => {
       {
         breakpoint: 900, // tablets
         settings: {
-          slidesToShow: 1,
+          slidesToShow: content_type === "videos" ?1:2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 420, // mobile phones
+        breakpoint: 520, // mobile phones
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -50,20 +50,36 @@ const SlidingVideos = ({ media_type, id,content_type }) => {
     ],
   };
 
-  content_type === "videos" && videos && videos.results.length <= 1 && (settings.infinite = false);
+  content_type === "videos" &&
+    videos &&
+    videos.results.length <= 1 &&
+    (settings.infinite = false);
 
   return (
     <>
       {/* <h1>nonono</h1> */}
       <Slider {...settings}>
-        {content_type ==="videos"? videos &&
-          videos.results.map((video) => (
-            <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
-          )):videos &&
-          videos.backdrops.map((imgs) => (
-            // <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
-            <h2>{imgs.file_path}</h2>
-          ))}
+        {content_type === "videos"
+          ? videos &&
+            videos.results.map((video) => (
+              <VideoCards
+                type={video.type}
+                title={video.name}
+                key={video.id}
+                videoId={video.key}
+              />
+            ))
+          : videos &&
+            videos.backdrops.map((imgs) => (
+              // <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
+              // <h2>{imgs.file_path}</h2>
+              <img
+                className="backdrop"
+                loading="lazy"
+                src={`https://image.tmdb.org/t/p/w1280${imgs.file_path}`}
+                alt=""
+              />
+            ))}
       </Slider>
     </>
   );
