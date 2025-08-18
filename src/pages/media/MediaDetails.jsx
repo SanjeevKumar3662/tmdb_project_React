@@ -90,7 +90,7 @@ const MovieDetails = ({ media_type }) => {
           id={id}
         />
       </div>
-      <div className="video-container">
+      <div className="backdrops-container">
         <SlidingVideos
           media_type={media_type}
           content_type={"images"}

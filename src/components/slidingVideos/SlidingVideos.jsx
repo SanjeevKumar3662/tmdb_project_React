@@ -1,4 +1,4 @@
-// import "./slidingVideos.css";
+import "./slidingVideos.css";
 import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
@@ -28,7 +28,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
     dots: false,
     infinite: true,
     speed: 200,
-    slidesToShow: content_type === "videos" ?2:3,
+    slidesToShow: content_type === "videos" ? 2 : 3,
     slidesToScroll: 1,
     lazyLoad: true,
     lazyLoadBuffer: 3,
@@ -36,7 +36,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
       {
         breakpoint: 900, // tablets
         settings: {
-          slidesToShow: content_type === "videos" ?1:2,
+          slidesToShow: content_type === "videos" ? 1 : 2,
           slidesToScroll: 1,
         },
       },
@@ -73,12 +73,14 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
             videos.backdrops.map((imgs) => (
               // <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
               // <h2>{imgs.file_path}</h2>
-              <img
-                className="backdrop"
-                loading="lazy"
-                src={`https://image.tmdb.org/t/p/w1280${imgs.file_path}`}
-                alt=""
-              />
+              <div className="backdrop-border">
+                <img
+                  className="backdrops"
+                  loading="lazy"
+                  src={`https://image.tmdb.org/t/p/w1280${imgs.file_path}`}
+                  alt=""
+                />
+              </div>
             ))}
       </Slider>
     </>
