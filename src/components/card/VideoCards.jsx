@@ -6,7 +6,7 @@ const VideoCards = ({ videoId, title,type }) => {
 
   // Thumbnail URL from YouTube
   const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-  console.log(title);
+  // console.log(title);
 
   return (
     <>
