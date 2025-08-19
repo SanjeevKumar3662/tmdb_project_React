@@ -30,17 +30,15 @@ const MovieDetails = ({ media_type }) => {
 
   return (
     <>
-      <div
-        className="details-container"
-        style={{
-          //can't use both shorthand and normal properties, this might cause a bug
-          backgroundImage: `linear-gradient(to top, rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.50)), url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          color: "white",
-        }}
-      >
+      <div className="details-container">
+        <img
+          className="details-bg"
+          src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+
         <section className="poster-details">
           {movie.poster_path ? (
             <img
