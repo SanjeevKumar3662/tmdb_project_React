@@ -77,7 +77,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
                 <img
                   className="backdrops"
                   loading="lazy"
-                  src={`https://image.tmdb.org/t/p/w1280${imgs.file_path}`}
+                  src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
                   alt=""
                 />
               </div>
