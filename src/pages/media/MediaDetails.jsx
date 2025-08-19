@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
-import SlidingCards from "../../components/slidingCards/SlidingCards";
 import SlidingVideos from "../../components/slidingVideos/SlidingVideos";
 
 const MovieDetails = ({ media_type }) => {
@@ -98,6 +97,14 @@ const MovieDetails = ({ media_type }) => {
       <section className="credits-container">
         <MediaCredits media_type={media_type} id={id} />
       </section>
+      <div className="rec-slider">
+        <p className="section-heading">Recommendations</p>
+        <SlidingVideos
+          media_type={media_type}
+          content_type={"recommendations"}
+          id={id}
+        />
+      </div>
     </>
   );
 };
