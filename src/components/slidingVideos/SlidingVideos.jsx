@@ -34,14 +34,14 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
     lazyLoadBuffer: 3,
     responsive: [
       {
-        breakpoint: 1200, 
+        breakpoint: 1200,
         settings: {
           slidesToShow: content_type === "videos" ? 1 : 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 520, 
+        breakpoint: 520,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -57,31 +57,37 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
 
   return (
     <>
-      {/* <h1>nonono</h1> */}
       <Slider {...settings}>
-        {content_type === "videos"
-          ? videos &&
-            videos.results.map((video) => (
-              <VideoCards
-                type={video.type}
-                title={video.name}
-                key={video.id}
-                videoId={video.key}
-              />
-            ))
-          : videos &&
-            videos.backdrops.map((imgs) => (
-              // <VideoCards type={video.type} title={video.name} key={video.id} videoId={video.key} />
-              // <h2>{imgs.file_path}</h2>
-              <div className="backdrop-border">
-                <img
-                  className="backdrops"
-                  loading="lazy"
-                  src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
-                  alt=""
-                />
-              </div>
-            ))}
+        {(() => {
+          switch (content_type) {
+            case "videos":
+              return (
+                videos &&
+                videos.results.map((video) => (
+                  <VideoCards
+                    type={video.type}
+                    title={video.name}
+                    key={video.id}
+                    videoId={video.key}
+                  />
+                ))
+              );
+            case "images":
+              return (
+                videos &&
+                videos.backdrops.map((imgs) => (
+                  <div className="backdrop-border">
+                    <img
+                      className="backdrops"
+                      loading="lazy"
+                      src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
+                      alt=""
+                    />
+                  </div>
+                ))
+              );
+          }
+        })()}
       </Slider>
     </>
   );
