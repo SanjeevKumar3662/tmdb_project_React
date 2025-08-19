@@ -2,6 +2,7 @@ import "./slidingVideos.css";
 import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
+import Card from "../card/Card";
 
 const SlidingVideos = ({ media_type, id, content_type }) => {
   const [videos, setVideos] = useState("");
@@ -24,11 +25,51 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
     fetchVideos();
   }, [media_type, id, content_type]);
 
+  const getSlidesToShow = (type, breakpoint = "default") => {
+    switch (breakpoint) {
+      case "desktop":
+        switch (type) {
+          case "videos":
+            return 2;
+          case "images":
+            return 3;
+          case "recommendations":
+            return 8;
+          default:
+            return 3;
+        }
+      case 1200:
+        switch (type) {
+          case "videos":
+            return 1;
+          case "images":
+            return 2;
+          case "recommendations":
+            return 4;
+          default:
+            return 3;
+        }
+      case 520:
+        switch (type) {
+          case "videos":
+            return 1;
+          case "images":
+            return 1;
+          case "recommendations":
+            return 2;
+          default:
+            return 3;
+        }
+
+      
+    }
+  };
+// content_type === "videos" ? 2 : 3,
   const settings = {
     dots: false,
     infinite: true,
     speed: 200,
-    slidesToShow: content_type === "videos" ? 2 : 3,
+    slidesToShow: getSlidesToShow(content_type,"desktop"),
     slidesToScroll: 1,
     lazyLoad: true,
     lazyLoadBuffer: 3,
@@ -36,14 +77,14 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: content_type === "videos" ? 1 : 2,
+          slidesToShow: getSlidesToShow(content_type,1200),
           slidesToScroll: 1,
         },
       },
       {
         breakpoint: 520,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: getSlidesToShow(content_type,520),
           slidesToScroll: 1,
         },
       },
@@ -84,6 +125,13 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
                       alt=""
                     />
                   </div>
+                ))
+              );
+            case "recommendations":
+              return (
+                videos &&
+                videos.results.map((media) => (
+                  <Card cssClass={"sliding-cards"} {...media} />
                 ))
               );
           }
