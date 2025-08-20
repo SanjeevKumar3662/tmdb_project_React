@@ -23,7 +23,11 @@ const MovieDetails = ({ media_type }) => {
       }
     };
     fetchDetails();
+
+    //this will scroll to top
+    // window.scrollTo({ top: 0 });
   }, [media_type, id]);
+  useEffect(() => window.scrollTo({ top: 0 }), [movie]);
 
   // console.log("example:", videos.results[0]);
 
