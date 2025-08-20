@@ -70,7 +70,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
     infinite: true,
     speed: 200,
     slidesToShow: getSlidesToShow(content_type,"desktop"),
-    slidesToScroll: 1,
+    slidesToScroll: content_type==="recommendations"?4:1,
     lazyLoad: true,
     lazyLoadBuffer: 3,
     responsive: [
@@ -78,7 +78,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
         breakpoint: 1200,
         settings: {
           slidesToShow: getSlidesToShow(content_type,1200),
-          slidesToScroll: 1,
+          slidesToScroll: content_type==="recommendations"?2:1,
         },
       },
       {
