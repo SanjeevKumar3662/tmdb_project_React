@@ -88,6 +88,12 @@ body {
   color: white;
 }
 
+.media-page-heading{
+  font-size: 24px;
+  font-weight: bold;
+  color: rgb(187, 12, 12);
+}
+
 @media (max-width: 880px) {
   .details-container {
     flex-direction: column;
