@@ -1,7 +1,7 @@
 import { Analytics } from "@vercel/analytics/react"; //vercel analytics
 import { SpeedInsights } from "@vercel/speed-insights/react"; //vercel SpeedInsights
 
-import { useLocation, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import "./App.css";
 import Header from "./components/header/Header";
@@ -15,17 +15,17 @@ import { ShutDown } from "./pages/homePage/ShutDown";
 import SearchPage from "./pages/search/SearchPage";
 
 function App() {
-  const location = useLocation();
-  const isDetails =
-    location.pathname.startsWith("/movie_details") ||
-    location.pathname.startsWith("/tv_shows_details");
+  // const location = useLocation();
+  // const isDetails =
+  //   location.pathname.startsWith("/movie_details") ||
+  //   location.pathname.startsWith("/tv_shows_details");
 
   const isSiteDown = false;
 
   return (
     <>
       {/* if details then no header */}
-      {!isDetails && <Header></Header>}
+      {<Header></Header>}
 
       <Routes>
         <Route path="/" element={isSiteDown ? <ShutDown /> : <HomePage />} />
