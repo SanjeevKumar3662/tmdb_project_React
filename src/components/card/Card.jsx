@@ -19,7 +19,7 @@ const Card = ({
     <div className={cssClass}>
       {/* only movies have release date, so if this is true that means it is a movie else a tv show */}
       <Link
-        target="_blank"
+        target=""
         // if it is a crew/cast card then don't link to another pages
         to={
           !character
