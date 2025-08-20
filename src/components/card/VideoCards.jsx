@@ -1,12 +1,19 @@
 import "./videoCards.css";
 import { useState } from "react";
+import { useEffect } from "react";
 
-const VideoCards = ({ videoId, title,type }) => {
+const VideoCards = ({ videoId, title, type, mediaId }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Thumbnail URL from YouTube
   const thumbnail = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
   // console.log(title);
+
+  //video auto play BugFix: if video is playing and without pausing it a
+  // new page is opened, then that page's videos will also auto play
+  useEffect(() => {
+    setIsPlaying(false); // reset video when movie changes
+  }, [mediaId]);
 
   return (
     <>
@@ -23,9 +30,8 @@ const VideoCards = ({ videoId, title,type }) => {
               // decoding="async"
             />
 
-
             {/* Fake Play Button */}
-            <div className="play-button">▶</div>  
+            <div className="play-button">▶</div>
             <p className="video-title">{`${type} : ${title}`}</p>
           </div>
         ) : (
