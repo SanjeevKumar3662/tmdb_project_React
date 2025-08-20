@@ -110,6 +110,7 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
                     title={video.name}
                     key={video.id}
                     videoId={video.key}
+                    mediaId={id}
                   />
                 ))
               );
