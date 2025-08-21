@@ -28,13 +28,13 @@
   color: white;
 }
 
-.btn {
+.header-container .btn {
   border: none;
   border-radius: 10px;
   font-size: 15px;
-  background-color: rgba(125, 12, 125, 0.546);
   padding: 6px 10px;
-  box-shadow: 0 0 5px 1px black;
+  /* background-color: rgba(125, 12, 125, 0.546); */
+  /* box-shadow: 0 0 5px 1px black; */
 }
 
 .github-btn {
