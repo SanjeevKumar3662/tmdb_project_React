@@ -1,10 +1,16 @@
-body{
+body {
   text-align: center;
-  background-color: rgb(122, 24, 24);
+
+  background: #190a05;
+  background: radial-gradient(
+    circle,
+    rgba(25, 10, 5, 0.93) 0%,
+    rgba(110, 14, 14, 1) 61%,
+    rgba(25, 10, 5, 0.89) 100%
+  );
 }
 
-.main-container{
-  /* border: solid red; */
+.main-container {
   min-height: 100vh;
   min-width: 100vw;
 }
