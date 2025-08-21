@@ -61,6 +61,7 @@ body {
 .more-info {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 15px;
   color: whitesmoke;
   background-color: rgba(0, 0, 0, 0.507);
