@@ -134,7 +134,8 @@ const SearchPage = () => {
       <div className="flex-search-container">
         {searchRes &&
           searchRes.results.map((ele) => {
-            return <Card page={page} key={ele.id} cssClass={"card"} {...ele} />;
+            return <Card page={page} key={ele.id} cssClass={"card"} 
+            character={query_type === "person"?true:false} {...ele} />;
           })}
       </div>
       <PageNav
