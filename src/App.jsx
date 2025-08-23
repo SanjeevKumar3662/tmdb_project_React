@@ -10,6 +10,7 @@ import MediaLists from "./pages/media/MediaLists";
 import MovieDetails from "./pages/media/MediaDetails";
 // import TvShowDetails from "./pages/tvShows/TvShowDetails";
 import HomePage from "./pages/homePage/HomePage";
+import PersonPage from "./pages/personPage/PersonPage";
 
 import { ShutDown } from "./pages/homePage/ShutDown";
 import SearchPage from "./pages/search/SearchPage";
@@ -119,6 +120,11 @@ function App() {
         <Route
           path="/tv_shows_details/:page/:id"
           element={<MovieDetails media_type={"tv"} />}
+        />
+
+        <Route
+          path="/person_details/:page?/:id"
+          element={<PersonPage/>}
         />
         <Route path="/search/:query" element={<SearchPage />} />
       </Routes>
