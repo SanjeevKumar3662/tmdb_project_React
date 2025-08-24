@@ -28,47 +28,49 @@ const PersonPage = () => {
 
   return (
     <>
-      <div className="details-container">
-        {/* <h1>this is a page for {person ? person.profile_path : "......."}</h1> */}
-        {/* <h1>{id}</h1> */}
-        <img
-          className="details-bg"
-          // src={`https://image.tmdb.org/t/p/w1280${person.backdrop_path}`}
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-        />
+      <div className="person-page">
+        <div className="details-container">
+          {/* <h1>this is a page for {person ? person.profile_path : "......."}</h1> */}
+          {/* <h1>{id}</h1> */}
+          <img
+            className="details-bg"
+            // src={`https://image.tmdb.org/t/p/w1280${person.backdrop_path}`}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+          />
 
-        <section className="poster-details">
-          {person ? (
-            <img
-              className="poster"
-              src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
-              // srcSet={`https://image.tmdb.org/t/p/w342${person.profile_path} 1x,
-              // https://image.tmdb.org/t/p/w500${person.profile_path} 2x`}
-              alt="poster"
-              loading="eager"
-              decoding="async"
-            />
-          ) : (
-            <img src="/noImage.png" loading="lazy" decoding="async" />
-          )}
-        </section>
-        <section className="more-info">
-          <span className="media-page-heading">{person && person.name}</span>
-          <span className="">
-            Know for : {person && person.known_for_department}
-          </span>
-          <span className="">Birth Day : {person && person.birthday}</span>
-          {person && person.deathday && (
-            <span className="">Date Of Death : {person.deathday}</span>
-          )}
-          <span className="">Gender : {person && person.gender}</span>
-          <span className="">
-            Place of Birth : {person && person.place_of_birth}
-          </span>
-          <span className="">{person && person.biography}</span>
-        </section>
+          <section className="poster-details">
+            {person ? (
+              <img
+                className="poster"
+                src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
+                // srcSet={`https://image.tmdb.org/t/p/w342${person.profile_path} 1x,
+                // https://image.tmdb.org/t/p/w500${person.profile_path} 2x`}
+                alt="poster"
+                loading="eager"
+                decoding="async"
+              />
+            ) : (
+              <img src="/noImage.png" loading="lazy" decoding="async" />
+            )}
+          </section>
+          <section className="more-info">
+            <span className="media-page-heading">{person && person.name}</span>
+            <span className="">
+              Know for : {person && person.known_for_department}
+            </span>
+            <span className="">Birth Day : {person && person.birthday}</span>
+            {person && person.deathday && (
+              <span className="">Date Of Death : {person.deathday}</span>
+            )}
+            <span className="">Gender : {person && person.gender}</span>
+            <span className="">
+              Place of Birth : {person && person.place_of_birth}
+            </span>
+            <span className="">{person && person.biography}</span>
+          </section>
+        </div>
       </div>
     </>
   );
