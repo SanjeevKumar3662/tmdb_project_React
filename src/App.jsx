@@ -2,18 +2,17 @@ import { Analytics } from "@vercel/analytics/react"; //vercel analytics
 import { SpeedInsights } from "@vercel/speed-insights/react"; //vercel SpeedInsights
 
 import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
 import "./App.css";
-import Header from "./components/header/Header";
-import MediaLists from "./pages/media/MediaLists";
-// import PopularTvShows from "./pages/tvShows/PopularTvShows";
-import MovieDetails from "./pages/media/MediaDetails";
-// import TvShowDetails from "./pages/tvShows/TvShowDetails";
-import HomePage from "./pages/homePage/HomePage";
-import PersonPage from "./pages/personPage/PersonPage";
 
-import { ShutDown } from "./pages/homePage/ShutDown";
-import SearchPage from "./pages/search/SearchPage";
+const Header = lazy(() => import("./components/header/Header"));
+const MediaLists = lazy(() => import("./pages/media/MediaLists"));
+const MovieDetails = lazy(() => import("./pages/media/MediaDetails"));
+const HomePage = lazy(() => import("./pages/homePage/HomePage"));
+const PersonPage = lazy(() => import("./pages/personPage/PersonPage"));
+const ShutDown = lazy(() => import("./pages/homePage/ShutDown"));
+const SearchPage = lazy(() => import("./pages/search/SearchPage"));
 
 function App() {
   // const location = useLocation();
@@ -122,10 +121,7 @@ function App() {
           element={<MovieDetails media_type={"tv"} />}
         />
 
-        <Route
-          path="/person_details/:page?/:id"
-          element={<PersonPage/>}
-        />
+        <Route path="/person_details/:page?/:id" element={<PersonPage />} />
         <Route path="/search/:query" element={<SearchPage />} />
       </Routes>
 
