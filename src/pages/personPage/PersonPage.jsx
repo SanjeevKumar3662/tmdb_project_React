@@ -18,7 +18,7 @@ const PersonPage = () => {
         let data = await response.json();
 
         setPerson(data);
-        console.log(data);
+        // console.log(data);
       } catch (e) {
         console.log("error while fetching movie details", e);
       }
