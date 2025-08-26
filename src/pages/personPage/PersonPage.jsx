@@ -1,5 +1,5 @@
 import "./personPage.css";
-// import "../media/mediaDetails.css"
+import SlidingCards from "../../components/slidingCards/SlidingCards";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -8,6 +8,7 @@ const PersonPage = () => {
   // https://first-backend-eight.vercel.app/media_credits/person/974169/
 
   const [person, setPerson] = useState(null);
+  const [combinedCredits, setCombinedCredits] = useState(null);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -24,6 +25,23 @@ const PersonPage = () => {
       }
     };
     fetchDetails();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchCombinedCredits = async () => {
+      try {
+        const response = await fetch(
+          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"combined_credits"}`
+        );
+        const data = await response.json();
+        console.log(data.cast[0]);
+
+        setCombinedCredits(data);
+      } catch (e) {
+        console.log("error while fetching combined credits", e);
+      }
+    };
+    fetchCombinedCredits();
   }, [id]);
 
   return (
@@ -71,6 +89,15 @@ const PersonPage = () => {
             <span className="">{person && person.biography}</span>
           </section>
         </div>
+
+        <div>
+          <p className="section-heading">Combined Credits</p>
+          
+        </div>
+        <div className="credits-slider">
+        <h1>Credits</h1>
+        {combinedCredits && <SlidingCards media_type={"credits"} credits={combinedCredits.cast} />}
+      </div>
       </div>
     </>
   );
