@@ -1,10 +1,10 @@
-import "./slidingVideos.css";
+import "./mediaContentSlider.css";
 import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
 import Card from "../card/Card";
 
-const SlidingVideos = ({ media_type, id, content_type }) => {
+const MediaContentSlider = ({ media_type, id, content_type }) => {
   const [videos, setVideos] = useState("");
   // console.log(media_type,id);
 
@@ -60,31 +60,29 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
           default:
             return 3;
         }
-
-      
     }
   };
-// content_type === "videos" ? 2 : 3,
+  // content_type === "videos" ? 2 : 3,
   const settings = {
     dots: false,
     infinite: true,
     speed: 200,
-    slidesToShow: getSlidesToShow(content_type,"desktop"),
-    slidesToScroll: content_type==="recommendations"?4:1,
+    slidesToShow: getSlidesToShow(content_type, "desktop"),
+    slidesToScroll: content_type === "recommendations" ? 4 : 1,
     lazyLoad: true,
     lazyLoadBuffer: 3,
     responsive: [
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: getSlidesToShow(content_type,1200),
-          slidesToScroll: content_type==="recommendations"?2:1,
+          slidesToShow: getSlidesToShow(content_type, 1200),
+          slidesToScroll: content_type === "recommendations" ? 2 : 1,
         },
       },
       {
         breakpoint: 520,
         settings: {
-          slidesToShow: getSlidesToShow(content_type,520),
+          slidesToShow: getSlidesToShow(content_type, 520),
           slidesToScroll: 1,
         },
       },
@@ -142,4 +140,4 @@ const SlidingVideos = ({ media_type, id, content_type }) => {
   );
 };
 
-export default SlidingVideos;
+export default MediaContentSlider;

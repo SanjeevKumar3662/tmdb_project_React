@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
-import SlidingVideos from "../../components/slidingVideos/SlidingVideos";
+import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
 
 const MovieDetails = ({ media_type }) => {
   const { id } = useParams();
@@ -58,7 +58,9 @@ const MovieDetails = ({ media_type }) => {
           )}
         </section>
         <section className="more-info">
-          <span className="media-page-heading">{movie.title ? movie.title : movie.name}</span>
+          <span className="media-page-heading">
+            {movie.title ? movie.title : movie.name}
+          </span>
           {(movie.original_title || movie.original_name) && (
             <div>
               Original Title : {movie.original_title || movie.original_name}
@@ -85,14 +87,14 @@ const MovieDetails = ({ media_type }) => {
         </section>
       </div>
       <div className="video-container">
-        <SlidingVideos
+        <MediaContentSlider
           media_type={media_type}
           content_type={"videos"}
           id={id}
         />
       </div>
       <div className="backdrops-container">
-        <SlidingVideos
+        <MediaContentSlider
           media_type={media_type}
           content_type={"images"}
           id={id}
@@ -103,7 +105,7 @@ const MovieDetails = ({ media_type }) => {
       </section>
       <div className="rec-slider">
         <p className="section-heading">Recommendations</p>
-        <SlidingVideos
+        <MediaContentSlider
           media_type={media_type}
           content_type={"recommendations"}
           id={id}
