@@ -90,14 +90,17 @@ const PersonPage = () => {
           </section>
         </div>
 
-        <div>
-          <p className="section-heading">Combined Credits</p>
-          
-        </div>
         <div className="credits-slider">
-        <h1>Credits</h1>
-        {combinedCredits && <SlidingCards media_type={"credits"} credits={combinedCredits.cast} />}
-      </div>
+          <p className="section-heading">Combined Credits</p>
+
+          {combinedCredits && (
+            <SlidingCards
+              media_type={"movie"}
+              isFetch={false}
+              otherData={combinedCredits.cast}
+            />
+          )}
+        </div>
       </div>
     </>
   );
