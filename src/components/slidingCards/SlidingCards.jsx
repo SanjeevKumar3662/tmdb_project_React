@@ -10,11 +10,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 //slider end
 
-const SlidingCards = ({ media_type, list_type, credits, videos }) => {
+const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFetch=true}) => {
   const [movies, setMovies] = useState(null);
   // const [infiniteScroll, setInfiniteScroll] = useState(true);
   // infiniteScroll && credits.length <= 8 && setInfiniteScroll(false);
   const page = 1;
+
+  otherData && console.log(otherData[0]);
 
   useEffect(() => {
     try {
@@ -28,7 +30,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos }) => {
         setMovies(data.results);
       };
 
-      !credits && fetchMovies(); // won't call this, if we want cast info
+      !credits && isFetch && fetchMovies(); // won't call this, if we want cast info
     } catch (error) {
       console.log(error);
     }
@@ -90,6 +92,12 @@ const SlidingCards = ({ media_type, list_type, credits, videos }) => {
         {movies &&
           media_type !== "credits" &&
           movies.map((movie) => (
+            <div key={movie.id}>
+              <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
+            </div>
+          ))}
+        {otherData &&
+          otherData.map((movie) => (
             <div key={movie.id}>
               <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
             </div>
