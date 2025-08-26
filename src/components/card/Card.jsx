@@ -11,7 +11,7 @@ const Card = ({
   release_date,
   first_air_date,
   id,
-  page,
+  page=1,
   cssClass,
 }) => {
   // console.log(profile_path);
