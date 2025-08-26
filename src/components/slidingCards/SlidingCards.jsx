@@ -34,7 +34,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
     } catch (error) {
       console.log(error);
     }
-  }, [media_type, list_type, page, credits]);
+  }, [media_type, list_type, page, credits,isFetch]);
 
   // console.log(movies[0]);
 
