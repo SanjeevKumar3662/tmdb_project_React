@@ -117,7 +117,7 @@ function App() {
           element={<MovieDetails media_type={"movie"} />}
         />
         <Route
-          path="/tv_shows_details/:page/:id"
+          path="/tv_details/:page/:id"
           element={<MovieDetails media_type={"tv"} />}
         />
 
