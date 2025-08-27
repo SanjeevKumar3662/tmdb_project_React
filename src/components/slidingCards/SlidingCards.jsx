@@ -34,7 +34,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
     } catch (error) {
       console.log(error);
     }
-  }, [media_type, list_type, page, credits,isFetch]);
+  }, [media_type, list_type, page, credits]);
 
   // console.log(movies[0]);
 
@@ -86,6 +86,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
   };
 
   // credits && console.log("this", credits.length);
+  // otherData && console.log("this", otherData[0]);
   return (
     <>
       <Slider {...settings}>
@@ -93,13 +94,16 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
           media_type !== "credits" &&
           movies.map((movie) => (
             <div key={movie.id}>
-              <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
+              <Card page={page} cssClass={"sliding-cards"} {...movie} linkTo={media_type + "_details"}></Card>
             </div>
           ))}
-        {otherData &&
-          otherData.map((movie) => (
-            <div key={movie.id}>
-              <Card page={page} cssClass={"sliding-cards"} {...movie}></Card>
+
+        {
+          // this is for combined credits
+        otherData &&
+          otherData.map((ele) => (
+            <div key={ele.id}>
+              <Card page={page} cssClass={"sliding-cards"} {...ele} linkTo={"movie_details"}></Card>
             </div>
           ))}
 
@@ -107,7 +111,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
           credits &&
           credits.map((person) => (
             <div key={person.id}>
-              <Card cssClass={"sliding-cards"} {...person}></Card>
+              <Card cssClass={"sliding-cards"} {...person} linkTo={"person_details"}></Card>
             </div>
           ))}
       </Slider>
