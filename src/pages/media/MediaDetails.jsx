@@ -1,35 +1,37 @@
 import "./mediaDetails.css";
-import { useEffect } from "react";
-import { useState } from "react";
+// import { useEffect } from "react";
+// import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
+import { useQuery } from "@tanstack/react-query";
 
 const MovieDetails = ({ media_type }) => {
   const { id } = useParams();
-  const [movie, setMovieDetails] = useState("");
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
-        );
-        let data = await response.json();
+  const {
+    data: movie,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: [id],
+    queryFn: fetchDetails,
+  });
 
-        setMovieDetails(data);
-      } catch (e) {
-        console.log("error while fetching movie details", e);
-      }
-    };
-    fetchDetails();
+  async function fetchDetails() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
+    );
+    return await response.json();
+  }
 
-    //this will scroll to top
-    // window.scrollTo({ top: 0 });
-  }, [media_type, id]);
-  useEffect(() => window.scrollTo({ top: 0 }), [movie]);
+  if (isLoading) {
+    return <div>Loading</div>;
+  }
 
-  // console.log("example:", videos.results[0]);
+  if (isError) {
+    return <div>Error in media details page</div>;
+  }
 
   return (
     <>
