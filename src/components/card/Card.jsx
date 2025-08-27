@@ -11,24 +11,15 @@ const Card = ({
   release_date,
   first_air_date,
   id,
-  page=1,
+  page = 1,
   cssClass,
+  linkTo,
 }) => {
   // console.log(profile_path);
   return (
     <div className={cssClass}>
       {/* only movies have release date, so if this is true that means it is a movie else a tv show */}
-      <Link
-        target=""
-        // if it is a crew/cast card then don't link to another pages
-        to={`/${
-          character
-            ? "person_details"
-            : release_date
-            ? "movie_details"
-            : "tv_shows_details"
-        }/${page}/${id}`}
-      >
+      <Link target="" to={`/${linkTo}/${page}/${id}`}>
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
         {poster_path || profile_path || logo_path ? (
