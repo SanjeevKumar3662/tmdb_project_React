@@ -130,7 +130,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               return (
                 videos &&
                 videos.results.map((media) => (
-                  <Card cssClass={"sliding-cards"} {...media} />
+                  <Card cssClass={"sliding-cards"} {...media} linkTo={media_type + "_details"} />
                 ))
               );
           }
