@@ -36,7 +36,7 @@ const SearchPage = () => {
           `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
         );
         const data = await res.json();
-        // console.log(data.results[0]);
+        console.log(data.results[0]);
         setSearchRes(data);
       };
       fetchSearchResults();
@@ -134,8 +134,7 @@ const SearchPage = () => {
       <div className="flex-search-container">
         {searchRes &&
           searchRes.results.map((ele) => {
-            return <Card page={page} key={ele.id} cssClass={"card"} 
-            character={query_type === "person"?true:false} {...ele} />;
+            return <Card page={page} key={ele.id} linkTo={(query_type==="multi"?ele.media_type:query_type)+"_details"} cssClass={"card"} {...ele} />;
           })}
       </div>
       <PageNav
