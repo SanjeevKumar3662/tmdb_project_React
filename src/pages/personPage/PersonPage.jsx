@@ -1,4 +1,8 @@
-import "./personPage.css";
+// import "./personPage.css";
+//all the styles for this page is in this,because of react.lazy if page is refreshed,
+//  this page losses all required styles 
+import "../media/mediaDetails.css";
+
 import SlidingCards from "../../components/slidingCards/SlidingCards";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
