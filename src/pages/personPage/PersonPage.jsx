@@ -8,7 +8,8 @@ const PersonPage = () => {
   // https://first-backend-eight.vercel.app/media_credits/person/974169/
 
   const [person, setPerson] = useState(null);
-  const [combinedCredits, setCombinedCredits] = useState(null);
+  const [movieCredits, setMovieCredits] = useState(null);
+  const [tvCredits, setTvCredits] = useState(null);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -28,20 +29,37 @@ const PersonPage = () => {
   }, [id]);
 
   useEffect(() => {
-    const fetchCombinedCredits = async () => {
+    const fetchmovieCredits = async () => {
       try {
         const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"combined_credits"}`
+          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
         );
         const data = await response.json();
         console.log(data.cast[0]);
 
-        setCombinedCredits(data);
+        setMovieCredits(data);
       } catch (e) {
-        console.log("error while fetching combined credits", e);
+        console.log("error while fetching movie credits", e);
       }
     };
-    fetchCombinedCredits();
+    fetchmovieCredits();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchTvCredits = async () => {
+      try {
+        const response = await fetch(
+          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
+        );
+        const data = await response.json();
+        console.log("tvCredits",data.cast[0]);
+
+        setTvCredits(data);
+      } catch (e) {
+        console.log("error while fetching movie credits", e);
+      }
+    };
+    fetchTvCredits();
   }, [id]);
 
   return (
@@ -91,13 +109,23 @@ const PersonPage = () => {
         </div>
 
         <div className="credits-slider">
-          <p className="section-heading">Combined Credits</p>
+          <p className="section-heading">movie Credits</p>
 
-          {combinedCredits && (
+          {movieCredits && (
             <SlidingCards
               media_type={"movie"}
               isFetch={false}
-              otherData={combinedCredits.cast}
+              otherData={movieCredits.cast}
+            />
+          )}
+
+          <p className="section-heading">Tv Credits</p>
+
+          {tvCredits && (
+            <SlidingCards
+              media_type={"tv"}
+              isFetch={false}
+              otherData={tvCredits.cast}
             />
           )}
         </div>
