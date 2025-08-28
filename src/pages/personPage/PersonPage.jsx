@@ -45,6 +45,8 @@ const PersonPage = () => {
     fetchmovieCredits();
   }, [id]);
 
+  person && window.scrollTo(0,0)//scrolls to top
+
   useEffect(() => {
     const fetchTvCredits = async () => {
       try {
