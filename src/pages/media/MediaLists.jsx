@@ -30,7 +30,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
           `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
         );
         const data = await res.json();
-        console.log("pop-movie", data.results[0]);
+        // console.log("pop-movie", data.results[0]);
 
         setMovies(data.results);
       };
@@ -60,6 +60,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
               key={movie.id}
               page={page}
               cssClass={"card"}
+              linkTo={media_type+"_details"}
               {...movie}
             ></Card>
           ))
