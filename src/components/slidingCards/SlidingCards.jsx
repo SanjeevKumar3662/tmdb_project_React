@@ -34,7 +34,7 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
     } catch (error) {
       console.log(error);
     }
-  }, [media_type, list_type, page, credits]);
+  }, [media_type, list_type, page, credits, isFetch]);
 
   // console.log(movies[0]);
 
@@ -99,11 +99,11 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
           ))}
 
         {
-          // this is for combined credits
+          // this is for person page credits for can be tv or a movie
         otherData &&
           otherData.map((ele) => (
             <div key={ele.id}>
-              <Card page={page} cssClass={"sliding-cards"} {...ele} linkTo={"movie_details"}></Card>
+              <Card page={page} cssClass={"sliding-cards"} {...ele} linkTo={media_type+"_details"}></Card>
             </div>
           ))}
 
