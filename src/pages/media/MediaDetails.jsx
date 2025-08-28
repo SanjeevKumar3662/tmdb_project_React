@@ -13,6 +13,7 @@ const MovieDetails = ({ media_type }) => {
     data: movie,
     isLoading,
     isError,
+    isSuccess,
   } = useQuery({
     queryKey: [id],
     queryFn: fetchDetails,
@@ -26,15 +27,19 @@ const MovieDetails = ({ media_type }) => {
   }
 
   if (isLoading) {
-    return <div>Loading</div>;
+    return (
+      <div style={{ height: "100vh", backgroundColor: "white" ,fontSize:"2rem"}}>Loading</div>
+    );
   }
 
   if (isError) {
     return <div>Error in media details page</div>;
   }
 
+  isSuccess && window.scrollTo(0,0)//scrolls to top
+
   return (
-    <>
+   isSuccess && <>
       <div className="details-container">
         <img
           className="details-bg"
