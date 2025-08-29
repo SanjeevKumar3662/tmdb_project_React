@@ -11,7 +11,6 @@ const Card = ({
   release_date,
   first_air_date,
   id,
-  page = 1,
   cssClass,
   linkTo,
 }) => {
@@ -19,7 +18,7 @@ const Card = ({
   return (
     <div className={cssClass}>
       {/* only movies have release date, so if this is true that means it is a movie else a tv show */}
-      <Link target="" to={`/${linkTo}/${page}/${id}`}>
+      <Link target="" to={`/${linkTo}/${id}`}>
         {/* -remember _blank will open a new window every time 
             -using w500 for poster lower resolution for low latency */}
         {poster_path || profile_path || logo_path ? (
