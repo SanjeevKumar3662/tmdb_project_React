@@ -7,21 +7,35 @@ import { useSearchParams } from "react-router-dom";
 const MediaLists = ({ media_type, list_type, headerText }) => {
   const [movies, setMovies] = useState(null);
 
-  //for getting page from url
-  const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
-  //this returns a string so parse it
+  
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  // get values from URL
   const pageFromURL = parseInt(searchParams.get("page") || 1);
+  const listTypeFromURL = searchParams.get("list_type") || list_type;
+
+  // local state
   const [page, setPage] = useState(pageFromURL);
+  const [currentListType, setCurrentListType] = useState(listTypeFromURL);
 
+  // keep URL in sync (MERGE params instead of overwriting)
   useEffect(() => {
-    setSearchParams({ page }); //updates the page sting in url
-  }, [page, setSearchParams]);
-  //end
+    setSearchParams(prev => {
+      const newParams = new URLSearchParams(prev);
+      newParams.set("page", page);
+      newParams.set("list_type", currentListType);
+      return newParams;
+    });
+  }, [page, currentListType, setSearchParams]);
 
-  //this will reset the page to 1, when we choose a dif list
+  // reset page only when list_type changes
   useEffect(() => {
-    setPage(1);
+    if (list_type !== currentListType) {
+      setCurrentListType(list_type);
+      setPage(1);
+    }
   }, [list_type]);
+
 
   useEffect(() => {
     try {
@@ -61,6 +75,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
               page={page}
               cssClass={"card"}
               linkTo={media_type+"_details"}
+              list_type={list_type}
               {...movie}
             ></Card>
           ))
