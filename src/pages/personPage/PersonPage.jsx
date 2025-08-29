@@ -58,7 +58,7 @@ const PersonPage = () => {
           `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
         );
         const data = await response.json();
-        console.log("tvCredits",data.cast[0]);
+        // console.log("tvCredits",data.cast[0]);
 
         setTvCredits(data);
       } catch (e) {
@@ -106,7 +106,7 @@ const PersonPage = () => {
             {person && person.deathday && (
               <span className="">Date Of Death : {person.deathday}</span>
             )}
-            <span className="">Gender : {person && person.gender}</span>
+            <span className="">Gender : {person && person.gender === 1?"Female":"Male"}</span>
             <span className="">
               Place of Birth : {person && person.place_of_birth}
             </span>
