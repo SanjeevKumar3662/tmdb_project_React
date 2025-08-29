@@ -1,40 +1,38 @@
 import "./mediaLists.css";
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const MediaLists = ({ media_type, list_type, headerText }) => {
-  const [movies, setMovies] = useState(null);
-
-  
+   const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // get values from URL
+  // get initial page from URL
   const pageFromURL = parseInt(searchParams.get("page") || 1);
-  const listTypeFromURL = searchParams.get("list_type") || list_type;
-
-  // local state
   const [page, setPage] = useState(pageFromURL);
-  const [currentListType, setCurrentListType] = useState(listTypeFromURL);
 
-  // keep URL in sync (MERGE params instead of overwriting)
+  // --- keep URL in sync (merge instead of overwrite) ---
   useEffect(() => {
     setSearchParams(prev => {
       const newParams = new URLSearchParams(prev);
       newParams.set("page", page);
-      newParams.set("list_type", currentListType);
+      newParams.set("list_type", list_type); // always from props
       return newParams;
     });
-  }, [page, currentListType, setSearchParams]);
+  }, [page, list_type, setSearchParams]);
 
-  // reset page only when list_type changes
+  // --- reset page when media_type OR list_type changes ---
+  const prevKeyRef = useRef();
+
   useEffect(() => {
-    if (list_type !== currentListType) {
-      setCurrentListType(list_type);
-      setPage(1);
+    const newKey = `${media_type}-${list_type}`;
+    if (prevKeyRef.current && prevKeyRef.current !== newKey) {
+      setPage(1); // reset page
     }
-  }, [list_type]);
+    prevKeyRef.current = newKey;
+  }, [media_type, list_type]);
+
 
 
   useEffect(() => {
