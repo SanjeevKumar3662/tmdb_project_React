@@ -113,11 +113,11 @@ function App() {
         />
 
         <Route
-          path="/movie_details/:page/:id"
+          path="/movie_details/:id"
           element={<MovieDetails media_type={"movie"} />}
         />
         <Route
-          path="/tv_details/:page/:id"
+          path="/tv_details/:id"
           element={<MovieDetails media_type={"tv"} />}
         />
 
