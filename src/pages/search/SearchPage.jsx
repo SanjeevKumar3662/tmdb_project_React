@@ -1,11 +1,15 @@
+import "./searchPage.css";
 import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
-import "./searchPage.css";
 import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
-import Slider from "react-slick";
 import SearchInput from "../../components/searchInput/SearchInput";
 import { useQuery } from "@tanstack/react-query";
+
+//imports for react-slider
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const SearchPage = () => {
   // const [searchRes, setSearchRes] = useState(null);
