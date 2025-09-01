@@ -15,7 +15,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
 
   // --- keep URL in sync (merge instead of overwrite) ---
   useEffect(() => {
-    setSearchParams(prev => {
+    setSearchParams((prev) => {
       const newParams = new URLSearchParams(prev);
       newParams.set("page", page);
       newParams.set("list_type", list_type); // always from props
@@ -34,26 +34,12 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
     prevKeyRef.current = newKey;
   }, [media_type, list_type]);
 
-
-
-  // useEffect(() => {
-  //   try {
-  //     fetchMovies();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-
-  //   //this will scroll to top
-  //   window.scrollTo({ top: 0 });
-  // }, [page, media_type, list_type]);
-
   const {
-    data:movies,
+    data: movies,
     isPending,
     isError,
-    isSuccess,
   } = useQuery({
-    queryKey: [media_type,list_type,page],
+    queryKey: [media_type, list_type, page],
     queryFn: fetchMovies,
   });
 
@@ -62,10 +48,27 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
       `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
     );
     const data = await response.json();
-    return await data.results
+    return await data.results;
   }
-  
-  
+
+  if (isPending) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div>Error in media details page</div>;
+  }
 
   // console.log(movies[0]);
   return (
@@ -84,7 +87,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
               key={movie.id}
               page={page}
               cssClass={"card"}
-              linkTo={media_type+"_details"}
+              linkTo={media_type + "_details"}
               list_type={list_type}
               {...movie}
             ></Card>
