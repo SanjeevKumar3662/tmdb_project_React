@@ -89,10 +89,17 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     ],
   };
 
-  content_type === "videos" &&
-    videos &&
-    videos.results.length <= 1 &&
-    (settings.infinite = false);
+  videos &&
+    (() => {
+      switch (content_type) {
+        case "images":
+          videos.backdrops.length <= 1 && (settings.infinite = false);
+          break;
+        case "videos":
+          videos.results.length <= 1 && (settings.infinite = false);
+          break;
+      }
+    })();
 
   return (
     <>
@@ -130,7 +137,11 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               return (
                 videos &&
                 videos.results.map((media) => (
-                  <Card cssClass={"sliding-cards"} {...media} linkTo={media_type + "_details"} />
+                  <Card
+                    cssClass={"sliding-cards"}
+                    {...media}
+                    linkTo={media_type + "_details"}
+                  />
                 ))
               );
           }
