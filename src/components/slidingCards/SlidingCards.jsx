@@ -69,14 +69,14 @@ const SlidingCards = ({ media_type, list_type, credits, videos ,otherData, isFet
         },
       },
       {
-        breakpoint: 550, // tablets
+        breakpoint: 620, // tablets
         settings: {
           slidesToShow: 3,
           slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 420, // mobile phones
+        breakpoint: 520, // mobile phones
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
