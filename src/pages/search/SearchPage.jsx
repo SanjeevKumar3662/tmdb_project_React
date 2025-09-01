@@ -5,9 +5,10 @@ import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
 import Slider from "react-slick";
 import SearchInput from "../../components/searchInput/SearchInput";
+import { useQuery } from "@tanstack/react-query";
 
 const SearchPage = () => {
-  const [searchRes, setSearchRes] = useState(null);
+  // const [searchRes, setSearchRes] = useState(null);
   //for getting page from url
   const [searchParams, setSearchParams] = useSearchParams(); //used to read query params from url
   const queryTypeFromURL = searchParams.get("query_type") || "movie";
@@ -29,21 +30,23 @@ const SearchPage = () => {
   }, [query_type]);
 
   const { query } = useParams();
-  useEffect(() => {
-    try {
-      const fetchSearchResults = async () => {
-        const res = await fetch(
-          `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
-        );
-        const data = await res.json();
-        console.log(data.results[0]);
-        setSearchRes(data);
-      };
-      fetchSearchResults();
-    } catch (e) {
-      console.error(e);
-    }
-  }, [query_type, query, page]);
+
+  const {
+    data: searchRes,
+    isPending,
+    isError,
+  } = useQuery({
+    queryKey: [query_type, query, page],
+    queryFn: fetchMovies,
+  });
+
+  async function fetchMovies() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
+    );
+    const data = await response.json();
+    return await data;
+  }
 
   const settings = {
     dots: false,
@@ -134,7 +137,18 @@ const SearchPage = () => {
       <div className="flex-search-container">
         {searchRes &&
           searchRes.results.map((ele) => {
-            return <Card page={page} key={ele.id} linkTo={(query_type==="multi"?ele.media_type:query_type)+"_details"} cssClass={"card"} {...ele} />;
+            return (
+              <Card
+                page={page}
+                key={ele.id}
+                linkTo={
+                  (query_type === "multi" ? ele.media_type : query_type) +
+                  "_details"
+                }
+                cssClass={"card"}
+                {...ele}
+              />
+            );
           })}
       </div>
       <PageNav
