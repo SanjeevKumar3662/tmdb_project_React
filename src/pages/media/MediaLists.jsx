@@ -3,9 +3,10 @@ import Card from "../../components/card/Card";
 import PageNav from "../../components/pageNav/PageNav";
 import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const MediaLists = ({ media_type, list_type, headerText }) => {
-   const [movies, setMovies] = useState(null);
+  //  const [movies, setMovies] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   // get initial page from URL
@@ -35,25 +36,36 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
 
 
 
-  useEffect(() => {
-    try {
-      const fetchMovies = async () => {
-        const res = await fetch(
-          `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
-        );
-        const data = await res.json();
-        // console.log("pop-movie", data.results[0]);
+  // useEffect(() => {
+  //   try {
+  //     fetchMovies();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
 
-        setMovies(data.results);
-      };
-      fetchMovies();
-    } catch (error) {
-      console.log(error);
-    }
+  //   //this will scroll to top
+  //   window.scrollTo({ top: 0 });
+  // }, [page, media_type, list_type]);
 
-    //this will scroll to top
-    window.scrollTo({ top: 0 });
-  }, [page, media_type, list_type]);
+  const {
+    data:movies,
+    isPending,
+    isError,
+    isSuccess,
+  } = useQuery({
+    queryKey: [media_type,list_type,page],
+    queryFn: fetchMovies,
+  });
+
+  async function fetchMovies() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
+    );
+    const data = await response.json();
+    return await data.results
+  }
+  
+  
 
   // console.log(movies[0]);
   return (
