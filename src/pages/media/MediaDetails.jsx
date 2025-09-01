@@ -11,7 +11,7 @@ const MovieDetails = ({ media_type }) => {
 
   const {
     data: movie,
-    isLoading,
+    isPending,
     isError,
     isSuccess,
   } = useQuery({
@@ -26,7 +26,7 @@ const MovieDetails = ({ media_type }) => {
     return await response.json();
   }
 
-  if (isLoading) {
+  if (isPending) {
     return (
       <div
         style={{
