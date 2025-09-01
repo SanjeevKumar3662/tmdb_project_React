@@ -68,7 +68,7 @@ const MovieDetails = ({ media_type }) => {
             https://image.tmdb.org/t/p/w500${movie.poster_path} 2x`}
                 alt="poster"
                 loading="eager"
-                decoding="async"
+                // decoding="async"
               />
             ) : (
               <img src="/noImage.png" loading="lazy" decoding="async" />
