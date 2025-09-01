@@ -48,6 +48,25 @@ const SearchPage = () => {
     return await data;
   }
 
+  if (isPending) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div>Error in media details page</div>;
+  }
+
   const settings = {
     dots: false,
     infinite: false,
