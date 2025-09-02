@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import "./mediaCredits.css";
 import Card from "../card/Card";
+import "../slidingCards/slidingCards.css";// because of lazy loading, styles for slider was imported on refresh
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
