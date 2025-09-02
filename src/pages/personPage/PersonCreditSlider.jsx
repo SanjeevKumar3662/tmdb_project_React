@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 export const PersonCreditSlider = ({ personCredits, link }) => {
   const settings = {
     dots: false,
-    infinite: true,
+    infinite: personCredits.cast.length <= 8 ? false : true,
     speed: 200,
     slidesToShow: 8,
     slidesToScroll: 5,
