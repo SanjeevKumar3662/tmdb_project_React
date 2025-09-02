@@ -15,14 +15,16 @@ const SlidingCards = ({
   credits,
   videos,
   otherData,
-  isFetch = true,
 }) => {
-  // const [movies, setMovies] = useState(null);
   const page = 1;
 
-  otherData && console.log(otherData[0]);
+  // otherData && console.log(otherData[0]);
 
-  const { data: movies } = useQuery({
+  const {
+    data: movies,
+    isError,
+    isPending,
+  } = useQuery({
     queryKey: [media_type, list_type, page],
     queryFn: fetchData,
   });
@@ -33,6 +35,25 @@ const SlidingCards = ({
     );
     const data = await response.json();
     return await data.results;
+  }
+
+  if (isError) {
+    return <div>Error in {media_type}</div>;
+  }
+
+  if (isPending) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   const settings = {
@@ -114,18 +135,6 @@ const SlidingCards = ({
               </div>
             ))
         }
-
-        {media_type === "credits" &&
-          credits &&
-          credits.map((person) => (
-            <div key={person.id}>
-              <Card
-                cssClass={"sliding-cards"}
-                {...person}
-                linkTo={"person_details"}
-              ></Card>
-            </div>
-          ))}
       </Slider>
     </>
   );
