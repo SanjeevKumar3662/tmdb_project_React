@@ -6,7 +6,11 @@ import Card from "../card/Card";
 import { useQuery } from "@tanstack/react-query";
 
 const MediaContentSlider = ({ media_type, id, content_type }) => {
-  const { data: contentData } = useQuery({
+  const {
+    data: contentData,
+    isError,
+    isPending,
+  } = useQuery({
     queryKey: [media_type, id, content_type],
     queryFn: fetchContentData,
   });
@@ -16,6 +20,25 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
       `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
     );
     return await await response.json();
+  }
+
+  if (isError) {
+    return <div>Error in media details page</div>;
+  }
+
+  if (isPending) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   const getSlidesToShow = (type, breakpoint = "default") => {
@@ -55,7 +78,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
         }
     }
   };
-  
+
   const settings = {
     dots: false,
     infinite: true,
