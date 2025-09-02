@@ -1,11 +1,16 @@
 // import "./personPage.css";
 //all the styles for this page is in this,because of react.lazy if page is refreshed,
-//  this page losses all required styles 
+//  this page losses all required styles
 import "../media/mediaDetails.css";
 
 import SlidingCards from "../../components/slidingCards/SlidingCards";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Card from "../../components/card/Card";
+
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const PersonPage = () => {
   const { id } = useParams();
@@ -49,7 +54,7 @@ const PersonPage = () => {
     fetchmovieCredits();
   }, [id]);
 
-  person && window.scrollTo(0,0)//scrolls to top
+  person && window.scrollTo(0, 0); //scrolls to top
 
   useEffect(() => {
     const fetchTvCredits = async () => {
@@ -67,6 +72,52 @@ const PersonPage = () => {
     };
     fetchTvCredits();
   }, [id]);
+
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 200,
+    slidesToShow: 8,
+    slidesToScroll: 5,
+    lazyLoadBuffer: 3,
+    responsive: [
+      {
+        breakpoint: 1350, // tablets
+        settings: {
+          slidesToShow: 6,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 1024, // tablets
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 768, // small tablets / large phones
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 620, // tablets
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 520, // mobile phones
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
+  };
 
   return (
     <>
@@ -106,7 +157,9 @@ const PersonPage = () => {
             {person && person.deathday && (
               <span className="">Date Of Death : {person.deathday}</span>
             )}
-            <span className="">Gender : {person && person.gender === 1?"Female":"Male"}</span>
+            <span className="">
+              Gender : {person && person.gender === 1 ? "Female" : "Male"}
+            </span>
             <span className="">
               Place of Birth : {person && person.place_of_birth}
             </span>
@@ -117,23 +170,33 @@ const PersonPage = () => {
         <div className="credits-slider">
           <p className="section-heading">movie Credits</p>
 
-          {movieCredits && (
-            <SlidingCards
-              media_type={"movie"}
-              isFetch={false}
-              otherData={movieCredits.cast}
-            />
-          )}
+          <Slider {...settings}>
+            {movieCredits &&
+              movieCredits.cast.map((person) => (
+                <div key={person.id}>
+                  <Card
+                    cssClass={"sliding-cards"}
+                    {...person}
+                    linkTo={"movie_details"}
+                  ></Card>
+                </div>
+              ))}
+          </Slider>
 
           <p className="section-heading">Tv Credits</p>
 
-          {tvCredits && (
-            <SlidingCards
-              media_type={"tv"}
-              isFetch={false}
-              otherData={tvCredits.cast}
-            />
-          )}
+          <Slider {...settings}>
+            {tvCredits &&
+              tvCredits.cast.map((person) => (
+                <div key={person.id}>
+                  <Card
+                    cssClass={"sliding-cards"}
+                    {...person}
+                    linkTo={"tv_details"}
+                  ></Card>
+                </div>
+              ))}
+          </Slider>
         </div>
       </div>
     </>
