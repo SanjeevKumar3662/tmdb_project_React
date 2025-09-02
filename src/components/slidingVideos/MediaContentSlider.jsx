@@ -1,29 +1,22 @@
 import "./mediaContentSlider.css";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
 import Card from "../card/Card";
+import { useQuery } from "@tanstack/react-query";
 
 const MediaContentSlider = ({ media_type, id, content_type }) => {
-  const [contentData, setContentData] = useState("");
-  // console.log(media_type,id);
+  const { data: contentData } = useQuery({
+    queryKey: [media_type, id, content_type],
+    queryFn: fetchContentData,
+  });
 
-  useEffect(() => {
-    const fetchcontentData = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
-        );
-        const data = await response.json();
-        // content_type === "images" && console.log(data.backdrops[0]);
-
-        setContentData(data);
-      } catch (e) {
-        console.log("error while fetching media content", e);
-      }
-    };
-    fetchcontentData();
-  }, [media_type, id, content_type]);
+  async function fetchContentData() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
+    );
+    return await await response.json();
+  }
 
   const getSlidesToShow = (type, breakpoint = "default") => {
     switch (breakpoint) {
@@ -62,7 +55,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
         }
     }
   };
-  // content_type === "videos" ? 2 : 3,
+  
   const settings = {
     dots: false,
     infinite: true,
