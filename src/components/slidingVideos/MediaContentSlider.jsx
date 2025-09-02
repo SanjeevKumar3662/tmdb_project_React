@@ -5,11 +5,11 @@ import Slider from "react-slick";
 import Card from "../card/Card";
 
 const MediaContentSlider = ({ media_type, id, content_type }) => {
-  const [videos, setVideos] = useState("");
+  const [contentData, setContentData] = useState("");
   // console.log(media_type,id);
 
   useEffect(() => {
-    const fetchVideos = async () => {
+    const fetchcontentData = async () => {
       try {
         const response = await fetch(
           `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
@@ -17,12 +17,12 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
         const data = await response.json();
         // content_type === "images" && console.log(data.backdrops[0]);
 
-        setVideos(data);
+        setContentData(data);
       } catch (e) {
         console.log("error while fetching media content", e);
       }
     };
-    fetchVideos();
+    fetchcontentData();
   }, [media_type, id, content_type]);
 
   const getSlidesToShow = (type, breakpoint = "default") => {
@@ -89,14 +89,14 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     ],
   };
 
-  videos &&
+  contentData &&
     (() => {
       switch (content_type) {
         case "images":
-          videos.backdrops.length <= 1 && (settings.infinite = false);
+          contentData.backdrops.length <= 1 && (settings.infinite = false);
           break;
         case "videos":
-          videos.results.length <= 1 && (settings.infinite = false);
+          contentData.results.length <= 1 && (settings.infinite = false);
           break;
       }
     })();
@@ -108,8 +108,8 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
           switch (content_type) {
             case "videos":
               return (
-                videos &&
-                videos.results.map((video) => (
+                contentData &&
+                contentData.results.map((video) => (
                   <VideoCards
                     type={video.type}
                     title={video.name}
@@ -121,8 +121,8 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               );
             case "images":
               return (
-                videos &&
-                videos.backdrops.map((imgs) => (
+                contentData &&
+                contentData.backdrops.map((imgs) => (
                   <div className="backdrop-border">
                     <img
                       className="backdrops"
@@ -135,8 +135,8 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               );
             case "recommendations":
               return (
-                videos &&
-                videos.results.map((media) => (
+                contentData &&
+                contentData.results.map((media) => (
                   <Card
                     cssClass={"sliding-cards"}
                     {...media}
