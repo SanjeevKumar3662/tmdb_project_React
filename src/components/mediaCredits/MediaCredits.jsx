@@ -7,7 +7,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 function MediaCredits({ media_type, id }) {
-  const { data: media } = useQuery({
+  const {
+    data: media,
+    isError,
+    isPending,
+  } = useQuery({
     queryKey: [id, media_type],
     queryFn: fetchDetails,
   });
@@ -17,6 +21,24 @@ function MediaCredits({ media_type, id }) {
       `https://first-backend-eight.vercel.app/media_credits/${media_type}/${id}`
     );
     return await response.json();
+  }
+  if (isError) {
+    return <div>Error in {media_type}</div>;
+  }
+
+  if (isPending) {
+    return (
+      <div
+        style={{
+          // height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
   }
 
   const settings = {
