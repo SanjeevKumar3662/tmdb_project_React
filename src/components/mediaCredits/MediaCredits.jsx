@@ -1,35 +1,25 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import "./mediaCredits.css";
 import Card from "../card/Card";
-import "../slidingCards/slidingCards.css";// because of lazy loading, styles for slider was imported on refresh
+import "../slidingCards/slidingCards.css"; // because of lazy loading, styles for slider was imported on refresh
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 function MediaCredits({ media_type, id }) {
-  const [media, setMedia] = useState(null);
-  
+  const { data: media } = useQuery({
+    queryKey: [id, media_type],
+    queryFn: fetchDetails,
+  });
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_credits/${media_type}/${id}`
-        );
-        let data = await response.json();
+  async function fetchDetails() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/media_credits/${media_type}/${id}`
+    );
+    return await response.json();
+  }
 
-        setMedia(data);
-        // console.log("credits -> ", data.cast[0]);
-      } catch (e) {
-        console.log("error while fetching movie details", e);
-      }
-    };
-    fetchDetails();
-  }, [id, media_type]);
-
-  // console.log("media -> ",media);
-const settings = {
+  const settings = {
     dots: false,
     infinite: media && media.cast.length <= 8 ? false : true,
     speed: 200,
