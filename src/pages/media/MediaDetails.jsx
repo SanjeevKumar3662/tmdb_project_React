@@ -6,11 +6,11 @@ import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
 import { useQuery } from "@tanstack/react-query";
 
-const MovieDetails = ({ media_type }) => {
+const MediaDetails = ({ media_type }) => {
   const { id } = useParams();
 
   const {
-    data: movie,
+    data: media,
     isPending,
     isError,
     isSuccess,
@@ -53,19 +53,19 @@ const MovieDetails = ({ media_type }) => {
         <div className="details-container">
           <img
             className="details-bg"
-            src={`https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`}
+            src={`https://image.tmdb.org/t/p/w1280${media.backdrop_path}`}
             loading="eager"
             fetchPriority="high"
             decoding="async"
           />
 
           <section className="poster-details">
-            {movie.poster_path ? (
+            {media.poster_path ? (
               <img
                 className="poster"
-                src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                srcSet={`https://image.tmdb.org/t/p/w342${movie.poster_path} 1x,
-            https://image.tmdb.org/t/p/w500${movie.poster_path} 2x`}
+                src={`https://image.tmdb.org/t/p/w342${media.poster_path}`}
+                srcSet={`https://image.tmdb.org/t/p/w342${media.poster_path} 1x,
+            https://image.tmdb.org/t/p/w500${media.poster_path} 2x`}
                 alt="poster"
                 loading="eager"
                 // decoding="async"
@@ -76,28 +76,28 @@ const MovieDetails = ({ media_type }) => {
           </section>
           <section className="more-info">
             <span className="media-page-heading">
-              {movie.title ? movie.title : movie.name}
+              {media.title ? media.title : media.name}
             </span>
-            {(movie.original_title || movie.original_name) && (
+            {(media.original_title || media.original_name) && (
               <div>
-                Original Title : {movie.original_title || movie.original_name}
+                Original Title : {media.original_title || media.original_name}
               </div>
             )}
-            {movie.tagline && <div>Tagline : {movie.tagline}</div>}
+            {media.tagline && <div>Tagline : {media.tagline}</div>}
             <div className="title">
-              Discription :<span> {movie.overview}</span>
+              Discription :<span> {media.overview}</span>
             </div>
-            {movie.release_date ? (
+            {media.release_date ? (
               <div className="release-date">
-                Release Date : {movie.release_date}
+                Release Date : {media.release_date}
               </div>
             ) : (
-              <div className="release-date"> {movie.first_air_date}</div>
+              <div className="release-date"> {media.first_air_date}</div>
             )}
             <div>
               Genres :{" "}
-              {movie.genres &&
-                movie.genres.map((ele) => (
+              {media.genres &&
+                media.genres.map((ele) => (
                   <span key={ele.id}>{ele.name} , </span>
                 ))}
             </div>
@@ -133,4 +133,4 @@ const MovieDetails = ({ media_type }) => {
   );
 };
 
-export default MovieDetails;
+export default MediaDetails;
