@@ -16,6 +16,12 @@
   gap: 20px;
 }
 
+.vote-avg-card{
+  padding: 7px 20px;
+  font-size: 1rem;
+  margin: 9px 1px;
+}
+
 @media (max-width: 600px) {
   .movie-container .card {
     /* border: solid black; */
