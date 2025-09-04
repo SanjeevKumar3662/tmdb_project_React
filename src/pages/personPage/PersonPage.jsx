@@ -1,6 +1,7 @@
 //all the styles for this page is in this,because of react.lazy if page is refreshed,
 //  this page losses all required styles
-import "../media/mediaDetails.css";
+import "../media/mediaDetails.css"; //styles for main info section i.e :details-container
+import "../../components/slidingCards/slidingCards.css"; // this is need for credit slider styles, on refresh this was not imported
 
 // import SlidingCards from "../../components/slidingCards/SlidingCards";
 import { useQuery } from "@tanstack/react-query";
@@ -22,7 +23,6 @@ const PersonPage = () => {
 
   async function fetchDetails() {
     const response = await fetch(
-      // `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
       `https://first-backend-eight.vercel.app/media_details/person/${id}`
     );
     return await response.json();
