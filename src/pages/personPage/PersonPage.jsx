@@ -4,21 +4,33 @@ import "../media/mediaDetails.css"; //styles for main info section i.e :details-
 import "../../components/slidingCards/slidingCards.css"; // this is need for credit slider styles, on refresh this was not imported
 
 // import SlidingCards from "../../components/slidingCards/SlidingCards";
-import { useQuery } from "@tanstack/react-query";
+import { useQueries } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 import { PersonCreditSlider } from "./PersonCreditSlider";
 
 const PersonPage = () => {
   const { id } = useParams();
 
-  const [movieCredits, setMovieCredits] = useState(null);
-  const [tvCredits, setTvCredits] = useState(null);
+  // const [movieCredits, setMovieCredits] = useState(null);
+  // const [tvCredits, setTvCredits] = useState(null);
 
-  const { data: person } = useQuery({
-    queryKey: [id],
-    queryFn: fetchDetails,
+  const [person, movieCredits, tvCredits] = useQueries({
+    queries: [
+      {
+        queryKey: ["person", id],
+        queryFn: fetchDetails,
+      },
+      {
+        queryKey: ["movieCredits", id],
+        queryFn: fetchMovieCredits,
+      },
+      {
+        queryKey: ["tvCredits", id],
+        queryFn: fetchTvCredits,
+      },
+    ],
   });
 
   async function fetchDetails() {
@@ -30,39 +42,50 @@ const PersonPage = () => {
 
   person && window.scrollTo(0, 0); //scrolls to top
 
-  useEffect(() => {
-    const fetchmovieCredits = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
-        );
-        const data = await response.json();
-        console.log(data.cast[0]);
+  async function fetchMovieCredits() {
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
+      );
+      const data = await response.json();
+      console.log(data.cast);
 
-        setMovieCredits(data);
-      } catch (e) {
-        console.log("error while fetching movie credits", e);
-      }
-    };
-    fetchmovieCredits();
-  }, [id]);
+      // setMovieCredits(data);
+      return data;
+    } catch (e) {
+      console.log("error while fetching movie credits", e);
+    }
+  }
 
-  useEffect(() => {
-    const fetchTvCredits = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
-        );
-        const data = await response.json();
-        // console.log("tvCredits",data.cast[0]);
+  async function fetchTvCredits() {
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
+      );
+      const data = await response.json();
+      // console.log("tvCredits",data.cast[0]);
 
-        setTvCredits(data);
-      } catch (e) {
-        console.log("error while fetching movie credits", e);
-      }
-    };
-    fetchTvCredits();
-  }, [id]);
+      // setTvCredits(data);
+      return data;
+    } catch (e) {
+      console.log("error while fetching movie credits", e);
+    }
+  }
+
+  if (person.isPending || movieCredits.isPending || tvCredits.isPending) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span className="loader"></span>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -82,7 +105,7 @@ const PersonPage = () => {
             {person ? (
               <img
                 className="poster"
-                src={`https://image.tmdb.org/t/p/original${person.profile_path}`}
+                src={`https://image.tmdb.org/t/p/original${person.data.profile_path}`}
                 // srcSet={`https://image.tmdb.org/t/p/w342${person.profile_path} 1x,
                 // https://image.tmdb.org/t/p/w500${person.profile_path} 2x`}
                 alt="poster"
@@ -94,21 +117,26 @@ const PersonPage = () => {
             )}
           </section>
           <section className="more-info">
-            <span className="media-page-heading">{person && person.name}</span>
-            <span className="">
-              Know for : {person && person.known_for_department}
+            <span className="media-page-heading">
+              {person && person.data.name}
             </span>
-            <span className="">Birth Day : {person && person.birthday}</span>
-            {person && person.deathday && (
-              <span className="">Date Of Death : {person.deathday}</span>
+            <span className="">
+              Know for : {person.data && person.data.known_for_department}
+            </span>
+            <span className="">
+              Birth Day : {person.data && person.data.birthday}
+            </span>
+            {person.data && person.data.deathday && (
+              <span className="">Date Of Death : {person.data.deathday}</span>
             )}
             <span className="">
-              Gender : {person && person.gender === 1 ? "Female" : "Male"}
+              Gender :{" "}
+              {person.data && person.data.gender === 1 ? "Female" : "Male"}
             </span>
             <span className="">
-              Place of Birth : {person && person.place_of_birth}
+              Place of Birth : {person.data && person.data.place_of_birth}
             </span>
-            <span className="">{person && person.biography}</span>
+            <span className="">{person.data && person.data.biography}</span>
           </section>
         </div>
 
@@ -116,13 +144,16 @@ const PersonPage = () => {
           <p className="section-heading">movie Credits</p>
 
           <PersonCreditSlider
-            personCredits={movieCredits}
+            personCredits={movieCredits.data}
             link={"movie_details"}
           />
 
           <p className="section-heading">Tv Credits</p>
 
-          <PersonCreditSlider personCredits={tvCredits} link={"tv_details"} />
+          <PersonCreditSlider
+            personCredits={tvCredits.data}
+            link={"tv_details"}
+          />
         </div>
       </div>
     </>
