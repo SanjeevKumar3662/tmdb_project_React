@@ -48,88 +48,88 @@ const MediaDetails = ({ media_type }) => {
   isSuccess && window.scrollTo(0, 0); //scrolls to top
 
   return (
-    (
-      <>
-        <div className="details-container">
+    <>
+      <div className="details-container">
+        {media.backdrop_path && (
           <img
             className="details-bg"
             src={`https://image.tmdb.org/t/p/w1280${media.backdrop_path}`}
+            alt="backdrop image"
             loading="eager"
             fetchPriority="high"
             decoding="async"
           />
-
-          <section className="poster-details">
-            {media.poster_path ? (
-              <img
-                className="poster"
-                src={`https://image.tmdb.org/t/p/w342${media.poster_path}`}
-                srcSet={`https://image.tmdb.org/t/p/w342${media.poster_path} 1x,
+        )}
+        <section className="poster-details">
+          {media.poster_path ? (
+            <img
+              className="poster"
+              src={`https://image.tmdb.org/t/p/w342${media.poster_path}`}
+              srcSet={`https://image.tmdb.org/t/p/w342${media.poster_path} 1x,
             https://image.tmdb.org/t/p/w500${media.poster_path} 2x`}
-                alt="poster"
-                loading="eager"
-                // decoding="async"
-              />
-            ) : (
-              <img src="/noImage.png" loading="lazy" decoding="async" />
-            )}
-          </section>
-          <section className="more-info">
-            <span className="media-page-heading">
-              {media.title ? media.title : media.name}
-            </span>
-            {(media.original_title || media.original_name) && (
-              <div>
-                Original Title : {media.original_title || media.original_name}
-              </div>
-            )}
-            {media.tagline && <div>Tagline : {media.tagline}</div>}
-            <div className="title">
-              Discription :<span> {media.overview}</span>
-            </div>
-            {media.release_date ? (
-              <div className="release-date">
-                Release Date : {media.release_date}
-              </div>
-            ) : (
-              <div className="release-date"> {media.first_air_date}</div>
-            )}
-            <div>
-              Genres :{" "}
-              {media.genres &&
-                media.genres.map((ele) => (
-                  <span key={ele.id}>{ele.name} , </span>
-                ))}
-            </div>
-          </section>
-        </div>
-        <div className="video-container">
-          <MediaContentSlider
-            media_type={media_type}
-            content_type={"videos"}
-            id={id}
-          />
-        </div>
-        <div className="backdrops-container">
-          <MediaContentSlider
-            media_type={media_type}
-            content_type={"images"}
-            id={id}
-          />
-        </div>
-        <section className="credits-container">
-          <MediaCredits media_type={media_type} id={id} />
+              alt="poster"
+              loading="eager"
+              // decoding="async"
+            />
+          ) : (
+            <img src="/noImage.png" loading="lazy" decoding="async" />
+          )}
         </section>
-        <div className="rec-slider">
-          <p className="section-heading">Recommendations</p>
-          <MediaContentSlider
-            media_type={media_type}
-            content_type={"recommendations"}
-            id={id}
-          />
-        </div>
-      </>
-    )
+        <section className="more-info">
+          <span className="media-page-heading">
+            {media.title ? media.title : media.name}
+          </span>
+          {(media.original_title || media.original_name) && (
+            <div>
+              Original Title : {media.original_title || media.original_name}
+            </div>
+          )}
+          {media.tagline && <div>Tagline : {media.tagline}</div>}
+          <div className="title">
+            Discription :<span> {media.overview}</span>
+          </div>
+          {media.release_date ? (
+            <div className="release-date">
+              Release Date : {media.release_date}
+            </div>
+          ) : (
+            <div className="release-date"> {media.first_air_date}</div>
+          )}
+          <div>
+            Genres :{" "}
+            {media.genres &&
+              media.genres.map((ele) => (
+                <span key={ele.id}>{ele.name} , </span>
+              ))}
+          </div>
+        </section>
+      </div>
+      <div className="video-container">
+        <MediaContentSlider
+          media_type={media_type}
+          content_type={"videos"}
+          id={id}
+        />
+      </div>
+      <div className="backdrops-container">
+        <MediaContentSlider
+          media_type={media_type}
+          content_type={"images"}
+          id={id}
+        />
+      </div>
+      <section className="credits-container">
+        <MediaCredits media_type={media_type} id={id} />
+      </section>
+      <div className="rec-slider">
+        <p className="section-heading">Recommendations</p>
+        <MediaContentSlider
+          media_type={media_type}
+          content_type={"recommendations"}
+          id={id}
+        />
+      </div>
+    </>
   );
 };
 
