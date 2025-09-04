@@ -98,7 +98,8 @@ const PersonPage = () => {
             // src={`https://image.tmdb.org/t/p/w1280${person.backdrop_path}`}
             loading="eager"
             fetchPriority="high"
-            decoding="async"
+            alt="background poster"
+            // decoding="async"
           />
 
           <section className="poster-details">
@@ -108,7 +109,7 @@ const PersonPage = () => {
                 src={`https://image.tmdb.org/t/p/original${person.data.profile_path}`}
                 // srcSet={`https://image.tmdb.org/t/p/w342${person.profile_path} 1x,
                 // https://image.tmdb.org/t/p/w500${person.profile_path} 2x`}
-                alt="poster"
+                alt="poster for person"
                 loading="eager"
                 decoding="async"
               />
