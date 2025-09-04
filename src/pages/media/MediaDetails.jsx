@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
 import { useQuery } from "@tanstack/react-query";
-import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarnigPopUp";
+import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarningPopUp";
 
 const MediaDetails = ({ media_type }) => {
   const [userConcent, setUserConcent] = useState(null);
