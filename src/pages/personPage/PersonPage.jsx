@@ -1,9 +1,9 @@
-// import "./personPage.css";
 //all the styles for this page is in this,because of react.lazy if page is refreshed,
 //  this page losses all required styles
 import "../media/mediaDetails.css";
 
-import SlidingCards from "../../components/slidingCards/SlidingCards";
+// import SlidingCards from "../../components/slidingCards/SlidingCards";
+import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -11,28 +11,22 @@ import { PersonCreditSlider } from "./PersonCreditSlider";
 
 const PersonPage = () => {
   const { id } = useParams();
-  // https://first-backend-eight.vercel.app/media_credits/person/974169/
 
-  const [person, setPerson] = useState(null);
   const [movieCredits, setMovieCredits] = useState(null);
   const [tvCredits, setTvCredits] = useState(null);
 
-  useEffect(() => {
-    const fetchDetails = async () => {
-      try {
-        const response = await fetch(
-          `https://first-backend-eight.vercel.app/media_details/person/${id}`
-        );
-        let data = await response.json();
+  const { data: person } = useQuery({
+    queryKey: [id],
+    queryFn: fetchDetails,
+  });
 
-        setPerson(data);
-        // console.log(data);
-      } catch (e) {
-        console.log("error while fetching movie details", e);
-      }
-    };
-    fetchDetails();
-  }, [id]);
+  async function fetchDetails() {
+    const response = await fetch(
+      // `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
+      `https://first-backend-eight.vercel.app/media_details/person/${id}`
+    );
+    return await response.json();
+  }
 
   useEffect(() => {
     const fetchmovieCredits = async () => {
