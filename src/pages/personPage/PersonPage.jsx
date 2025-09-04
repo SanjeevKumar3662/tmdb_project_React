@@ -48,7 +48,7 @@ const PersonPage = () => {
         `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
       );
       const data = await response.json();
-      console.log(data.cast);
+      // console.log(data.cast);
 
       // setMovieCredits(data);
       return data;
