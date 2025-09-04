@@ -1,12 +1,14 @@
 import "./mediaDetails.css";
 // import { useEffect } from "react";
-// import { useState } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
 import { useQuery } from "@tanstack/react-query";
+import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarnigPopUp";
 
 const MediaDetails = ({ media_type }) => {
+  const [userConcent, setUserConcent] = useState(null);
   const { id } = useParams();
 
   const {
@@ -46,6 +48,28 @@ const MediaDetails = ({ media_type }) => {
   }
 
   isSuccess && window.scrollTo(0, 0); //scrolls to top
+
+  if (media.adult === true && userConcent === null) {
+    return <AgeWarningPopup setConcent={setUserConcent} />;
+  }
+  if (userConcent === false) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          color: "white",
+          fontSize: "1.5rem",
+          padding: "20px",
+        }}
+      >
+        ❌ Sorry, you are not old enough for this content. you can still browse
+        other content
+      </div>
+    );
+  }
 
   return (
     <>
