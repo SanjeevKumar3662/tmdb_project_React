@@ -20,7 +20,7 @@ export default function AgeWarningPopup({ setConcent }) {
       <div className="popup-box">
         <h2>Age Restricted Content</h2>
         <p>
-          This movie/TV show is marked as 18+. Are you sure you want to
+          This movie/TV show is marked as 18+ or NSFW. Are you sure you want to
           continue?
         </p>
         <div className="popup-buttons">
