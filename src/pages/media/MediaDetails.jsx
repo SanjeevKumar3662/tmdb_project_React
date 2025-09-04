@@ -48,7 +48,7 @@ const MediaDetails = ({ media_type }) => {
   }
 
   isSuccess && window.scrollTo(0, 0); //scrolls to top
-
+console.log(media);
   if (media.adult === true && userConcent === null) {
     return <AgeWarningPopup setConcent={setUserConcent} />;
   }
@@ -117,8 +117,14 @@ const MediaDetails = ({ media_type }) => {
               Release Date : {media.release_date}
             </div>
           ) : (
-            <div className="release-date"> {media.first_air_date}</div>
+            <div className="release-date">First Air Date : {media.first_air_date}</div>
           )}
+          {media.runtime && <div>Runtime : {media.runtime} minutes</div>}
+
+          {media.number_of_seasons && <div>Number of Seasons : {media.number_of_seasons}</div>}
+          {media.number_of_episodes && <div>Number of Episodes : {media.number_of_episodes}</div>}
+          {media.vote_average && <div className="user-score">User Score : {media.vote_average}</div>}
+          
           <div>
             Genres :{" "}
             {media.genres &&
