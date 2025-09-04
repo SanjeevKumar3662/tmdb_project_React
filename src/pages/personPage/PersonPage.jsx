@@ -33,44 +33,7 @@ const PersonPage = () => {
     ],
   });
 
-  async function fetchDetails() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_details/person/${id}`
-    );
-    return await response.json();
-  }
-
   person && window.scrollTo(0, 0); //scrolls to top
-
-  async function fetchMovieCredits() {
-    try {
-      const response = await fetch(
-        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
-      );
-      const data = await response.json();
-      // console.log(data.cast);
-
-      // setMovieCredits(data);
-      return data;
-    } catch (e) {
-      console.log("error while fetching movie credits", e);
-    }
-  }
-
-  async function fetchTvCredits() {
-    try {
-      const response = await fetch(
-        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
-      );
-      const data = await response.json();
-      // console.log("tvCredits",data.cast[0]);
-
-      // setTvCredits(data);
-      return data;
-    } catch (e) {
-      console.log("error while fetching movie credits", e);
-    }
-  }
 
   if (person.isPending || movieCredits.isPending || tvCredits.isPending) {
     return (
@@ -159,6 +122,41 @@ const PersonPage = () => {
       </div>
     </>
   );
-};
 
+  async function fetchDetails() {
+    const response = await fetch(
+      `https://first-backend-eight.vercel.app/media_details/person/${id}`
+    );
+    return await response.json();
+  }
+  async function fetchMovieCredits() {
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
+      );
+      const data = await response.json();
+      // console.log(data.cast);
+
+      // setMovieCredits(data);
+      return data;
+    } catch (e) {
+      console.log("error while fetching movie credits", e);
+    }
+  }
+
+  async function fetchTvCredits() {
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
+      );
+      const data = await response.json();
+      // console.log("tvCredits",data.cast[0]);
+
+      // setTvCredits(data);
+      return data;
+    } catch (e) {
+      console.log("error while fetching movie credits", e);
+    }
+  }
+};
 export default PersonPage;
