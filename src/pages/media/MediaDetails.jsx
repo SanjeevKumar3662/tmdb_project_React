@@ -48,7 +48,7 @@ const MediaDetails = ({ media_type }) => {
   }
 
   isSuccess && window.scrollTo(0, 0); //scrolls to top
-console.log(media);
+// console.log(media);
   if (media.adult === true && userConcent === null) {
     return <AgeWarningPopup setConcent={setUserConcent} />;
   }

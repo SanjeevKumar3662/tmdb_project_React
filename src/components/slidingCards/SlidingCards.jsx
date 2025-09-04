@@ -34,6 +34,7 @@ const SlidingCards = ({
       `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
     );
     const data = await response.json();
+    // console.log(data);
     return await data.results;
   }
 
