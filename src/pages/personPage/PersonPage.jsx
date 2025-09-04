@@ -121,18 +121,6 @@ const PersonPage = () => {
         <div className="credits-slider">
           <p className="section-heading">movie Credits</p>
 
-          {/* <Slider {...settings}>
-            {movieCredits &&
-              movieCredits.cast.map((person) => (
-                <div key={person.id}>
-                  <Card
-                    cssClass={"sliding-cards"}
-                    {...person}
-                    linkTo={"movie_details"}
-                  ></Card>
-                </div>
-              ))}
-          </Slider> */}
           <PersonCreditSlider
             personCredits={movieCredits}
             link={"movie_details"}
@@ -141,18 +129,6 @@ const PersonPage = () => {
           <p className="section-heading">Tv Credits</p>
 
           <PersonCreditSlider personCredits={tvCredits} link={"tv_details"} />
-          {/* <Slider {...settings}>
-            {tvCredits &&
-              tvCredits.cast.map((person) => (
-                <div key={person.id}>
-                  <Card
-                    cssClass={"sliding-cards"}
-                    {...person}
-                    linkTo={"tv_details"}
-                  ></Card>
-                </div>
-              ))}
-          </Slider> */}
         </div>
       </div>
     </>
