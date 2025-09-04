@@ -52,6 +52,7 @@ body {
 }
 .details-container .poster-details  img {
   width: 350px;
+  min-height: 500px;
   border: 1px solid whitesmoke;
 }
 
@@ -118,6 +119,7 @@ body {
   }
   .details-container .poster-details img {
     width: 320px;
+    min-height: 475px;
   }
   .more-info {
     min-width: 330px;
@@ -131,6 +133,7 @@ body {
   }
   .details-container .poster-details img {
     width: 310px;
+
   }
   .more-info {
     min-width: 310px;
