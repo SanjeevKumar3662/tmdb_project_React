@@ -14,6 +14,7 @@ const Card = ({
   cssClass,
   linkTo,
   vote_average: voteAvg,
+  popularity,
 }) => {
   // console.log(profile_path);
   return (
@@ -43,7 +44,11 @@ const Card = ({
           ) : (
             <img src="/noImage.png" loading="lazy" decoding="async" />
           )}
-          {voteAvg && <div className="vote-avg-card">{voteAvg}</div>}
+          {
+            // voteAvg exists for every movie or tv show, but not for person
+            //all meida and persons have popularity
+          }
+          <div className="vote-avg-card">{voteAvg ? voteAvg : popularity}</div>
         </div>
       </Link>
       <div className="card-info">
