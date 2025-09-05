@@ -48,7 +48,9 @@ const Card = ({
             // voteAvg exists for every movie or tv show, but not for person
             //all meida and persons have popularity
           }
-          <div className="vote-avg-card">{voteAvg ? voteAvg : popularity}</div>
+          <div className="vote-avg-card">
+            {voteAvg ? voteAvg.toFixed(1) : popularity.toFixed(1)}
+          </div>
         </div>
       </Link>
       <div className="card-info">
