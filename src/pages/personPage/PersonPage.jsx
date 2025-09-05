@@ -33,6 +33,7 @@ const PersonPage = () => {
     ],
   });
 
+  person && console.log(person.data);
   person && window.scrollTo(0, 0); //scrolls to top
 
   if (person.isPending || movieCredits.isPending || tvCredits.isPending) {
@@ -87,6 +88,14 @@ const PersonPage = () => {
             <span className="">
               Know for : {person.data && person.data.known_for_department}
             </span>
+            <div className="also-know-as">
+              Also Know As :
+              {person.data.also_known_as &&
+                person.data.also_known_as.map((ele, index) => (
+                  <span key={index}> {ele}, </span>
+                ))}
+            </div>
+            <span className="">{person.data && person.data.biography}</span>
             <span className="">
               Birth Day : {person.data && person.data.birthday}
             </span>
@@ -100,7 +109,7 @@ const PersonPage = () => {
             <span className="">
               Place of Birth : {person.data && person.data.place_of_birth}
             </span>
-            <span className="">{person.data && person.data.biography}</span>
+            <span>Popularity : {person.data.popularity}</span>
           </section>
         </div>
 
