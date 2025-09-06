@@ -2,7 +2,7 @@
 //  this page losses all required styles
 import "../media/mediaDetails.css"; //styles for main info section i.e :details-container
 import "../../components/slidingCards/slidingCards.css"; // this is need for credit slider styles, on refresh this was not imported
-
+import personBg from "/personBg.png";
 // import SlidingCards from "../../components/slidingCards/SlidingCards";
 import { useQueries } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
@@ -55,16 +55,17 @@ const PersonPage = () => {
     <>
       <div className="person-page">
         <div className="details-container">
-          {/* <h1>this is a page for {person ? person.profile_path : "......."}</h1> */}
-          {/* <h1>{id}</h1> */}
-          <img
-            className="details-bg"
-            // src={`https://image.tmdb.org/t/p/w1280${person.backdrop_path}`}
-            loading="eager"
-            fetchPriority="high"
-            alt="background poster"
-            // decoding="async"
-          />
+          {
+            <img
+              className="details-bg"
+              // src={`https://image.tmdb.org/t/p/w1280/.jpg`}
+              src={personBg}
+              loading="eager"
+              fetchPriority="high"
+              alt="background poster"
+              // decoding="async"
+            />
+          }
 
           <section className="poster-details">
             {person ? (
