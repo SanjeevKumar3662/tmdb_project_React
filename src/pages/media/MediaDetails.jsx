@@ -6,6 +6,7 @@ import MediaCredits from "../../components/mediaCredits/MediaCredits";
 import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
 import { useQuery } from "@tanstack/react-query";
 import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarningPopUp";
+import countries from "../../OtherData/countriesName";
 
 const MediaDetails = ({ media_type }) => {
   const [userConcent, setUserConcent] = useState(null);
@@ -112,7 +113,7 @@ const MediaDetails = ({ media_type }) => {
             Origin Countries : {""}
             {media.origin_country &&
               media.origin_country.map((ele, index) => (
-                <span key={index}>{ele} , </span>
+                <span key={index}>{`${countries.get(ele).english_name}`} , </span>
               ))}
           </div>
           {media.tagline && <div>Tagline : {media.tagline}</div>}
