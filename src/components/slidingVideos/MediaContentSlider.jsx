@@ -126,7 +126,8 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
 
   return (
     <>
-      <div className="slider-bg">
+      <div className="slider-bg"
+      style={ {padding:"10px"}}>
         <Slider {...settings}>
           {(() => {
             switch (content_type) {
