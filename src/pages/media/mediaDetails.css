@@ -96,6 +96,11 @@ body {
   color: rgb(187, 12, 12);
 }
 
+.slider-bg{
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.259);
+}
+
 @media (max-width: 880px) {
   .details-container {
     flex-direction: column;
