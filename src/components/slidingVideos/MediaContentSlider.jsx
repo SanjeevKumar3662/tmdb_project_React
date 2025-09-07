@@ -105,7 +105,6 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     ],
   };
 
-  
   if (
     (contentData.backdrops && contentData.backdrops.length === 0) ||
     (contentData.results && contentData.results.length === 0)
@@ -127,50 +126,52 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
 
   return (
     <>
-      <Slider {...settings}>
-        {(() => {
-          switch (content_type) {
-            case "videos":
-              return (
-                contentData &&
-                contentData.results.map((video) => (
-                  <VideoCards
-                    type={video.type}
-                    title={video.name}
-                    key={video.id}
-                    videoId={video.key}
-                    mediaId={id}
-                  />
-                ))
-              );
-            case "images":
-              return (
-                contentData &&
-                contentData.backdrops.map((imgs) => (
-                  <div className="backdrop-border">
-                    <img
-                      className="backdrops"
-                      loading="lazy"
-                      src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
-                      alt=""
+      <div className="slider-bg">
+        <Slider {...settings}>
+          {(() => {
+            switch (content_type) {
+              case "videos":
+                return (
+                  contentData &&
+                  contentData.results.map((video) => (
+                    <VideoCards
+                      type={video.type}
+                      title={video.name}
+                      key={video.id}
+                      videoId={video.key}
+                      mediaId={id}
                     />
-                  </div>
-                ))
-              );
-            case "recommendations":
-              return (
-                contentData &&
-                contentData.results.map((media) => (
-                  <Card
-                    cssClass={"sliding-cards"}
-                    {...media}
-                    linkTo={media_type + "_details"}
-                  />
-                ))
-              );
-          }
-        })()}
-      </Slider>
+                  ))
+                );
+              case "images":
+                return (
+                  contentData &&
+                  contentData.backdrops.map((imgs) => (
+                    <div className="backdrop-border">
+                      <img
+                        className="backdrops"
+                        loading="lazy"
+                        src={`https://image.tmdb.org/t/p/w780${imgs.file_path}`}
+                        alt=""
+                      />
+                    </div>
+                  ))
+                );
+              case "recommendations":
+                return (
+                  contentData &&
+                  contentData.results.map((media) => (
+                    <Card
+                      cssClass={"sliding-cards"}
+                      {...media}
+                      linkTo={media_type + "_details"}
+                    />
+                  ))
+                );
+            }
+          })()}
+        </Slider>
+      </div>
     </>
   );
 };
