@@ -86,10 +86,11 @@ function MediaCredits({ media_type, id }) {
       },
     ],
   };
+  // console.log(media.cast.length);
+  if (media.cast.length === 0) return;
 
   return (
     <>
-      {/* <SlidingCards media_type={"movie"} id={id}/> */}
       <div className="credits-slider">
         <h1>Credits</h1>
         <Slider {...settings}>
