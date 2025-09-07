@@ -48,7 +48,7 @@ const MediaDetails = ({ media_type }) => {
   }
 
   isSuccess && window.scrollTo(0, 0); //scrolls to top
-  console.log(media);
+ 
   if (media.adult === true && userConcent === null) {
     return <AgeWarningPopup setConcent={setUserConcent} />;
   }
@@ -163,7 +163,7 @@ const MediaDetails = ({ media_type }) => {
           id={id}
         />
       </div>
-      <section className="credits-container">
+      <section className="credits-container slider-bg">
         <MediaCredits media_type={media_type} id={id} />
       </section>
       <div className="rec-slider">
