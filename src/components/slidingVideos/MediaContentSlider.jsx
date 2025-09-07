@@ -105,6 +105,14 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     ],
   };
 
+  
+  if (
+    (contentData.backdrops && contentData.backdrops.length === 0) ||
+    (contentData.results && contentData.results.length === 0)
+  ) {
+    return;
+  }
+
   contentData &&
     (() => {
       switch (content_type) {
