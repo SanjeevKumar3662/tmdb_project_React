@@ -23,10 +23,22 @@ const MediaDetails = ({ media_type }) => {
   });
 
   async function fetchDetails() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
-    );
-    return await response.json();
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_details/${media_type}/${id}`
+      );
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error(
+        `error occured while fetching media details for ${media_type},id:${id}`,
+        error
+      );
+    }
   }
 
   if (isPending) {
@@ -49,7 +61,7 @@ const MediaDetails = ({ media_type }) => {
   }
 
   isSuccess && window.scrollTo(0, 0); //scrolls to top
- 
+
   if (media.adult === true && userConcent === null) {
     return <AgeWarningPopup setConcent={setUserConcent} />;
   }
@@ -113,7 +125,9 @@ const MediaDetails = ({ media_type }) => {
             Origin Countries : {""}
             {media.origin_country &&
               media.origin_country.map((ele, index) => (
-                <span key={index}>{`${countries.get(ele).english_name}`} , </span>
+                <span key={index}>
+                  {`${countries.get(ele).english_name}`} ,{" "}
+                </span>
               ))}
           </div>
           {media.tagline && <div>Tagline : {media.tagline}</div>}
