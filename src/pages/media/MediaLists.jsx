@@ -44,11 +44,23 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
   });
 
   async function fetchMovies() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
-    );
-    const data = await response.json();
-    return await data.results;
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_listsl/${media_type}/${list_type}/${page}`
+      );
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await data.results;
+    } catch (error) {
+      console.error(
+        `error occured while fetching media Lists for ${media_type} ,list type: ${list_type} ,page: ${page}`,
+        "\n",
+        error
+      );
+    }
   }
 
   if (isPending) {
@@ -67,7 +79,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
   }
 
   if (isError) {
-    return <div>Error in media details page</div>;
+    return <div>Error in media List page</div>;
   }
 
   // console.log(movies[0]);
