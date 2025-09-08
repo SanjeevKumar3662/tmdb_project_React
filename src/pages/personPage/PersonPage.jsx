@@ -47,6 +47,20 @@ const PersonPage = () => {
       </div>
     );
   }
+  if (person.isError || movieCredits.isError || tvCredits.isError) {
+    return (
+      <div
+        style={{
+          height: "80vh",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <span>Error in Person page</span>
+      </div>
+    );
+  }
 
   return (
     <>
