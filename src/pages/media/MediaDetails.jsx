@@ -3,7 +3,7 @@ import "./mediaDetails.css";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import MediaCredits from "../../components/mediaCredits/MediaCredits";
-import MediaContentSlider from "../../components/slidingVideos/MediaContentSlider";
+import MediaContentSlider from "../../components/mediaContentSlider/MediaContentSlider";
 import { useQuery } from "@tanstack/react-query";
 import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarningPopUp";
 import countries from "../../OtherData/countriesName";
