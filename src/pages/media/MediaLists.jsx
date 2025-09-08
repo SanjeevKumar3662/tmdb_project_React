@@ -40,13 +40,13 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
     isError,
   } = useQuery({
     queryKey: [media_type, list_type, page],
-    queryFn: fetchMovies,
+    queryFn: fetchList,
   });
 
-  async function fetchMovies() {
+  async function fetchList() {
     try {
       const response = await fetch(
-        `https://first-backend-eight.vercel.app/media_listsl/${media_type}/${list_type}/${page}`
+        `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
       );
       const data = await response.json();
 
