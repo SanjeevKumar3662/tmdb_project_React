@@ -13,9 +13,6 @@ import { PersonCreditSlider } from "./PersonCreditSlider";
 const PersonPage = () => {
   const { id } = useParams();
 
-  // const [movieCredits, setMovieCredits] = useState(null);
-  // const [tvCredits, setTvCredits] = useState(null);
-
   const [person, movieCredits, tvCredits] = useQueries({
     queries: [
       {
@@ -33,7 +30,7 @@ const PersonPage = () => {
     ],
   });
 
-  person && console.log(person.data);
+  // person && console.log(person.data);
   person && window.scrollTo(0, 0); //scrolls to top
 
   if (person.isPending || movieCredits.isPending || tvCredits.isPending) {
@@ -134,23 +131,34 @@ const PersonPage = () => {
   );
 
   async function fetchDetails() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_details/person/${id}`
-    );
-    return await response.json();
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_details/person/${id}`
+      );
+      return await response.json();
+    } catch (error) {
+      console.error(
+        `error occured while fetching fetchDetails in Person page for ID: ${id}`,
+        "\n",
+        error
+      );
+    }
   }
+
   async function fetchMovieCredits() {
     try {
       const response = await fetch(
         `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"movie_credits"}`
       );
       const data = await response.json();
-      // console.log(data.cast);
 
-      // setMovieCredits(data);
       return data;
-    } catch (e) {
-      console.log("error while fetching movie credits", e);
+    } catch (error) {
+      console.error(
+        `error occured while fetching movie credit in Person page for ID: ${id}`,
+        "\n",
+        error
+      );
     }
   }
 
@@ -160,12 +168,14 @@ const PersonPage = () => {
         `https://first-backend-eight.vercel.app/media_content/${"person"}/${id}/${"tv_credits"}`
       );
       const data = await response.json();
-      // console.log("tvCredits",data.cast[0]);
 
-      // setTvCredits(data);
       return data;
-    } catch (e) {
-      console.log("error while fetching movie credits", e);
+    } catch (error) {
+      console.error(
+        `error occured while fetching tv credits in Person page for ID: ${id}`,
+        "\n",
+        error
+      );
     }
   }
 };
