@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 const MediaLists = ({ media_type, list_type, headerText }) => {
-  //  const [movies, setMovies] = useState(null);
+  //  const [listData, setlistData] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   // get initial page from URL
@@ -35,7 +35,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
   }, [media_type, list_type]);
 
   const {
-    data: movies,
+    data: listData,
     isPending,
     isError,
   } = useQuery({
@@ -82,7 +82,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
     return <div>Error in media List page</div>;
   }
 
-  // console.log(movies[0]);
+  // console.log(listData[0]);
   return (
     <div className="movie-container">
       <h1>{headerText}</h1>
@@ -93,8 +93,8 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
         setPage={setPage}
       ></PageNav>
       <div className="flex-container">
-        {movies ? (
-          movies.map((movie) => (
+        {listData ? (
+          listData.map((movie) => (
             <Card
               key={movie.id}
               page={page}
