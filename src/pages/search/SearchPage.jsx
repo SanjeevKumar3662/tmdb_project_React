@@ -41,15 +41,23 @@ const SearchPage = () => {
     isError,
   } = useQuery({
     queryKey: [query_type, query, page],
-    queryFn: fetchMovies,
+    queryFn: fetchMedia,
   });
 
-  async function fetchMovies() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
-    );
-    const data = await response.json();
-    return await data;
+  async function fetchMedia() {
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/search/${query_type}/${query}/${page}`
+      );
+      const data = await response.json();
+      return await data;
+    } catch (error) {
+      console.error(
+        `error occured while fetching Search Page for query_type: ${query_type} ,query: ${query} ,page: ${page}`,
+        "\n",
+        error
+      );
+    }
   }
 
   if (isPending) {
