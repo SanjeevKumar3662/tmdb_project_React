@@ -17,10 +17,18 @@ function MediaCredits({ media_type, id }) {
   });
 
   async function fetchDetails() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_credits/${media_type}/${id}`
-    );
-    return await response.json();
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_credits/${media_type}/${id}`
+      );
+      return await response.json();
+    } catch (error) {
+      console.error(
+        `error occured while fetching media Credits for ${media_type} ,id: ${id}`,
+        "\n",
+        error
+      );
+    }
   }
   if (isError) {
     return <div>Error in {media_type}</div>;
