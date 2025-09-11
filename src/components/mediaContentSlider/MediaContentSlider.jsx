@@ -16,10 +16,18 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
   });
 
   async function fetchContentData() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
-    );
-    return await await response.json();
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_content/${media_type}/${id}/${content_type}`
+      );
+      return await await response.json();
+    } catch (error) {
+      console.error(
+        `error occured while fetching media Lists for ${media_type} ,id: ${id} ,content_type: ${content_type}`,
+        "\n",
+        error
+      );
+    }
   }
 
   if (isError) {
@@ -126,8 +134,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
 
   return (
     <>
-      <div className="slider-bg"
-      style={ {padding:"10px"}}>
+      <div className="slider-bg" style={{ padding: "10px" }}>
         <Slider {...settings}>
           {(() => {
             switch (content_type) {
