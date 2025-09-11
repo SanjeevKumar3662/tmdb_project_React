@@ -30,16 +30,24 @@ const SlidingCards = ({
   });
 
   async function fetchData() {
-    const response = await fetch(
-      `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
-    );
-    const data = await response.json();
-    // console.log(data);
-    return await data.results;
+    try {
+      const response = await fetch(
+        `https://first-backend-eight.vercel.app/media_lists/${media_type}/${list_type}/${page}`
+      );
+      const data = await response.json();
+      // console.log(data);
+      return await data.results;
+    } catch (error) {
+      console.error(
+        `error occured while fetching SlidingCards component for ${media_type} ,list type: ${list_type} ,page: ${page}`,
+        "\n",
+        error
+      );
+    }
   }
 
   if (isError) {
-    return <div>Error in {media_type}</div>;
+    return <div>Error in SlidingCards for {media_type}</div>;
   }
 
   if (isPending) {
