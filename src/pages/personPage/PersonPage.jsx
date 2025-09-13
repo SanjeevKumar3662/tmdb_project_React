@@ -111,6 +111,11 @@ const PersonPage = () => {
             <span className="">
               Birth Day : {person.data && person.data.birthday}
             </span>
+            <span className="">
+              Age :{" "}
+              {person.data.birthday && new Date().getFullYear() -
+                Number(person.data.birthday.slice(0, 4))}
+            </span>
             {person.data && person.data.deathday && (
               <span className="">Date Of Death : {person.data.deathday}</span>
             )}
