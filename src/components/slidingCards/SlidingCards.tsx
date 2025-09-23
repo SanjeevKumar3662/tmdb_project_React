@@ -7,15 +7,32 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useQuery } from "@tanstack/react-query";
+import { JSX } from "react/jsx-runtime";
 //slider end
 
+// Type for each card item
+type CardData = {
+  id: number;
+  [key: string]: any; // other API fields
+};
+
+// Props for SlidingCards
+type SlidingCardsProps = {
+  media_type: string; // "movie", "tv", "credits", etc.
+  list_type: string; // "popular", "top_rated", etc.
+  page?: string; // page context for Card
+  movies?: CardData[]; // optional, defaults to []
+  otherData?: CardData[]; // optional, defaults to []
+  credits?: CardData[]; // optional
+  videos?: CardData[]; // optional
+};
 const SlidingCards = ({
   media_type,
   list_type,
-  credits,
-  videos,
-  otherData,
-}) => {
+  credits = [],
+  videos = [],
+  otherData = [],
+}: SlidingCardsProps) => {
   const page = 1;
 
   // otherData && console.log(otherData[0]);
@@ -71,7 +88,7 @@ const SlidingCards = ({
     speed: 200,
     slidesToShow: 8,
     slidesToScroll: 5,
-    lazyLoad: videos ? false : true,
+    lazyLoad: "ondemand" as "ondemand",
     lazyLoadBuffer: 3,
     responsive: [
       {
@@ -117,33 +134,28 @@ const SlidingCards = ({
   return (
     <>
       <Slider {...settings}>
-        {movies &&
+        {movies.length > 0 &&
           media_type !== "credits" &&
-          movies.map((movie) => (
+          movies.map((movie: CardData) => (
             <div key={movie.id}>
               <Card
-                page={page}
-                cssClass={"sliding-cards"}
+                cssClass="sliding-cards"
                 {...movie}
                 linkTo={media_type + "_details"}
-              ></Card>
+              />
             </div>
           ))}
 
-        {
-          // this is for person page credits for can be tv or a movie
-          otherData &&
-            otherData.map((ele) => (
-              <div key={ele.id}>
-                <Card
-                  page={page}
-                  cssClass={"sliding-cards"}
-                  {...ele}
-                  linkTo={media_type + "_details"}
-                ></Card>
-              </div>
-            ))
-        }
+        {otherData.length > 0 &&
+          otherData.map((ele: CardData) => (
+            <div key={ele.id}>
+              <Card
+                cssClass="sliding-cards"
+                {...ele}
+                linkTo={media_type + "_details"}
+              />
+            </div>
+          ))}
       </Slider>
     </>
   );
