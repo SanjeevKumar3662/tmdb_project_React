@@ -1,8 +1,8 @@
-import "./shutDown.css"
+import "./shutDown.css";
 
-export const ShutDown = () => {
+export const ShutDown: React.FC = () => {
   return (
-    <div className='shutdown-container'>
+    <div className="shutdown-container">
       <h1>Under Maintenance, will be up soon.</h1>
       <h2>Working on:</h2>
       <ol>
@@ -12,5 +12,5 @@ export const ShutDown = () => {
         <li>etc.</li>
       </ol>
     </div>
-  )
-}
+  );
+};
