@@ -2,8 +2,9 @@ import heroImage from "/hero.webp";
 import "./homePage.css";
 import SlidingCards from "../../components/slidingCards/SlidingCards";
 import SearchInput from "../../components/searchInput/SearchInput";
+import * as React from "react";
 
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <main>
       <section className="hero">
