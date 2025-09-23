@@ -1,7 +1,27 @@
-import "./Card.css";
+import React from "react";
 import { Link } from "react-router-dom";
+import "./Card.css";
 
-const Card = ({
+type CardProps = {
+  id: number;
+  linkTo: string;
+  cssClass?: string;
+  title?: string;
+  name?: string;
+  character?: string;
+  poster_path?: string;
+  profile_path?: string;
+  logo_path?: string;
+  release_date?: string;
+  first_air_date?: string;
+  vote_average?: number;
+  popularity?: number;
+};
+
+const Card: React.FC<CardProps> = ({
+  id,
+  linkTo,
+  cssClass,
   title,
   name,
   character,
@@ -10,20 +30,15 @@ const Card = ({
   logo_path,
   release_date,
   first_air_date,
-  id,
-  cssClass,
-  linkTo,
-  vote_average: voteAvg,
+  vote_average,
   popularity,
 }) => {
-  // console.log(profile_path);
+  const voteAvg = vote_average;
+
   return (
     <div className={cssClass}>
-      {/* only movies have release date, so if this is true that means it is a movie else a tv show */}
-      <Link target="" to={`/${linkTo}/${id}`}>
+      <Link to={`/${linkTo}/${id}`}>
         <div className="poster-wrapper">
-          {/* -remember _blank will open a new window every time 
-            -using w500 for poster lower resolution for low latency */}
           {poster_path || profile_path || logo_path ? (
             <img
               className="poster"
@@ -33,10 +48,10 @@ const Card = ({
               srcSet={`https://image.tmdb.org/t/p/w185${
                 poster_path || profile_path || logo_path
               } 1x,
-          https://image.tmdb.org/t/p/w342${
-            poster_path || profile_path || logo_path
-          } 2x`}
-              alt={`poster for ${name}`}
+                       https://image.tmdb.org/t/p/w342${
+                         poster_path || profile_path || logo_path
+                       } 2x`}
+              alt={`poster for ${name || title}`}
               title={name || title}
               loading="lazy"
               decoding="async"
@@ -44,12 +59,8 @@ const Card = ({
           ) : (
             <img src="/noImage.png" loading="lazy" decoding="async" />
           )}
-          {
-            // voteAvg exists for every movie or tv show, but not for person
-            //all meida and persons have popularity
-          }
           <div className="vote-avg-card">
-            {voteAvg ? voteAvg.toFixed(1) : popularity.toFixed(1)}
+            {voteAvg ? voteAvg.toFixed(1) : popularity?.toFixed(1)}
           </div>
         </div>
       </Link>
