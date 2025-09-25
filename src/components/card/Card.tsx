@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Card.css";
 
-type CardProps = {
+interface CardProps {
   id: number;
   linkTo: string;
   cssClass?: string;
@@ -16,7 +16,7 @@ type CardProps = {
   first_air_date?: string;
   vote_average?: number;
   popularity?: number;
-};
+}
 
 const Card: React.FC<CardProps> = ({
   id,
