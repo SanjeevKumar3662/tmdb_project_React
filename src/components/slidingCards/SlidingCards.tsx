@@ -11,13 +11,13 @@ import { JSX } from "react/jsx-runtime";
 //slider end
 
 // Type for each card item
-type CardData = {
+interface CardData {
   id: number;
   [key: string]: any; // other API fields
-};
+}
 
 // Props for SlidingCards
-type SlidingCardsProps = {
+interface SlidingCardsProps {
   media_type: string; // "movie", "tv", "credits", etc.
   list_type: string; // "popular", "top_rated", etc.
   page?: string; // page context for Card
@@ -25,7 +25,7 @@ type SlidingCardsProps = {
   otherData?: CardData[]; // optional, defaults to []
   credits?: CardData[]; // optional
   videos?: CardData[]; // optional
-};
+}
 const SlidingCards = ({
   media_type,
   list_type,
