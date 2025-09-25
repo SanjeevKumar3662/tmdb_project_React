@@ -5,6 +5,8 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+
+
 const MediaLists = ({ media_type, list_type, headerText }) => {
   //  const [listData, setlistData] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
