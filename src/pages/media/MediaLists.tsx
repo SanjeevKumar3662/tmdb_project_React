@@ -5,28 +5,38 @@ import { useEffect, useState, useRef } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+interface Movie {
+  id: number;
+  title: string;
+  overview: string;
+  poster_path: string;
+  // add more fields as needed
+}
 
-
-const MediaLists = ({ media_type, list_type, headerText }) => {
+const MediaLists: React.FC<{
+  media_type: string;
+  list_type: string;
+  headerText: string;
+}> = ({ media_type, list_type, headerText }) => {
   //  const [listData, setlistData] = useState(null);
   const [searchParams, setSearchParams] = useSearchParams();
 
   // get initial page from URL
-  const pageFromURL = parseInt(searchParams.get("page") || 1);
+  const pageFromURL = parseInt(searchParams.get("page") || "1");
   const [page, setPage] = useState(pageFromURL);
 
   // --- keep URL in sync (merge instead of overwrite) ---
   useEffect(() => {
     setSearchParams((prev) => {
       const newParams = new URLSearchParams(prev);
-      newParams.set("page", page);
+      newParams.set("page", String(page));
       newParams.set("list_type", list_type); // always from props
       return newParams;
     });
   }, [page, list_type, setSearchParams]);
 
   // --- reset page when media_type OR list_type changes ---
-  const prevKeyRef = useRef();
+  const prevKeyRef = useRef("");
 
   useEffect(() => {
     const newKey = `${media_type}-${list_type}`;
@@ -40,7 +50,7 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
     data: listData,
     isPending,
     isError,
-  } = useQuery({
+  } = useQuery<Movie[]>({
     queryKey: [media_type, list_type, page],
     queryFn: fetchList,
   });
@@ -99,10 +109,8 @@ const MediaLists = ({ media_type, list_type, headerText }) => {
           listData.map((movie) => (
             <Card
               key={movie.id}
-              page={page}
               cssClass={"card"}
               linkTo={media_type + "_details"}
-              list_type={list_type}
               {...movie}
             ></Card>
           ))
