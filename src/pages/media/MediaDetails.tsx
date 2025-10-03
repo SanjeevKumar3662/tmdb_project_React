@@ -8,7 +8,25 @@ import { useQuery } from "@tanstack/react-query";
 import AgeWarningPopup from "../../components/ageWarningPopUp/AgeWarningPopUp";
 import countries from "../../OtherData/countriesName";
 
-
+interface Media {
+  title: string;
+  original_title: string;
+  name: string;
+  origin_country: string[];
+  original_name: string;
+  adult: boolean;
+  backdrop_path: string;
+  poster_path: string;
+  tagline: string;
+  overview: string;
+  release_date: string;
+  first_air_date: string;
+  runtime: number;
+  number_of_seasons: number;
+  number_of_episodes: string;
+  vote_average: number;
+  genres: { id: number; name: string }[];
+}
 
 const MediaDetails: React.FC<{ media_type: string }> = ({ media_type }) => {
   const [userConcent, setUserConcent] = useState(null);
@@ -19,7 +37,7 @@ const MediaDetails: React.FC<{ media_type: string }> = ({ media_type }) => {
     isPending,
     isError,
     isSuccess,
-  } = useQuery({
+  } = useQuery<Media>({
     queryKey: [id],
     queryFn: fetchDetails,
   });
