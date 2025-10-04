@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ageWarningPopUp.css"; // we'll create this file
 
-export default function AgeWarningPopup({ setConcent }) {
+const AgeWarningPopup :React.FC<{setConcent: React.Dispatch<React.SetStateAction<boolean|null>>}> =  ({ setConcent }) => {
   const [showPopup, setShowPopup] = useState(true);
 
   const handleConfirm = () => {
@@ -35,3 +35,5 @@ export default function AgeWarningPopup({ setConcent }) {
     </div>
   );
 }
+
+export default  AgeWarningPopup;
