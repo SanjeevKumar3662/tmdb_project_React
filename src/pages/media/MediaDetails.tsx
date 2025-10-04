@@ -29,7 +29,7 @@ interface Media {
 }
 
 const MediaDetails: React.FC<{ media_type: string }> = ({ media_type }) => {
-  const [userConcent, setUserConcent] = useState(null);
+  const [userConcent, setUserConcent] = useState<boolean|null>(null);
   const { id } = useParams();
 
   const {
