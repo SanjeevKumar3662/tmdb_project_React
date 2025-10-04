@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom";
 
 import { PersonCreditSlider } from "./PersonCreditSlider";
 
-const PersonPage = () => {
+const PersonPage: React.FC = () => {
   const { id } = useParams();
 
   const [person, movieCredits, tvCredits] = useQueries({
@@ -103,7 +103,7 @@ const PersonPage = () => {
             <div className="also-know-as">
               Also Know As :
               {person.data.also_known_as &&
-                person.data.also_known_as.map((ele, index) => (
+                person.data.also_known_as.map((ele:string, index:number) => (
                   <span key={index}> {ele}, </span>
                 ))}
             </div>
