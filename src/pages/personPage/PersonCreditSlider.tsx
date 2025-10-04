@@ -5,7 +5,30 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const PersonCreditSlider = ({ personCredits, link }) => {
+interface Person {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+  character: string;
+  credit_id: string;
+  order: boolean;
+}
+
+export const PersonCreditSlider: React.FC<{
+  personCredits: any;
+  link: string;
+}> = ({ personCredits, link }) => {
   const settings = {
     dots: false,
     infinite: personCredits && personCredits.cast.length <= 8 ? false : true,
@@ -55,7 +78,7 @@ export const PersonCreditSlider = ({ personCredits, link }) => {
   return (
     <Slider {...settings}>
       {personCredits &&
-        personCredits.cast.map((person) => (
+        personCredits.cast.map((person: Person) => (
           <div key={person.id}>
             <Card cssClass={"sliding-cards"} {...person} linkTo={link}></Card>
           </div>
