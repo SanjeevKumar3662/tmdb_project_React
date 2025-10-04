@@ -9,9 +9,9 @@ interface CardProps {
   title?: string;
   name?: string;
   character?: string;
-  poster_path?: string;
-  profile_path?: string;
-  logo_path?: string;
+  poster_path?: string | null;
+  profile_path?: string | null;
+  logo_path?: string | null;
   release_date?: string;
   first_air_date?: string;
   vote_average?: number;
