@@ -11,6 +11,38 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
+interface SearchResultBase {
+  id: number;
+  media_type?: "movie" | "tv" | "person"; // only present in multi-search
+  popularity: number;
+}
+
+interface MovieResult extends SearchResultBase {
+  title: string;
+  original_title: string;
+  release_date?: string;
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+  overview: string;
+}
+
+interface TvResult extends SearchResultBase {
+  name: string;
+  original_name: string;
+  first_air_date?: string;
+  poster_path?: string | null;
+  backdrop_path?: string | null;
+  overview: string;
+}
+
+interface PersonResult extends SearchResultBase {
+  name: string;
+  profile_path?: string | null;
+  known_for?: (MovieResult | TvResult)[];
+}
+
+type SearchResult = MovieResult | TvResult | PersonResult;
+
 const SearchPage = () => {
   // const [searchRes, setSearchRes] = useState(null);
   //for getting page from url
@@ -20,11 +52,11 @@ const SearchPage = () => {
   const [query_type, setQuery_type] = useState(queryTypeFromURL);
 
   //this returns a string so parse it
-  const pageFromURL = parseInt(searchParams.get("page") || 1);
+  const pageFromURL = parseInt(searchParams.get("page") || "1");
   const [page, setPage] = useState(pageFromURL);
 
   useEffect(() => {
-    setSearchParams({ query_type, page }); //updates the page sting in url
+    setSearchParams({ query_type, page: String(page) }); //updates the page sting in url
   }, [query_type, page, setSearchParams]);
   //end
 
@@ -167,10 +199,9 @@ const SearchPage = () => {
 
       <div className="flex-search-container">
         {searchRes &&
-          searchRes.results.map((ele) => {
+          searchRes.results.map((ele: SearchResult) => {
             return (
               <Card
-                page={page}
                 key={ele.id}
                 linkTo={
                   (query_type === "multi" ? ele.media_type : query_type) +
