@@ -6,7 +6,7 @@ const VideoCards: React.FC<{
   videoId: string;
   title: string;
   type: string;
-  mediaId: string;
+  mediaId: string | undefined;
 }> = ({ videoId, title, type, mediaId }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
