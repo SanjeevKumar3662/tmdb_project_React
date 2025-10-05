@@ -4,8 +4,13 @@ import VideoCards from "../card/VideoCards";
 import Slider from "react-slick";
 import Card from "../card/Card";
 import { useQuery } from "@tanstack/react-query";
+import { Key } from "react";
 
-const MediaContentSlider = ({ media_type, id, content_type }) => {
+const MediaContentSlider: React.FC<{
+  media_type: string;
+  id: string | undefined;
+  content_type: string;
+}> = ({ media_type, id, content_type }) => {
   const {
     data: contentData,
     isError,
@@ -49,7 +54,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     );
   }
 
-  const getSlidesToShow = (type, breakpoint = "default") => {
+  const getSlidesToShow = (type:string, breakpoint:number|string = "default") => {
     switch (breakpoint) {
       case "desktop":
         switch (type) {
@@ -93,7 +98,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
     speed: 200,
     slidesToShow: getSlidesToShow(content_type, "desktop"),
     slidesToScroll: content_type === "recommendations" ? 4 : 1,
-    lazyLoad: true,
+    lazyLoad: "ondemand" as "ondemand",
     lazyLoadBuffer: 3,
     responsive: [
       {
@@ -141,7 +146,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               case "videos":
                 return (
                   contentData &&
-                  contentData.results.map((video) => (
+                  contentData.results.map((video: { type: string; name: string; id: Key | null | undefined; key: string; }) => (
                     <VideoCards
                       type={video.type}
                       title={video.name}
@@ -154,7 +159,7 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               case "images":
                 return (
                   contentData &&
-                  contentData.backdrops.map((imgs) => (
+                  contentData.backdrops.map((imgs: { file_path: string; }) => (
                     <div className="backdrop-border">
                       <img
                         className="backdrops"
@@ -168,8 +173,9 @@ const MediaContentSlider = ({ media_type, id, content_type }) => {
               case "recommendations":
                 return (
                   contentData &&
-                  contentData.results.map((media) => (
+                  contentData.results.map((media:any) => (
                     <Card
+                    // {console.log(media)}
                       cssClass={"sliding-cards"}
                       {...media}
                       linkTo={media_type + "_details"}
