@@ -1,17 +1,22 @@
 import { useState } from "react";
 import "./PageNav.css";
 
-const PageNav = ({ prevClick, nextClick, page, setPage }) => {
+const PageNav: React.FC<{
+  prevClick: () => void;
+  nextClick: () => void;
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ prevClick, nextClick, page, setPage }) => {
   const [isEdit, setEdit] = useState(false);
-  function onPageEditClick(e) {
-    if(e.key === "Enter"){
+  function onPageEditClick(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === "Enter") {
       console.log("enter");
-      const newPage = parseInt(e.target.value); //string to number
+      const newPage = parseInt(e.currentTarget.value); //string to number
       if (isFinite(newPage) && newPage >= 1) {
         //on valid number, no NaN or Infinity
         setPage(newPage);
       }
-      
+
       console.log(newPage);
       setEdit(() => !isEdit);
     }
@@ -24,7 +29,7 @@ const PageNav = ({ prevClick, nextClick, page, setPage }) => {
       {isEdit ? (
         <input
           onKeyDown={onPageEditClick}
-          onBlur={()=>setEdit(false)}
+          onBlur={() => setEdit(false)}
           type="number"
           min={1}
           placeholder="Enter Page No."
