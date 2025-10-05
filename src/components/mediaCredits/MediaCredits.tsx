@@ -6,7 +6,26 @@ import "../slidingCards/slidingCards.css"; // because of lazy loading, styles fo
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-function MediaCredits({ media_type, id }) {
+
+interface Person {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
+}
+
+const MediaCredits: React.FC<{
+  media_type: string;
+  id: string | undefined;
+}> = ({ media_type, id }) => {
   const {
     data: media,
     isError,
@@ -103,7 +122,7 @@ function MediaCredits({ media_type, id }) {
         <h1>Credits</h1>
         <Slider {...settings}>
           {media &&
-            media.cast.map((person) => (
+            media.cast.map((person: Person) => (
               <div key={person.id}>
                 <Card
                   cssClass={"sliding-cards"}
@@ -116,6 +135,6 @@ function MediaCredits({ media_type, id }) {
       </div>
     </>
   );
-}
+};
 
 export default MediaCredits;
