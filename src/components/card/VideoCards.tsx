@@ -2,7 +2,12 @@ import "./videoCards.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const VideoCards = ({ videoId, title, type, mediaId }) => {
+const VideoCards: React.FC<{
+  videoId: string;
+  title: string;
+  type: string;
+  mediaId: string;
+}> = ({ videoId, title, type, mediaId }) => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   // Thumbnail URL from YouTube
